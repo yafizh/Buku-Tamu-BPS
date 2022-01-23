@@ -76,3 +76,22 @@ AS
         tabel_pegawai 
     ON 
         tabel_tamu.id_pegawai=tabel_pegawai.id;
+
+        
+CREATE VIEW 
+    `view_jumlah_kunjungan_divisi` 
+AS 
+    SELECT 
+        tabel_divisi.*,
+        (SELECT COUNT(id) FROM tabel_tamu WHERE tabel_tamu.id_divisi=tabel_divisi.id) AS jumlah_kunjungan 
+    FROM 
+        tabel_divisi;
+
+CREATE VIEW 
+    `view_jumlah_kunjungan_per_pegawai` 
+AS 
+    SELECT 
+        tabel_pegawai.*,
+        (SELECT COUNT(id) FROM tabel_tamu WHERE tabel_tamu.id_pegawai=tabel_pegawai.id) AS jumlah_pengunjung 
+    FROM 
+        tabel_pegawai
