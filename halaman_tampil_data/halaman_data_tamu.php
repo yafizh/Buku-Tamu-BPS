@@ -43,7 +43,7 @@
                                             <td style="vertical-align: middle;"><?= $row['keperluan']; ?></td>
                                             <td class="text-center">
                                                 <a href="index.php?page=edit_tamu&id=<?= $row['id']; ?>" class="btn-sm btn-warning"><i class="mdi mdi-border-color"></i></a>
-                                                <a href="index.php?page=delete_tamu&id=<?= $row['id']; ?>" class="btn-sm btn-danger" onclick="return confirm('Yakin ingin menghapus data ini?')"><i class="mdi mdi-border-color"></i></a>
+                                                <a href="index.php?page=delete_tamu&id=<?= $row['id']; ?>" class="btn-sm btn-danger" onclick="return confirm('Yakin ingin menghapus data ini?')"><i class="mdi mdi-delete"></i></a>
                                             </td>
                                         </tr>
                                     <?php endwhile; ?>
