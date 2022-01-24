@@ -35,8 +35,7 @@ require_once "../../database/koneksi.php";
 <body>
     <div class="container">
         <div id="kop" class="d-flex justify-content-center gap-5">
-            <!--  style="position: absolute; left: 10px; top: 10px;" -->
-            <img src="../../logo.png" height="130" alt="">
+            <img src="../../logo.png" height="110" alt="" style="position: absolute; left: 40px; top: 40px;">
             <div class="text-center" style="flex: 1;">
                 <h2>
                     Badan Pusat Statistik
@@ -44,7 +43,7 @@ require_once "../../database/koneksi.php";
                     Hulu Sungai Utara
                 </h2>
                 <p>
-                    Jl. H. Saberan Effendi No.RT 3, Sungai Malang, Amuntai Tengah, 
+                    Jl. H. Saberan Effendi No.RT 3, Sungai Malang, Amuntai Tengah,
                     <br>
                     Kabupaten Hulu Sungai Utara, Kalimantan Selatan 71418
                     <br>
