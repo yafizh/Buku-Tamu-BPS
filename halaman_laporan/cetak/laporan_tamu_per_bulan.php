@@ -56,17 +56,20 @@ $id_pegawai = $_POST['id_pegawai'];
 <body>
     <div class="container">
         <div id="kop" class="d-flex justify-content-center gap-5">
-            <img src="../../assets/img/Lambang_Kota_Banjarbaru.png" height="150" alt="">
+            <!--  style="position: absolute; left: 10px; top: 10px;" -->
+            <img src="../../logo.png" height="130" alt="">
             <div class="text-center" style="flex: 1;">
                 <h2>
-                    NAMA INSTANSI
+                    Badan Pusat Statistik
                     <br>
-                    KOTA
+                    Hulu Sungai Utara
                 </h2>
                 <p>
-                    Alamat:
+                    Jl. H. Saberan Effendi No.RT 3, Sungai Malang, Amuntai Tengah,
                     <br>
-                    Email:
+                    Kabupaten Hulu Sungai Utara, Kalimantan Selatan 71418
+                    <br>
+                    Email: bps6308@gmail.com
                 </p>
             </div>
         </div>

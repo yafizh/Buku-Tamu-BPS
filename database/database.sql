@@ -10,6 +10,7 @@ CREATE TABLE `tabel_user` (
     PRIMARY KEY (id)
 );
 
+
 CREATE TABLE `tabel_divisi` (
     id INT NOT NULL AUTO_INCREMENT,
     nama_divisi VARCHAR(255) NOT NULL,
@@ -17,20 +18,55 @@ CREATE TABLE `tabel_divisi` (
     PRIMARY KEY (id)
 );
 
+INSERT INTO `tabel_divisi` (
+    nama_divisi,
+    keterangan
+) VALUES 
+('Divisi1', 'Contoh1');
+
 CREATE TABLE `tabel_pegawai` (
     id INT NOT NULL AUTO_INCREMENT,
     id_divisi INT NOT NULL,
     nama VARCHAR(255) NOT NULL,
+    nip VARCHAR(255) NOT NULL,
     jenis_kelamin ENUM('L','P') NOT NULL,
     nomor_telepon VARCHAR(15) NOT NULL,
     PRIMARY KEY (id),
     FOREIGN KEY (id_divisi) REFERENCES tabel_divisi (id)
 );
 
+INSERT INTO `tabel_pegawai` (
+    id_divisi,
+    nama,
+    nip,
+    jenis_kelamin,
+    nomor_telepon
+) VALUES 
+(1,'Sukma Handayani, M.Si', '197503111996122000', 'P', '0'),
+(1,'Arfiani, S.Si', '198112042011011000', 'L', '0'),
+(1,'M. Agus Suharyanto, A.Md', '198810052011011000', 'L', '0'),
+(1,'Noor Hamimah, SE', '198607212011012000', 'P', '0'),
+(1,'Muhammad Taufik Hidayat, SST', '198803082012111000', 'L', '0'),
+(1,'Hanif Yontar Rahma, S.Si', '199412192019032000', 'L', '0'),
+(1,'Muhammad Adi Wijaya Kesuma, SST', '199412212018021000', 'L', '0'),
+(1,'Masdani, SE', '197110181993121000', 'L', '0'),
+(1,'Ulya Zahrotun Niswah, SST', '199407242018022000', 'P', '0'),
+(1,'Anggita Silmi Nabilah, SST', '199507062018022000', 'P', '0'),
+(1,'Muhammad Imam Sholihin, S.Tr.Stat.', '199711142021041000', 'L', '0'),
+(1,'Eko Wahyu Lestari, SST', '199403272017012000', 'L', '0'),
+(1,'Oktaviani, S.Tr.Stat.', '199610122019012000', 'P', '0'),
+(1,'Rusni', '196905102006041000', 'L', '0'),
+(1,'Taufik Ilhakim', '196807052007011000', 'L', '0'),
+(1,'Abu Hurairah', '198108232002121000', 'P', '0'),
+(1,'Azehar, SE.', '196902091993121000', 'P', '0'),
+(1,'Agusriadi', '197708062007101000', 'L', '0'),
+(1,'Nabhani', '198010172007101000', 'P', '0'),
+(1,'Herliani', '197504112009012000', 'P', '0');
+
 CREATE TABLE `tabel_tamu` (
     id INT NOT NULL AUTO_INCREMENT,
-    id_pegawai INT NOT NULL,
-    id_divisi INT NOT NULL,
+    id_pegawai INT NULL,
+    id_divisi INT NULL,
     nama VARCHAR(255) NOT NULL,
     nomor_telepon VARCHAR(15) NOT NULL,
     jenis_kelamin ENUM('L','P') NOT NULL,
@@ -54,7 +90,7 @@ AS
         tabel_divisi.nama_divisi 
     FROM 
         tabel_pegawai  
-    INNER JOIN 
+    LEFT JOIN 
         tabel_divisi 
     ON 
         tabel_pegawai.id_divisi=tabel_divisi.id;
@@ -68,11 +104,11 @@ AS
         tabel_pegawai.nama AS nama_pegawai 
     FROM 
         tabel_tamu  
-    INNER JOIN 
+    LEFT JOIN 
         tabel_divisi 
     ON 
         tabel_tamu.id_divisi=tabel_divisi.id 
-    INNER JOIN 
+    LEFT JOIN 
         tabel_pegawai 
     ON 
         tabel_tamu.id_pegawai=tabel_pegawai.id;
@@ -94,4 +130,4 @@ AS
         tabel_pegawai.*,
         (SELECT COUNT(id) FROM tabel_tamu WHERE tabel_tamu.id_pegawai=tabel_pegawai.id) AS jumlah_pengunjung 
     FROM 
-        tabel_pegawai
+        tabel_pegawai;
