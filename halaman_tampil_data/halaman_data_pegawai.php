@@ -22,6 +22,7 @@
                                 <thead>
                                     <tr>
                                         <th>Nama</th>
+                                        <th>NIP</th>
                                         <th>Divisi</th>
                                         <th>Jenis Kelamin</th>
                                         <th>Nomor Telepon</th>
@@ -36,6 +37,7 @@
                                     <?php while ($row = $data_pegawai->fetch_assoc()) : ?>
                                         <tr>
                                             <td style="vertical-align: middle;"><?= $row['nama']; ?></td>
+                                            <td style="vertical-align: middle;"><?= $row['nip']; ?></td>
                                             <td style="vertical-align: middle;"><?= $row['nama_divisi']; ?></td>
                                             <td style="vertical-align: middle;"><?= $row['jenis_kelamin']; ?></td>
                                             <td style="vertical-align: middle;"><?= $row['nomor_telepon']; ?></td>
