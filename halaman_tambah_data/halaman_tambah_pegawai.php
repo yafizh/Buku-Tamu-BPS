@@ -67,7 +67,7 @@ if (isset($_POST['submit'])) {
                                 <label for="jenis_kelamin">Jenis Kelamin</label>
                                 <select class="form-control" name="jenis_kelamin" required>
                                     <option value="L">Laki - Laki</option>
-                                    <option value="K">Perempuan</option>
+                                    <option value="P">Perempuan</option>
                                 </select>
                             </div>
                             <div class="form-group">
