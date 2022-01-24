@@ -69,26 +69,26 @@ if (isset($_POST['submit'])) {
                             <form class="forms-sample">
                                 <div class="form-group">
                                     <label for="nama">Nama</label>
-                                    <input type="text" class="form-control" value="<?= $row['nama']; ?>" name="nama" autocomplete="off" placeholder="Masukkan nama tamu..." required>
+                                    <input type="text" class="form-control text-white" value="<?= $row['nama']; ?>" name="nama" autocomplete="off" placeholder="Masukkan nama tamu..." required>
                                 </div>
                                 <div class="form-group">
                                     <label for="nomor_telepon">Nomor Telepon</label>
-                                    <input type="number" class="form-control" value="<?= $row['nomor_telepon']; ?>" name="nomor_telepon" autocomplete="off" placeholder="Masukkan nomor telepon..." required>
+                                    <input type="number" class="form-control text-white" value="<?= $row['nomor_telepon']; ?>" name="nomor_telepon" autocomplete="off" placeholder="Masukkan nomor telepon..." required>
                                 </div>
                                 <div class="form-group">
                                     <label for="jenis_kelamin">Jenis Kelamin</label>
-                                    <select class="form-control" name="jenis_kelamin" required>
+                                    <select class="form-control text-white" name="jenis_kelamin" required>
                                         <option value="L" <?= ($row['jenis_kelamin'] == 'L' ? "selected" : "") ?>>Laki - Laki</option>
                                         <option value="P" <?= ($row['jenis_kelamin'] == 'P' ? "selected" : "") ?>>Perempuan</option>
                                     </select>
                                 </div>
                                 <div class="form-group">
                                     <label for="asal_instansi">Asal Instansi</label>
-                                    <input type="text" class="form-control" value="<?= $row['asal_instansi']; ?>" name="asal_instansi" autocomplete="off" placeholder="Masukkan asal instansi..." required>
+                                    <input type="text" class="form-control text-white" value="<?= $row['asal_instansi']; ?>" name="asal_instansi" autocomplete="off" placeholder="Masukkan asal instansi..." required>
                                 </div>
                                 <div class="form-group">
                                     <label for="alamat">Alamat</label>
-                                    <input type="text" class="form-control" value="<?= $row['alamat']; ?>" name="alamat" autocomplete="off" placeholder="Masukkan alamat..." required>
+                                    <input type="text" class="form-control text-white" value="<?= $row['alamat']; ?>" name="alamat" autocomplete="off" placeholder="Masukkan alamat..." required>
                                 </div>
                             </form>
                         </div>
@@ -102,7 +102,7 @@ if (isset($_POST['submit'])) {
                             <div class="form-group">
                                 <label for="tabel_divisi">Divisi yang Dikunjungi</label>
                                 <?php $data_divisi = $mysqli->query("SELECT * FROM tabel_divisi ORDER BY nama_divisi"); ?>
-                                <select class="form-control" name="id_divisi" required>
+                                <select class="form-control text-white" name="id_divisi" required>
                                     <?php while ($row_divisi = $data_divisi->fetch_assoc()) : ?>
                                         <option <?= $row['id_divisi'] == $row_divisi['id'] ? "selected" : ""; ?> value="<?= $row_divisi['id']; ?>"><?= $row_divisi['nama_divisi']; ?></option>
                                     <?php endwhile; ?>
@@ -111,7 +111,7 @@ if (isset($_POST['submit'])) {
                             <div class="form-group">
                                 <label for="id_pegawai">Pegawai yang Dikunjungi</label>
                                 <?php $data_pegawai = $mysqli->query("SELECT * FROM tabel_pegawai ORDER BY nama"); ?>
-                                <select class="form-control" name="id_pegawai" required>
+                                <select class="form-control text-white" name="id_pegawai" required>
                                     <?php while ($row_pegawai = $data_pegawai->fetch_assoc()) : ?>
                                         <option <?= $row['id_pegawai'] == $row_pegawai['id'] ? "selected" : ""; ?> value="<?= $row_pegawai['id']; ?>"><?= $row_pegawai['nama']; ?></option>
                                     <?php endwhile; ?>
@@ -119,15 +119,15 @@ if (isset($_POST['submit'])) {
                             </div>
                             <div class="form-group">
                                 <label for="keperluan">Keperluan Kunjungan</label>
-                                <input type="text" class="form-control" value="<?= $row['keperluan']; ?>" name="keperluan" autocomplete="off" placeholder="Masukkan keperluan kunjungan...">
+                                <input type="text" class="form-control text-white" value="<?= $row['keperluan']; ?>" name="keperluan" autocomplete="off" placeholder="Masukkan keperluan kunjungan...">
                             </div>
                             <div class="form-group">
                                 <label for="tanggal">Tanggal</label>
-                                <input type="date" class="form-control" name="tanggal" value="<?= $row['tanggal']; ?>" readonly>
+                                <input type="date" class="form-control text-white" name="tanggal" value="<?= $row['tanggal']; ?>" readonly>
                             </div>
                             <div class="form-group">
                                 <label for="waktu">Waktu</label>
-                                <input type="text" class="form-control" name="waktu" value="<?= $row['waktu']; ?>" readonly>
+                                <input type="text" class="form-control text-white" name="waktu" value="<?= $row['waktu']; ?>" readonly>
                             </div>
                             <div class="form-group">
                                 <button class="btn btn-dark" type="reset">Cancel</button>

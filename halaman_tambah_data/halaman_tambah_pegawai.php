@@ -47,16 +47,16 @@ if (isset($_POST['submit'])) {
                         <form class="forms-sample" action="" method="POST">
                             <div class="form-group">
                                 <label for="nama">Nama</label>
-                                <input type="text" class="form-control" name="nama" autocomplete="off" placeholder="Masukkan Nama..." required>
+                                <input type="text" class="form-control text-white" name="nama" autocomplete="off" placeholder="Masukkan Nama..." required>
                             </div>
                             <div class="form-group">
                                 <label for="nip">NIP</label>
-                                <input type="text" class="form-control" name="nip" autocomplete="off" placeholder="Masukkan NIP..." required>
+                                <input type="text" class="form-control text-white" name="nip" autocomplete="off" placeholder="Masukkan NIP..." required>
                             </div>
                             <div class="form-group">
                                 <label for="nama_divisi">Divisi</label>
                                 <?php $data_divisi = $mysqli->query("SELECT * FROM tabel_divisi ORDER BY nama_divisi"); ?>
-                                <select class="form-control" name="id_divisi" required>
+                                <select class="form-control text-white" name="id_divisi" required>
                                     <option value="" disabled selected>Pilih Divisi</option>
                                     <?php while ($row = $data_divisi->fetch_assoc()) : ?>
                                         <option value="<?= $row['id']; ?>"><?= $row['nama_divisi']; ?></option>
@@ -65,14 +65,14 @@ if (isset($_POST['submit'])) {
                             </div>
                             <div class="form-group">
                                 <label for="jenis_kelamin">Jenis Kelamin</label>
-                                <select class="form-control" name="jenis_kelamin" required>
+                                <select class="form-control text-white" name="jenis_kelamin" required>
                                     <option value="L">Laki - Laki</option>
                                     <option value="P">Perempuan</option>
                                 </select>
                             </div>
                             <div class="form-group">
                                 <label for="nomor_telepon">Nomor Telepon</label>
-                                <input type="number" class="form-control" name="nomor_telepon" autocomplete="off" placeholder="Masukkan Nomor Telepon..." required>
+                                <input type="number" class="form-control text-white" name="nomor_telepon" autocomplete="off" placeholder="Masukkan Nomor Telepon..." required>
                             </div>
                             <div class="form-group">
                                 <button class="btn btn-dark" type="reset">Reset</button>

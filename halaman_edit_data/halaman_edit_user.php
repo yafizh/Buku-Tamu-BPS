@@ -56,19 +56,19 @@ if (isset($_POST['submit'])) {
                         <form class="forms-sample" action="" method="POST">
                             <div class="form-group">
                                 <label for="nama">Nama</label>
-                                <input type="text" class="form-control" value="<?= $row['nama']; ?>" name="nama" autocomplete="off" placeholder="Masukkan Nama User..." required>
+                                <input type="text" class="form-control text-white" value="<?= $row['nama']; ?>" name="nama" autocomplete="off" placeholder="Masukkan Nama User..." required>
                             </div>
                             <div class="form-group">
                                 <label for="username">Username</label>
-                                <input type="text" class="form-control" value="<?= $row['username']; ?>" name="username" autocomplete="off" placeholder="Masukkan Username..." required>
+                                <input type="text" class="form-control text-white" value="<?= $row['username']; ?>" name="username" autocomplete="off" placeholder="Masukkan Username..." required>
                             </div>
                             <div class="form-group">
                                 <label for="password">Password</label>
-                                <input type="password" class="form-control" value="<?= $row['password']; ?>" name="password" autocomplete="off" placeholder="Masukkan Password..." required>
+                                <input type="password" class="form-control text-white" value="<?= $row['password']; ?>" name="password" autocomplete="off" placeholder="Masukkan Password..." required>
                             </div>
                             <div class="form-group">
                                 <label for="status">Status</label>
-                                <select class="form-control" name="status" required>
+                                <select class="form-control text-white" name="status" required>
                                     <option <?= ($row['status'] == 'ADMIN') ? "selected" : ""; ?> value="ADMIN">Admin</option>
                                     <option <?= ($row['status'] == 'PETUGAS') ? "selected" : ""; ?> value="PETUGAS">Petugas</option>
                                 </select>

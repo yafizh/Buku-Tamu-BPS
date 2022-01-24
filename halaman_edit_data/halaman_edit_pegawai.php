@@ -58,16 +58,16 @@ if (isset($_POST['submit'])) {
                         <form class="forms-sample" action="" method="POST">
                             <div class="form-group">
                                 <label for="nama">Nama</label>
-                                <input type="text" class="form-control" value="<?= $row['nama']; ?>" name="nama" autocomplete="off" placeholder="Masukkan Nama..." required>
+                                <input type="text" class="form-control text-white" value="<?= $row['nama']; ?>" name="nama" autocomplete="off" placeholder="Masukkan Nama..." required>
                             </div>
                             <div class="form-group">
                                 <label for="nip">NIP</label>
-                                <input type="text" class="form-control" value="<?= $row['nip']; ?>" name="nip" autocomplete="off" placeholder="Masukkan NIP..." required>
+                                <input type="text" class="form-control text-white" value="<?= $row['nip']; ?>" name="nip" autocomplete="off" placeholder="Masukkan NIP..." required>
                             </div>
                             <div class="form-group">
                                 <label for="nama_divisi">Divisi</label>
                                 <?php $data_divisi = $mysqli->query("SELECT * FROM tabel_divisi ORDER BY nama_divisi"); ?>
-                                <select class="form-control" name="id_divisi" required>
+                                <select class="form-control text-white" name="id_divisi" required>
                                     <?php while ($row_divisi = $data_divisi->fetch_assoc()) : ?>
                                         <option <?= ($row['id_divisi'] == $row_divisi['id']) ? "selected" : ""; ?> value="<?= $row_divisi['id']; ?>"><?= $row_divisi['nama_divisi']; ?></option>
                                     <?php endwhile; ?>
@@ -75,14 +75,14 @@ if (isset($_POST['submit'])) {
                             </div>
                             <div class="form-group">
                                 <label for="jenis_kelamin">Jenis Kelamin</label>
-                                <select class="form-control" name="jenis_kelamin" required>
+                                <select class="form-control text-white" name="jenis_kelamin" required>
                                     <option <?= ($row['jenis_kelamin'] == 'L') ? "selected" : ""; ?> value="L">Laki - Laki</option>
                                     <option <?= ($row['jenis_kelamin'] == 'P') ? "selected" : ""; ?> value="P">Perempuan</option>
                                 </select>
                             </div>
                             <div class="form-group">
                                 <label for="nomor_telepon">Nomor Telepon</label>
-                                <input type="number" class="form-control" value="<?= $row['nomor_telepon']; ?>" name="nomor_telepon" autocomplete="off" placeholder="Masukkan Nomor Telepon..." required>
+                                <input type="number" class="form-control text-white" value="<?= $row['nomor_telepon']; ?>" name="nomor_telepon" autocomplete="off" placeholder="Masukkan Nomor Telepon..." required>
                             </div>
                             <div class="form-group">
                                 <button class="btn btn-dark" type="reset">Reset</button>

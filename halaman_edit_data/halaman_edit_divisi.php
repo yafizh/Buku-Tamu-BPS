@@ -52,11 +52,11 @@ if (isset($_POST['submit'])) {
                         <form class="forms-sample" action="" method="POST">
                             <div class="form-group">
                                 <label for="nama_divisi">Nama Divisi</label>
-                                <input type="text" value="<?= $row['nama_divisi']; ?>" class="form-control" name="nama_divisi" autocomplete="off" placeholder="Masukkan Nama Divisi..." required>
+                                <input type="text" value="<?= $row['nama_divisi']; ?>" class="form-control text-white" name="nama_divisi" autocomplete="off" placeholder="Masukkan Nama Divisi..." required>
                             </div>
                             <div class="form-group">
                                 <label for="keterangan">Keterangan</label>
-                                <input type="text" class="form-control" value="<?= $row['keterangan']; ?>" name="keterangan" autocomplete="off" placeholder="Masukkan Keterangan..." required>
+                                <input type="text" class="form-control text-white" value="<?= $row['keterangan']; ?>" name="keterangan" autocomplete="off" placeholder="Masukkan Keterangan..." required>
                             </div>
                             <div class="form-group">
                                 <button class="btn btn-dark" type="reset">Reset</button>

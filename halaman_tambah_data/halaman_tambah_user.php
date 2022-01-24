@@ -44,19 +44,19 @@ if (isset($_POST['submit'])) {
                         <form class="forms-sample" action="" method="POST">
                             <div class="form-group">
                                 <label for="nama">Nama</label>
-                                <input type="text" class="form-control" name="nama" autocomplete="off" placeholder="Masukkan Nama User..." required>
+                                <input type="text" class="form-control text-white" name="nama" autocomplete="off" placeholder="Masukkan Nama User..." required>
                             </div>
                             <div class="form-group">
                                 <label for="username">Username</label>
-                                <input type="text" class="form-control" name="username" autocomplete="off" placeholder="Masukkan Username..." required>
+                                <input type="text" class="form-control text-white" name="username" autocomplete="off" placeholder="Masukkan Username..." required>
                             </div>
                             <div class="form-group">
                                 <label for="password">Password</label>
-                                <input type="password" class="form-control" name="password" autocomplete="off" placeholder="Masukkan Password..." required>
+                                <input type="password" class="form-control text-white" name="password" autocomplete="off" placeholder="Masukkan Password..." required>
                             </div>
                             <div class="form-group">
                                 <label for="status">Status</label>
-                                <select class="form-control" name="status" required>
+                                <select class="form-control text-white" name="status" required>
                                     <option value="ADMIN">Admin</option>
                                     <option value="PETUGAS">Petugas</option>
                                 </select>
