@@ -15,6 +15,7 @@ if (isset($_GET['id'])) {
 if (isset($_POST['submit'])) {
     $id_divisi = $_POST['id_divisi'];
     $nama = $_POST['nama'];
+    $nip = $_POST['nip'];
     $jenis_kelamin = $_POST['jenis_kelamin'];
     $nomor_telepon = $_POST['nomor_telepon'];
 
@@ -22,6 +23,7 @@ if (isset($_POST['submit'])) {
             SET 
                 id_divisi='$id_divisi', 
                 nama='$nama', 
+                nip='$nip', 
                 jenis_kelamin='$jenis_kelamin',
                 nomor_telepon='$nomor_telepon' 
             WHERE 
@@ -59,6 +61,10 @@ if (isset($_POST['submit'])) {
                                 <input type="text" class="form-control" value="<?= $row['nama']; ?>" name="nama" autocomplete="off" placeholder="Masukkan Nama..." required>
                             </div>
                             <div class="form-group">
+                                <label for="nip">NIP</label>
+                                <input type="text" class="form-control" value="<?= $row['nip']; ?>" name="nip" autocomplete="off" placeholder="Masukkan NIP..." required>
+                            </div>
+                            <div class="form-group">
                                 <label for="nama_divisi">Divisi</label>
                                 <?php $data_divisi = $mysqli->query("SELECT * FROM tabel_divisi ORDER BY nama_divisi"); ?>
                                 <select class="form-control" name="id_divisi" required>
@@ -71,7 +77,7 @@ if (isset($_POST['submit'])) {
                                 <label for="jenis_kelamin">Jenis Kelamin</label>
                                 <select class="form-control" name="jenis_kelamin" required>
                                     <option <?= ($row['jenis_kelamin'] == 'L') ? "selected" : ""; ?> value="L">Laki - Laki</option>
-                                    <option <?= ($row['jenis_kelamin'] == 'P') ? "selected" : ""; ?> value="K">Perempuan</option>
+                                    <option <?= ($row['jenis_kelamin'] == 'P') ? "selected" : ""; ?> value="P">Perempuan</option>
                                 </select>
                             </div>
                             <div class="form-group">

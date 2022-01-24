@@ -3,6 +3,7 @@ require_once "database/koneksi.php";
 if (isset($_POST['submit'])) {
     $id_divisi = $_POST['id_divisi'];
     $nama = $_POST['nama'];
+    $nip = $_POST['nip'];
     $jenis_kelamin = $_POST['jenis_kelamin'];
     $nomor_telepon = $_POST['nomor_telepon'];
 
@@ -10,11 +11,13 @@ if (isset($_POST['submit'])) {
         INSERT INTO tabel_pegawai (
             id_divisi,
             nama,
+            nip,
             jenis_kelamin,
             nomor_telepon 
         ) VALUES (
             '$id_divisi', 
             '$nama', 
+            '$nip', 
             '$jenis_kelamin', 
             '$nomor_telepon' 
         )";
@@ -45,6 +48,10 @@ if (isset($_POST['submit'])) {
                             <div class="form-group">
                                 <label for="nama">Nama</label>
                                 <input type="text" class="form-control" name="nama" autocomplete="off" placeholder="Masukkan Nama..." required>
+                            </div>
+                            <div class="form-group">
+                                <label for="nip">NIP</label>
+                                <input type="text" class="form-control" name="nip" autocomplete="off" placeholder="Masukkan NIP..." required>
                             </div>
                             <div class="form-group">
                                 <label for="nama_divisi">Divisi</label>

@@ -1,8 +1,9 @@
 <nav class="sidebar sidebar-offcanvas" id="sidebar">
     <div class="sidebar-brand-wrapper d-none d-lg-flex align-items-center justify-content-center fixed-top">
-        BPS HSU
-        <!-- <a class="sidebar-brand brand-logo" href="index.html"><img src="assets/images/logo.svg" alt="logo" /></a> -->
-        <!-- <a class="sidebar-brand brand-logo-mini" href="index.html"><img src="assets/images/logo-mini.svg" alt="logo" /></a> -->
+        <a class="sidebar-brand brand-logo" style="text-decoration:none;" href="index.html">
+            <img src="logo.png" alt="logo" style="object-fit: contain; object-position: left;" />
+            <span style="margin-left: -60px;" class="text-white">BPS HSU</span></a>
+        <!-- <a class="sidebar-brand brand-logo-mini" href="index.html"><img src="logo.png" alt="logo" /></a> -->
     </div>
     <ul class="nav">
         <li class="nav-item nav-category">
