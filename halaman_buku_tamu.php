@@ -24,8 +24,8 @@ if (isset($_POST['submit'])) {
             waktu,
             nomor_telepon 
         ) VALUES (
-            ".(empty($id_divisi) ? 'NULL' : '$id_divisi').", 
-            ".(empty($id_pegawai) ? 'NULL' : '$id_pegawai').",
+            ".(empty($id_divisi) ? 'NULL' : '\'$id_divisi\'').", 
+            ".(empty($id_pegawai) ? 'NULL' : '\'$id_pegawai\'').",
             '$nama', 
             '$jenis_kelamin', 
             '$asal_instansi', 
