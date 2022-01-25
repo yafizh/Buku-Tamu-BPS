@@ -95,7 +95,7 @@ $id_pegawai = $_POST['id_pegawai'];
                             <td class="text-center"><?= $no++; ?></td>
                             <td><?= $row['nama']; ?></td>
                             <td class="text-center"><?= $row['tanggal']; ?></td>
-                            <td class="text-center"><?= $row['asal_insatnsi']; ?></td>
+                            <td class="text-center"><?= $row['asal_instansi']; ?></td>
                             <td class="text-center"><?= $row['keperluan']; ?></td>
                         </tr>
                     <?php endwhile; ?>
