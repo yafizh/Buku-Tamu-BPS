@@ -93,7 +93,7 @@
                             include_once "halaman_delete_data/halaman_delete_pegawai.php";
                             break;
                         case "ganti_password":
-                            include_once "halaman_profile/halaman_ganti_password.php";
+                            include_once "halaman_auth/halaman_ganti_password.php";
                             break;
                         case "logout":
                             include_once "halaman_auth/halaman_logout.php";
