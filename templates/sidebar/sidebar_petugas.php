@@ -25,7 +25,7 @@
         ?>">
             <a class="nav-link" href="?page=buku_tamu">
                 <span class="menu-icon">
-                    <i class="mdi mdi-contacts"></i>
+                    <i class="mdi mdi-book-open-variant"></i>
                 </span>
                 <span class="menu-title">Buku Tamu</span>
             </a>

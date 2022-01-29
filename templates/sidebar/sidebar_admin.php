@@ -41,7 +41,7 @@
         ?>">
             <a class="nav-link" href="?page=data_divisi">
                 <span class="menu-icon">
-                    <i class="mdi mdi-contacts"></i>
+                    <i class="mdi mdi-table-large"></i>
                 </span>
                 <span class="menu-title">Data Divisi</span>
             </a>
@@ -56,7 +56,7 @@
         ?>">
             <a class="nav-link" href="?page=data_pegawai">
                 <span class="menu-icon">
-                    <i class="mdi mdi-contacts"></i>
+                    <i class="mdi mdi-worker"></i>
                 </span>
                 <span class="menu-title">Data Pegawai</span>
             </a>
@@ -71,7 +71,7 @@
         ?>">
             <a class="nav-link" href="?page=data_user">
                 <span class="menu-icon">
-                    <i class="mdi mdi-contacts"></i>
+                    <i class="mdi mdi-account"></i>
                 </span>
                 <span class="menu-title">Data User</span>
             </a>
