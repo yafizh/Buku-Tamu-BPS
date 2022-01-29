@@ -1,3 +1,4 @@
+<?php session_start(); ?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -27,82 +28,90 @@
 <body>
     <div class="container-scroller">
         <!-- partial:partials/_sidebar.html -->
-        <?php include_once "templates/sidebar/sidebar_admin.php"; ?>
-        <!-- partial -->
-        <div class="container-fluid page-body-wrapper">
-            <!-- partial:partials/_navbar.html -->
-            <?php include_once "templates/navbar.php"; ?>
-            <!-- partial -->
-            <?php
-            if (isset($_GET['page'])) {
-                switch ($_GET['page']) {
-                    case "buku_tamu":
-                        include_once "halaman_buku_tamu.php";
-                        break;
-                    case "buku_tamu_keluar":
-                        include_once "halaman_buku_tamu/halaman_buku_tamu_keluar.php";
-                        break;
-                    case "tambah_user":
-                        include_once "halaman_tambah_data/halaman_tambah_user.php";
-                        break;
-                    case "tambah_divisi":
-                        include_once "halaman_tambah_data/halaman_tambah_divisi.php";
-                        break;
-                    case "tambah_pegawai":
-                        include_once "halaman_tambah_data/halaman_tambah_pegawai.php";
-                        break;
-                    case "data_tamu":
-                        include_once "halaman_tampil_data/halaman_data_tamu.php";
-                        break;
-                    case "data_user":
-                        include_once "halaman_tampil_data/halaman_data_user.php";
-                        break;
-                    case "data_divisi":
-                        include_once "halaman_tampil_data/halaman_data_divisi.php";
-                        break;
-                    case "data_pegawai":
-                        include_once "halaman_tampil_data/halaman_data_pegawai.php";
-                        break;
-                    case "edit_tamu":
-                        include_once "halaman_edit_data/halaman_edit_tamu.php";
-                        break;
-                    case "edit_user":
-                        include_once "halaman_edit_data/halaman_edit_user.php";
-                        break;
-                    case "edit_divisi":
-                        include_once "halaman_edit_data/halaman_edit_divisi.php";
-                        break;
-                    case "edit_pegawai":
-                        include_once "halaman_edit_data/halaman_edit_pegawai.php";
-                        break;
-                    case "delete_tamu":
-                        include_once "halaman_delete_data/halaman_delete_tamu.php";
-                        break;
-                    case "delete_user":
-                        include_once "halaman_delete_data/halaman_delete_user.php";
-                        break;
-                    case "delete_divisi":
-                        include_once "halaman_delete_data/halaman_delete_divisi.php";
-                        break;
-                    case "delete_pegawai":
-                        include_once "halaman_delete_data/halaman_delete_pegawai.php";
-                        break;
-                    case "ganti_password":
-                        include_once "halaman_profile/halaman_ganti_password.php";
-                        break;
-                    case "logout":
-                        include_once "halaman_auth/halaman_logout.php";
-                        break;
-                    case "laporan":
-                        include_once "halaman_laporan/halaman_laporan.php";
-                        break;
-                    default:
-                        include_once "beranda.php";
-                }
-            } else include_once "beranda.php";
+        <?php if (isset($_SESSION['user'])) : ?>
+            <?php if ($_SESSION['user']['status'] == 'ADMIN') : ?>
+                <?php include_once "templates/sidebar/sidebar_admin.php"; ?>
+            <?php elseif ($_SESSION['user']['status'] == 'PETUGAS') : ?>
+                <?php include_once "templates/sidebar/sidebar_petugas.php"; ?>
+            <?php endif; ?>
+            <div class="container-fluid page-body-wrapper">
+                <!-- partial:partials/_navbar.html -->
+                <?php include_once "templates/navbar.php"; ?>
+                <!-- partial -->
+                <?php
+                if (isset($_GET['page'])) {
+                    switch ($_GET['page']) {
+                        case "buku_tamu":
+                            include_once "halaman_buku_tamu.php";
+                            break;
+                        case "buku_tamu_keluar":
+                            include_once "halaman_buku_tamu/halaman_buku_tamu_keluar.php";
+                            break;
+                        case "tambah_user":
+                            include_once "halaman_tambah_data/halaman_tambah_user.php";
+                            break;
+                        case "tambah_divisi":
+                            include_once "halaman_tambah_data/halaman_tambah_divisi.php";
+                            break;
+                        case "tambah_pegawai":
+                            include_once "halaman_tambah_data/halaman_tambah_pegawai.php";
+                            break;
+                        case "data_tamu":
+                            include_once "halaman_tampil_data/halaman_data_tamu.php";
+                            break;
+                        case "data_user":
+                            include_once "halaman_tampil_data/halaman_data_user.php";
+                            break;
+                        case "data_divisi":
+                            include_once "halaman_tampil_data/halaman_data_divisi.php";
+                            break;
+                        case "data_pegawai":
+                            include_once "halaman_tampil_data/halaman_data_pegawai.php";
+                            break;
+                        case "edit_tamu":
+                            include_once "halaman_edit_data/halaman_edit_tamu.php";
+                            break;
+                        case "edit_user":
+                            include_once "halaman_edit_data/halaman_edit_user.php";
+                            break;
+                        case "edit_divisi":
+                            include_once "halaman_edit_data/halaman_edit_divisi.php";
+                            break;
+                        case "edit_pegawai":
+                            include_once "halaman_edit_data/halaman_edit_pegawai.php";
+                            break;
+                        case "delete_tamu":
+                            include_once "halaman_delete_data/halaman_delete_tamu.php";
+                            break;
+                        case "delete_user":
+                            include_once "halaman_delete_data/halaman_delete_user.php";
+                            break;
+                        case "delete_divisi":
+                            include_once "halaman_delete_data/halaman_delete_divisi.php";
+                            break;
+                        case "delete_pegawai":
+                            include_once "halaman_delete_data/halaman_delete_pegawai.php";
+                            break;
+                        case "ganti_password":
+                            include_once "halaman_profile/halaman_ganti_password.php";
+                            break;
+                        case "logout":
+                            include_once "halaman_auth/halaman_logout.php";
+                            break;
+                        case "laporan":
+                            include_once "halaman_laporan/halaman_laporan.php";
+                            break;
+                        default:
+                            include_once "beranda.php";
+                    }
+                } else include_once "beranda.php";
 
-            ?>
-        </div>
+                ?>
+            </div>
+        <?php else : ?>
+            <script>window.location.href='halaman_auth/halaman_login.php';</script>;
+        <?php endif; ?>
+        <!-- partial -->
         <!-- page-body-wrapper ends -->
     </div>
     <!-- container-scroller -->

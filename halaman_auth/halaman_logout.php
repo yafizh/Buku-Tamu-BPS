@@ -1,3 +1,3 @@
 <?php
 session_destroy();
-header('Location: index.php');
+echo "<script>window.location.href='halaman_auth/halaman_login.php';</script>";

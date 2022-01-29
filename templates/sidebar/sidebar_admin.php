@@ -20,19 +20,6 @@
         <li class="nav-item menu-items 
         <?php
         if (isset($_GET['page'])) {
-            if ($_GET['page'] == "buku_tamu") echo "active";
-        }
-        ?>">
-            <a class="nav-link" href="?page=buku_tamu">
-                <span class="menu-icon">
-                    <i class="mdi mdi-contacts"></i>
-                </span>
-                <span class="menu-title">Buku Tamu</span>
-            </a>
-        </li>
-        <li class="nav-item menu-items 
-        <?php
-        if (isset($_GET['page'])) {
             if ($_GET['page'] == "data_tamu") echo "active";
             else if ($_GET['page'] == "edit_tamu") echo "active";
         }
@@ -89,7 +76,7 @@
                 <span class="menu-title">Data User</span>
             </a>
         </li>
-        <li class="nav-item menu-items">
+        <li class="nav-item menu-items <?= isset($_GET['page']) ? (($_GET['page'] == "laporan") ? "active" : "")  : "" ?>">
             <a class="nav-link" href="?page=laporan">
                 <span class="menu-icon">
                     <i class="mdi mdi-file-document-box"></i>

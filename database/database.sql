@@ -10,6 +10,15 @@ CREATE TABLE `tabel_user` (
     PRIMARY KEY (id)
 );
 
+INSERT INTO `tabel_user` (
+    nama,
+    username,
+    password,
+    status 
+) VALUES 
+('admin','admin','admin','ADMIN'),
+('Andry','andry','andry','PETUGAS');
+
 
 CREATE TABLE `tabel_divisi` (
     id INT NOT NULL AUTO_INCREMENT,
