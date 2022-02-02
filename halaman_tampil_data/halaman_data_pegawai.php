@@ -31,7 +31,8 @@
                                 </thead>
                                 <?php
                                 require_once "database/koneksi.php";
-                                $data_pegawai = $mysqli->query("SELECT * FROM view_pegawai ORDER BY id DESC");
+                                $keyword = isset($_POST['keyword']) ? $_POST['keyword'] : '';
+                                $data_pegawai = $mysqli->query("SELECT * FROM view_pegawai WHERE nama LIKE '%$keyword%' OR nip LIKE '%$keyword%' OR nama_divisi LIKE '%$keyword%' OR jenis_kelamin LIKE '%$keyword%' OR nomor_telepon LIKE '%$keyword%' ORDER BY id DESC");
                                 ?>
                                 <tbody>
                                     <?php while ($row = $data_pegawai->fetch_assoc()) : ?>

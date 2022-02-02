@@ -6,13 +6,17 @@
         <button class="navbar-toggler navbar-toggler align-self-center" type="button" data-toggle="minimize">
             <span class="mdi mdi-menu"></span>
         </button>
-        <ul class="navbar-nav w-100">
-            <li class="nav-item w-100">
-                <form class="nav-link mt-2 mt-md-0 d-none d-lg-flex search">
-                    <input type="text" class="form-control" placeholder="Search products">
-                </form>
-            </li>
-        </ul>
+        <?php if (isset($_GET['page'])) : ?>
+            <?php if (explode('_', $_GET['page'])[0] == 'data') : ?>
+                <ul class="navbar-nav w-100">
+                    <li class="nav-item w-100">
+                        <form method="POST" class="nav-link mt-2 mt-md-0 d-none d-lg-flex search">
+                            <input type="text" name="keyword" value="<?= isset($_POST['keyword']) ? $_POST['keyword'] : '' ?>" class="form-control text-white" placeholder="Cari Data...">
+                        </form>
+                    </li>
+                </ul>
+            <?php endif; ?>
+        <?php endif; ?>
         <ul class="navbar-nav navbar-nav-right">
             <li class="nav-item dropdown">
                 <a class="nav-link" id="profileDropdown" href="#" data-bs-toggle="dropdown">
@@ -28,7 +32,7 @@
                     <a href="index.php?page=ganti_password" class="dropdown-item preview-item">
                         <div class="preview-thumbnail">
                             <div class="preview-icon bg-dark rounded-circle">
-                            <i class="mdi mdi-onepassword  text-info"></i>
+                                <i class="mdi mdi-onepassword  text-info"></i>
                             </div>
                         </div>
                         <div class="preview-item-content">

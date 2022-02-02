@@ -29,7 +29,8 @@
                                 </thead>
                                 <?php
                                 require_once "database/koneksi.php";
-                                $data_user = $mysqli->query("SELECT * FROM tabel_user ORDER BY id DESC");
+                                $keyword = isset($_POST['keyword']) ? $_POST['keyword'] : '';
+                                $data_user = $mysqli->query("SELECT * FROM tabel_user WHERE nama LIKE '%$keyword%' OR username LIKE '%$keyword%' OR status LIKE '%$keyword%' ORDER BY id DESC");
                                 ?>
                                 <tbody>
                                     <?php while ($row = $data_user->fetch_assoc()) : ?>

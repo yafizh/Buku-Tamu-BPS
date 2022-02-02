@@ -31,7 +31,8 @@
                                 </thead>
                                 <?php
                                 require_once "database/koneksi.php";
-                                $data_tamu = $mysqli->query("SELECT * FROM view_tamu ORDER BY id DESC");
+                                $keyword = isset($_POST['keyword']) ? $_POST['keyword'] : '';
+                                $data_tamu = $mysqli->query("SELECT * FROM view_tamu WHERE nama LIKE '%$keyword%' OR nama_divisi LIKE '%$keyword%' OR nama_pegawai LIKE '%$keyword%' OR keperluan LIKE '%$keyword%' ORDER BY id DESC");
                                 ?>
                                 <tbody>
                                     <?php while ($row = $data_tamu->fetch_assoc()) : ?>

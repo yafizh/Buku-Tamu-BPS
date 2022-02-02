@@ -28,7 +28,8 @@
                                 </thead>
                                 <?php
                                 require_once "database/koneksi.php";
-                                $data_divisi = $mysqli->query("SELECT * FROM tabel_divisi ORDER BY id DESC");
+                                $keyword = isset($_POST['keyword']) ? $_POST['keyword'] : '';
+                                $data_divisi = $mysqli->query("SELECT * FROM tabel_divisi WHERE nama_divisi LIKE '%$keyword%' OR keterangan LIKE '%$keyword%' ORDER BY id DESC");
                                 ?>
                                 <tbody>
                                     <?php while ($row = $data_divisi->fetch_assoc()) : ?>
