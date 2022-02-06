@@ -103,6 +103,16 @@ $id_pegawai = $_POST['id_pegawai'];
                 <?php $result->free_result(); ?>
             </tbody>
         </table>
+        <div style="display: flex; justify-content: end;">
+            <div style="text-align: center; margin-top: 20px; padding: 10px; width: 200px;">
+                <span>Martapura, <?= Date('d') ?> <?= BULAN_DALAM_INDONESIA[Date('m') - 1] ?> <?= Date('Y') ?></span>
+                <br>
+                <span>Mengetahui</span>
+                <br><br><br><br><br>
+                <span>Sukma Handayani, M.Si</span>
+                <span>(197503111996122000)</span>
+            </div>
+        </div>
     </div>
     <script>
         window.print();

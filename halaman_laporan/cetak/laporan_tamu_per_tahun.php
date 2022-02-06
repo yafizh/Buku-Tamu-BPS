@@ -1,5 +1,21 @@
 <?php
 require_once "../../database/koneksi.php";
+
+const BULAN_DALAM_INDONESIA = [
+    "Januari",
+    "Februari",
+    "Maret",
+    "April",
+    "Mei",
+    "Juni",
+    "July",
+    "Agustus",
+    "September",
+    "Oktober",
+    "November",
+    "Desember"
+];
+
 $tahun = $_POST['tahun'];
 $id_divisi = $_POST['id_divisi'];
 $id_pegawai = $_POST['id_pegawai'];
@@ -85,6 +101,15 @@ $id_pegawai = $_POST['id_pegawai'];
                 <?php $result->free_result(); ?>
             </tbody>
         </table>
+        <div style="display: flex; justify-content: end;">
+            <div style="text-align: center; margin-top: 20px; padding: 10px; width: 200px;">
+                <span>Martapura, <?= Date('d') ?> <?= $BULAN_DALAM_INDONESIA[Date('m') - 1] ?> <?= Date('Y') ?></span>
+                <br>
+                <span>Mengetahui</span>
+                <br><br><br>
+                <span>Sukma</span>
+            </div>
+        </div>
     </div>
     <script>
         window.print();

@@ -1,5 +1,21 @@
 <?php
 require_once "../../database/koneksi.php";
+
+const BULAN_DALAM_INDONESIA = [
+    "Januari",
+    "Februari",
+    "Maret",
+    "April",
+    "Mei",
+    "Juni",
+    "July",
+    "Agustus",
+    "September",
+    "Oktober",
+    "November",
+    "Desember"
+];
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -80,6 +96,16 @@ require_once "../../database/koneksi.php";
                 <?php $result->free_result(); ?>
             </tbody>
         </table>
+        <div style="display: flex; justify-content: end;">
+            <div style="text-align: center; margin-top: 20px; padding: 10px; width: 200px;">
+                <span>Martapura, <?= Date('d') ?> <?= BULAN_DALAM_INDONESIA[Date('m') - 1] ?> <?= Date('Y') ?></span>
+                <br>
+                <span>Mengetahui</span>
+                <br><br><br><br><br>
+                <span>Sukma Handayani, M.Si</span>
+                <span>(197503111996122000)</span>
+            </div>
+        </div>
     </div>
     <script>
         window.print();
