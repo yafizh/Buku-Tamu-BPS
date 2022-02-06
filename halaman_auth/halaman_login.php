@@ -50,7 +50,7 @@ if (isset($_POST['submit'])) {
         padding: 40px 30px 30px 30px;
         background-color: #ecf0f3;
         border-radius: 15px;
-        box-shadow: 13px 13px 20px #cbced1, -13px -13px 20px #fff
+        /* box-shadow: 13px 13px 20px #cbced1, -13px -13px 20px #fff */
     }
 
     .logo {
