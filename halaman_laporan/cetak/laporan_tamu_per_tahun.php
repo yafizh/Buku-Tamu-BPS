@@ -28,6 +28,7 @@ $id_pegawai = $_POST['id_pegawai'];
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Laporan Tamu Tahun <?= $tahun; ?></title>
+    <link rel="shortcut icon" href="../../assets/images/favicon.png" />
     <style>
         table,
         th,
