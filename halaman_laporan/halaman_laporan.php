@@ -15,7 +15,7 @@ require_once "database/koneksi.php";
             </nav> -->
         </div>
         <div class="row">
-            <div class="col-md-4 grid-margin stretch-card">
+            <div class="col-md-6 grid-margin stretch-card">
                 <div class="card">
                     <div class="card-body">
                         <h4 class="card-title">Data Tamu Per Tanggal</h4>
@@ -56,7 +56,7 @@ require_once "database/koneksi.php";
                     </div>
                 </div>
             </div>
-            <div class="col-md-4 grid-margin stretch-card">
+            <div class="col-md-6 grid-margin stretch-card">
                 <div class="card">
                     <div class="card-body">
                         <h4 class="card-title">Data Tamu Per Bulan</h4>
@@ -97,7 +97,9 @@ require_once "database/koneksi.php";
                     </div>
                 </div>
             </div>
-            <div class="col-md-4 grid-margin stretch-card">
+        </div>
+        <div class="row">
+            <div class="col-md-6 grid-margin stretch-card">
                 <div class="card">
                     <div class="card-body">
                         <h4 class="card-title">Data Tamu Per Tahun</h4>
@@ -138,9 +140,7 @@ require_once "database/koneksi.php";
                     </div>
                 </div>
             </div>
-        </div>
-        <div class="row">
-            <div class="col-md-4 grid-margin stretch-card">
+            <div class="col-md-6 grid-margin stretch-card">
                 <div class="card">
                     <div class="card-body">
                         <h4 class="card-title">Pegawai</h4>
@@ -156,7 +156,9 @@ require_once "database/koneksi.php";
                     </div>
                 </div>
             </div>
-            <div class="col-md-4 grid-margin stretch-card">
+        </div>
+        <div class="row">
+            <div class="col-md-6 grid-margin stretch-card">
                 <div class="card">
                     <div class="card-body">
                         <h4 class="card-title">Divisi</h4>
@@ -172,7 +174,7 @@ require_once "database/koneksi.php";
                     </div>
                 </div>
             </div>
-            <div class="col-md-4 grid-margin stretch-card">
+            <div class="col-md-6 grid-margin stretch-card">
                 <div class="card">
                     <div class="card-body">
                         <h4 class="card-title">User</h4>
@@ -184,7 +186,6 @@ require_once "database/koneksi.php";
                 </div>
             </div>
         </div>
-
     </div>
     <!-- content-wrapper ends -->
     <!-- partial:../../partials/_footer.html -->
