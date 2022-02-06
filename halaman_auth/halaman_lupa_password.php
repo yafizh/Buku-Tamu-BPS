@@ -133,6 +133,14 @@ if (isset($_POST['submit'])) {
             padding: 40px 15px 15px 15px
         }
     }
+
+    
+    body {
+        background-image: url('../assets/images/auth/bg.jpg');
+        background-repeat: no-repeat;
+        background-size: cover;
+        height: 88.9vh;
+    }
 </style>
 
 <body>
