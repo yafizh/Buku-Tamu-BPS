@@ -1,18 +1,24 @@
 <?php session_start();
 if (isset($_POST['submit'])) {
     require_once "../database/koneksi.php";
+    $name = $_POST['name'];
     $username = $_POST['username'];
     $password = $_POST['password'];
-    $sql = "SELECT * FROM tabel_user WHERE username='$username' AND password='$password'";
+    $sql = "SELECT * FROM tabel_user WHERE username='$username' AND nama='$name'";
     $result = $mysqli->query($sql);
     if ($result->num_rows > 0) {
-        $_SESSION['user'] = $result->fetch_assoc();
-        echo "<script>" .
-            "window.location.href='../index.php';" .
+        $sql = "UPDATE tabel_user SET password='$password' WHERE username='$username' AND nama='$name'";
+        if($mysqli->query($sql)){
+            echo "<script>" .
+            "alert('Ganti Password berhasil. Silakan login!')" .
             "</script>";
+            echo "<script>" .
+                "window.location.href='halaman_login.php';" .
+                "</script>";
+        }
     } else
         echo "<script>" .
-            "alert('Username atau Password salah')" .
+            "alert('Nama atau username tidak ditemukan!')" .
             "</script>";
 }
 
@@ -131,12 +137,14 @@ if (isset($_POST['submit'])) {
 <body>
     <div class="wrapper">
         <div class="logo"> <img src="../logo.png" alt=""> </div>
-        <div class="text-center mt-4 name" style="text-align: center; margin-top: 16px;"> BPS HSU </div>
+        <div class="text-center mt-4 name" style="text-align: center; margin-top: 16px;"> Lupa Password </div>
         <form method="POST" class="p-3 mt-3" style="margin-top: 10px;">
+            <div class="form-field d-flex align-items-center"> <span class="far fa-user"></span> <input type="text" name="name" id="name" placeholder="Nama"> </div>
             <div class="form-field d-flex align-items-center"> <span class="far fa-user"></span> <input type="text" name="username" id="username" placeholder="Username"> </div>
-            <div class="form-field d-flex align-items-center"> <span class="fas fa-key"></span> <input type="password" name="password" id="password" placeholder="Password"> </div> <button type="submit" name="submit" class="btn mt-3">Login</button>
+            <div class="form-field d-flex align-items-center"> <span class="fas fa-key"></span> <input type="password" name="password" id="password" placeholder="Password Baru"> </div>
+            <button type="submit" name="submit" class="btn mt-3">Ganti Passowrd</button>
         </form>
-        <div class="text-center fs-6" style="text-align: center; margin-top: 8px;"> <a href="halaman_lupa_password.php">Lupa password?</a></div>
+        <div class="text-center fs-6" style="text-align: center; margin-top: 8px;"> <a href="halaman_login.php">Login</a></div>
     </div>
 
 </body>
