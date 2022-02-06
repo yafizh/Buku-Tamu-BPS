@@ -99,7 +99,7 @@ const BULAN_DALAM_INDONESIA = [
                 <?php $result->free_result(); ?>
             </tbody>
         </table>
-        <div style="display: flex; justify-content: end; position: relative; bottom: 0; right: 0;">
+        <div style="display: flex; justify-content: end;">
             <div style="text-align: center; margin-top: 20px; padding: 10px; width: 200px;">
                 <span>Amuntai, <?= Date('d') ?> <?= BULAN_DALAM_INDONESIA[Date('m') - 1] ?> <?= Date('Y') ?></span>
                 <br>
