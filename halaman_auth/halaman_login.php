@@ -133,7 +133,7 @@ if (isset($_POST['submit'])) {
         <div class="logo"> <img src="../logo.png" alt=""> </div>
         <div class="text-center mt-4 name" style="text-align: center; margin-top: 16px;"> BPS HSU </div>
         <form method="POST" class="p-3 mt-3" style="margin-top: 10px;">
-            <div class="form-field d-flex align-items-center"> <span class="far fa-user"></span> <input type="text" name="username" id="username" placeholder="Username"> </div>
+            <div class="form-field d-flex align-items-center"> <span class="far fa-user"></span> <input autocomplete="off" autofocus type="text" name="username" id="username" placeholder="Username"> </div>
             <div class="form-field d-flex align-items-center"> <span class="fas fa-key"></span> <input type="password" name="password" id="password" placeholder="Password"> </div> <button type="submit" name="submit" class="btn mt-3">Login</button>
         </form>
         <div class="text-center fs-6" style="text-align: center; margin-top: 8px;"> <a href="halaman_lupa_password.php">Lupa password?</a></div>
