@@ -108,7 +108,8 @@ $id_pegawai = $_POST['id_pegawai'];
                 <br>
                 <span>Mengetahui</span>
                 <br><br><br>
-                <span>Sukma</span>
+                <span>Sukma Handayani, M.Si</span>
+                <span>(197503111996122000)</span>
             </div>
         </div>
     </div>
