@@ -1,4 +1,5 @@
 <?php
+date_default_timezone_set("Asia/Kuala_Lumpur");
 require_once "database/koneksi.php";
 if (isset($_POST['submit'])) {
     $id_divisi = $_POST['id_divisi'];
