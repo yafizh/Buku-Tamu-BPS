@@ -1,6 +1,30 @@
 CREATE DATABASE `db_buku_tamu_bps`;
 USE `db_buku_tamu_bps`;
 
+CREATE TABLE `tabel_fasilitas` (
+    id INT NOT NULL AUTO_INCREMENT,
+    fasilitas VARCHAR(255) NOT NULL,
+    keterangan VARCHAR(255) NOT NULL,
+    PRIMARY KEY (id)
+);
+
+CREATE TABLE `tabel_ruangan` (
+    id INT NOT NULL AUTO_INCREMENT,
+    nama_ruangan VARCHAR(255) NOT NULL,
+    fasilitas VARCHAR(255) NOT NULL,
+    keterangan VARCHAR(255) NOT NULL,
+    PRIMARY KEY (id)
+);
+
+CREATE TABLE `tabel_agenda` (
+    id INT NOT NULL AUTO_INCREMENT,
+    id_ruangan INT NOT NULL,
+    nama_kegiatan VARCHAR(255) NOT NULL,
+    detail_kegiatan TEXT NOT NULL,
+    PRIMARY KEY (id),
+    FOREIGN KEY (id_ruangan) REFERENCES tabel_ruangan (id)
+);
+
 CREATE TABLE `tabel_user` (
     id INT NOT NULL AUTO_INCREMENT,
     nama VARCHAR(255) NOT NULL,
