@@ -3,8 +3,8 @@
 if (isset($_GET['id'])) {
     require_once "database/koneksi.php";
 
-    $sql = "DELETE FROM tabel_tamu WHERE id=" . $_GET['id'];
-    if ($mysqli->query($sql) === TRUE) {
+    $sql = "DELETE FROM tabel_kunjungan WHERE id=" . $_GET['id'];
+    if ($mysqli->query($sql)) {
         echo "<script>alert('Data Tamu Berhasil Dihapus.')</script>";
         echo "<script>" .
             "window.location.href='index.php?page=data_tamu';" .

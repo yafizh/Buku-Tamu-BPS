@@ -3,7 +3,7 @@ if (isset($_POST['submit'])) {
     require_once "../database/koneksi.php";
     $username = $_POST['username'];
     $password = $_POST['password'];
-    $sql = "SELECT * FROM tabel_user WHERE username='$username' AND password='$password'";
+    $sql = "SELECT * FROM view_user WHERE username='$username' AND password='$password'";
     $result = $mysqli->query($sql);
     if ($result->num_rows > 0) {
         $_SESSION['user'] = $result->fetch_assoc();
