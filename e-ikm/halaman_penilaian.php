@@ -22,23 +22,23 @@
                     <div class="row">
                         <div data-nilai="1" class="col card px-5 pt-4 pb-2 text-center me-5">
                             <img src="assets/images/e-ikm/very_sad.png" alt="" class="mb-3">
-                            <h2>Sangat Buruk</h2>
+                            <h2 style="font-size: 1.5rem;">Sangat Buruk</h2>
                         </div>
                         <div data-nilai="2" class="col card px-5 pt-4 pb-2 text-center me-5">
                             <img src="assets/images/e-ikm/sad.png" alt="" class="mb-3">
-                            <h2 class="mt-3">Buruk</h2>
+                            <h2 style="font-size: 1.5rem;" class="mt-3">Buruk</h2>
                         </div>
                         <div data-nilai="3" class="col card px-5 pt-4 pb-2 text-center me-5">
                             <img src="assets/images/e-ikm/neutral.png" alt="" class="mb-3">
-                            <h2 class="mt-3">Cukup</h2>
+                            <h2 style="font-size: 1.5rem;" class="mt-3">Cukup</h2>
                         </div>
                         <div data-nilai="4" class="col card px-5 pt-4 pb-2 text-center me-5">
                             <img src="assets/images/e-ikm/smile.png" alt="" class="mb-3">
-                            <h2 class="mt-3">Baik</h2>
+                            <h2 style="font-size: 1.5rem;" class="mt-3">Baik</h2>
                         </div>
                         <div data-nilai="5" class="col card px-5 pt-4 pb-2 text-center me-5">
                             <img src="assets/images/e-ikm/smiling.png" alt="" class="mb-3">
-                            <h2>Sangat Baik</h2>
+                            <h2 style="font-size: 1.5rem;">Sangat Baik</h2>
                         </div>
                     </div>
                     <script>
