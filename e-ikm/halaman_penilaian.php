@@ -10,7 +10,7 @@
         <div class="container">
             <?php
             require_once "database/koneksi.php";
-            $sql = "SELECT * FROM tabel_pengajuan WHERE id=" . $_GET['id_tamu'];
+            $sql = "SELECT * FROM tabel_pengajuan WHERE id=" . $_GET['id'];
             $result = $mysqli->query($sql);
             ?>
             <?php if ($result->num_rows > 0) : ?>
