@@ -23,7 +23,6 @@
                                     <tr>
                                         <th>Nama</th>
                                         <th>Tanggal</th>
-                                        <th>Divisi yang dikunjungi</th>
                                         <th>Karyawan yang dikunjungi</th>
                                         <th>Keperluan</th>
                                         <th class="text-center">Aksi</th>
@@ -32,19 +31,28 @@
                                 <?php
                                 require_once "database/koneksi.php";
                                 $keyword = isset($_POST['keyword']) ? $_POST['keyword'] : '';
-                                $data_tamu = $mysqli->query("SELECT * FROM view_tamu WHERE nama LIKE '%$keyword%' OR nama_divisi LIKE '%$keyword%' OR nama_pegawai LIKE '%$keyword%' OR keperluan LIKE '%$keyword%' ORDER BY id DESC");
+
+                                if ($_SESSION['user']['status'] === 'TAMU')
+                                    $query = "SELECT * FROM view_tamu WHERE (nama LIKE '%$keyword%' OR nama_pegawai LIKE '%$keyword%' OR keperluan LIKE '%$keyword%' ) AND id_tamu=" . $_SESSION['user']['id_tamu'];
+                                else
+                                    $query = "SELECT * FROM view_tamu WHERE nama LIKE '%$keyword%' OR nama_pegawai LIKE '%$keyword%' OR keperluan LIKE '%$keyword%'";
+
+                                $data_tamu = $mysqli->query($query . " ORDER BY tanggal DESC, waktu DESC");
                                 ?>
                                 <tbody>
                                     <?php while ($row = $data_tamu->fetch_assoc()) : ?>
                                         <tr>
                                             <td style="vertical-align: middle;"><?= $row['nama']; ?></td>
                                             <td style="vertical-align: middle;"><?= $row['tanggal']; ?></td>
-                                            <td style="vertical-align: middle;"><?= $row['nama_divisi']; ?></td>
                                             <td style="vertical-align: middle;"><?= $row['nama_pegawai']; ?></td>
                                             <td style="vertical-align: middle;"><?= $row['keperluan']; ?></td>
                                             <td class="text-center">
-                                                <a href="index.php?page=edit_tamu&id=<?= $row['id']; ?>" class="btn-sm btn-warning"><i class="mdi mdi-border-color"></i></a>
-                                                <a href="index.php?page=delete_tamu&id=<?= $row['id']; ?>" class="btn-sm btn-danger" onclick="return confirm('Yakin ingin menghapus data ini?')"><i class="mdi mdi-delete"></i></a>
+                                                <?php if (!($_SESSION['user']['status'] === 'TAMU') && !is_null($row['id_pengajuan'])) : ?>
+                                                    <a href="index.php?page=detail_tamu&id_pengajuan=<?= $row['id_pengajuan']; ?>" class="btn-sm btn-info"><i class="mdi mdi-eye"></i></a>
+                                                <?php else : ?>
+                                                    <a href="index.php?page=edit_tamu&id=<?= $row['id']; ?>" class="btn-sm btn-warning"><i class="mdi mdi-border-color"></i></a>
+                                                    <a href="index.php?page=delete_tamu&id=<?= $row['id']; ?>" class="btn-sm btn-danger" onclick="return confirm('Yakin ingin menghapus data ini?')"><i class="mdi mdi-delete"></i></a>
+                                                <?php endif; ?>
                                             </td>
                                         </tr>
                                     <?php endwhile; ?>

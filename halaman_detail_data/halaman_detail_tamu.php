@@ -7,10 +7,13 @@ if (isset($_GET['id'])) {
     $sql = "SELECT * FROM view_tamu WHERE id=" . $_GET['id'];
     $result = $mysqli->query($sql);
     $row = $result->fetch_assoc();
-} else
-    echo "<script>" .
-        "window.location.href='index.php?page=data_tamu';" .
-        "</script>";
+} else if (isset($_GET['id_pengajuan'])) {
+    require_once "database/koneksi.php";
+
+    $sql = "SELECT * FROM view_tamu WHERE id_pengajuan=" . $_GET['id_pengajuan'];
+    $result = $mysqli->query($sql);
+    $row = $result->fetch_assoc();
+}
 
 if (isset($_POST['submit'])) {
     $id_pegawai = $_POST['id_pegawai'];
@@ -51,7 +54,7 @@ if (isset($_POST['submit'])) {
 <div class="main-panel">
     <div class="content-wrapper">
         <div class="page-header">
-            <h3 class="page-title"> Edit Tamu </h3>
+            <h3 class="page-title"> Detail Tamu </h3>
             <!-- <nav aria-label="breadcrumb">
                 <ol class="breadcrumb">
                     <li class="breadcrumb-item"><a href="#">Forms</a></li>
@@ -69,26 +72,23 @@ if (isset($_POST['submit'])) {
                             <form class="forms-sample">
                                 <div class="form-group">
                                     <label for="nama">Nama</label>
-                                    <input type="text" class="form-control text-white" value="<?= $row['nama']; ?>" name="nama" autocomplete="off" placeholder="Masukkan nama tamu..." required>
+                                    <input type="text" class="form-control text-white bg-dark" readonly value="<?= $row['nama']; ?>" name="nama" autocomplete="off" placeholder="Masukkan nama tamu..." required>
                                 </div>
                                 <div class="form-group">
                                     <label for="nomor_telepon">Nomor Telepon</label>
-                                    <input type="number" class="form-control text-white" value="<?= $row['nomor_telepon']; ?>" name="nomor_telepon" autocomplete="off" placeholder="Masukkan nomor telepon..." required>
+                                    <input type="number" class="form-control text-white bg-dark" readonly value="<?= $row['nomor_telepon']; ?>" name="nomor_telepon" autocomplete="off" placeholder="Masukkan nomor telepon..." required>
                                 </div>
                                 <div class="form-group">
                                     <label for="jenis_kelamin">Jenis Kelamin</label>
-                                    <select class="form-control text-white" name="jenis_kelamin" required>
-                                        <option value="L" <?= ($row['jenis_kelamin'] == 'L' ? "selected" : "") ?>>Laki - Laki</option>
-                                        <option value="P" <?= ($row['jenis_kelamin'] == 'P' ? "selected" : "") ?>>Perempuan</option>
-                                    </select>
+                                    <input type="text" class="form-control text-white bg-dark" readonly value="<?= ($row['jenis_kelamin'] == 'L' ? "Laki - Laki" : "Perempuan"); ?>" name="jenis_kelamin" autocomplete="off" required>
                                 </div>
                                 <div class="form-group">
                                     <label for="asal_instansi">Asal Instansi</label>
-                                    <input type="text" class="form-control text-white" value="<?= $row['asal_instansi']; ?>" name="asal_instansi" autocomplete="off" placeholder="Masukkan asal instansi..." required>
+                                    <input type="text" class="form-control text-white bg-dark" readonly value="<?= $row['asal_instansi']; ?>" name="asal_instansi" autocomplete="off" placeholder="Masukkan asal instansi..." required>
                                 </div>
                                 <div class="form-group">
                                     <label for="alamat">Alamat</label>
-                                    <input type="text" class="form-control text-white" value="<?= $row['alamat']; ?>" name="alamat" autocomplete="off" placeholder="Masukkan alamat..." required>
+                                    <input type="text" class="form-control text-white bg-dark" readonly value="<?= $row['alamat']; ?>" name="alamat" autocomplete="off" placeholder="Masukkan alamat..." required>
                                 </div>
                             </form>
                         </div>
@@ -102,7 +102,7 @@ if (isset($_POST['submit'])) {
                             <div class="form-group">
                                 <label for="id_pegawai">Pegawai yang Dikunjungi</label>
                                 <?php $data_pegawai = $mysqli->query("SELECT * FROM tabel_pegawai ORDER BY nama"); ?>
-                                <select class="form-control text-white" name="id_pegawai" required>
+                                <select class="form-control text-white bg-dark" name="id_pegawai" required disabled>
                                     <?php while ($row_pegawai = $data_pegawai->fetch_assoc()) : ?>
                                         <option <?= $row['id_pegawai'] == $row_pegawai['id'] ? "selected" : ""; ?> value="<?= $row_pegawai['id']; ?>"><?= $row_pegawai['nama']; ?></option>
                                     <?php endwhile; ?>
@@ -110,7 +110,7 @@ if (isset($_POST['submit'])) {
                             </div>
                             <div class="form-group">
                                 <label for="keperluan">Keperluan Kunjungan</label>
-                                <input type="text" class="form-control text-white" value="<?= $row['keperluan']; ?>" name="keperluan" autocomplete="off" placeholder="Masukkan keperluan kunjungan...">
+                                <input type="text" class="form-control text-white bg-dark" readonly value="<?= $row['keperluan']; ?>" name="keperluan" autocomplete="off" placeholder="Masukkan keperluan kunjungan...">
                             </div>
                             <div class="form-group">
                                 <label for="tanggal">Tanggal</label>
@@ -122,18 +122,16 @@ if (isset($_POST['submit'])) {
                             </div>
                             <div class="form-group">
                                 <label for="jenis_pertemuan">Jenis Kunjungan</label>
-                                <?php if ($_SESSION['user']['status'] === 'PETUGAS') : ?>
-                                    <input type="text" class="form-control bg-dark text-white" name="jenis_pertemuan" autocomplete="off" required readonly value="OFFLINE">
-                                <?php elseif ($_SESSION['user']['status'] === 'TAMU') : ?>
-                                    <select class="form-control text-white" name="jenis_pertemuan" required>
-                                        <option value="OFFLINE">Offline</option>
-                                        <option value="ONLINE">Online</option>
-                                    </select>
-                                <?php endif; ?>
+                                <input type="text" class="form-control bg-dark text-white" name="jenis_pertemuan" autocomplete="off" required readonly value="<?= $row['jenis_pertemuan']; ?>">
                             </div>
                             <div class="form-group">
-                                <button class="btn btn-dark" type="reset">Cancel</button>
-                                <button type="submit" name="submit" class="btn btn-primary me-2">Edit</button>
+                                <?php if ($_SESSION['user']['status'] === 'PETUGAS') : ?>
+                                    <?php if ($row['status'] === 'PENGAJUAN') : ?>
+                                        <button class="btn btn-danger" type="reset">Tolak</button>
+                                        <button class="btn btn-success me-2">Setujui</button>
+                                    <?php endif; ?>
+                                <?php else : ?>
+                                <?php endif; ?>
                             </div>
                         </div>
                     </div>

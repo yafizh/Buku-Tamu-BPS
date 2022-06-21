@@ -27,7 +27,7 @@
                 <span class="menu-icon">
                     <i class="mdi mdi-book-open-variant"></i>
                 </span>
-                <span class="menu-title">Buku Tamu</span>
+                <span class="menu-title">Pengajuan Kunjungan</span>
             </a>
         </li>
         <li class="nav-item menu-items 
@@ -42,20 +42,6 @@
                     <i class="mdi mdi-contacts"></i>
                 </span>
                 <span class="menu-title">Data Tamu</span>
-            </a>
-        </li>
-        <li class="nav-item menu-items 
-        <?php
-        if (isset($_GET['page'])) {
-            if ($_GET['page'] == "data_user_tamu") echo "active";
-            else if ($_GET['page'] == "edit_user_tamu") echo "active";
-        }
-        ?>">
-            <a class="nav-link" href="?page=data_user_tamu">
-                <span class="menu-icon">
-                    <i class="mdi mdi-contacts"></i>
-                </span>
-                <span class="menu-title">Data User Tamu</span>
             </a>
         </li>
     </ul>

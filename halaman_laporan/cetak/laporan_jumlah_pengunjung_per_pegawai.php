@@ -69,7 +69,7 @@ const BULAN_DALAM_INDONESIA = [
             </div>
         </div>
         <div class="my-3" style="border-top: 2px solid black; margin-top:12px;"></div>
-        <h2 class="text-center">Laporan Pegawai</h2>
+        <h2 class="text-center">Laporan Pengunjung Tiap Pegawai</h2>
         <table>
             <thead>
                 <tr>

@@ -2,77 +2,56 @@
 date_default_timezone_set("Asia/Kuala_Lumpur");
 require_once "database/koneksi.php";
 if (isset($_POST['submit'])) {
-    $id_pegawai = $_POST['id_pegawai'];
     $nama = $_POST['nama'];
     $jenis_kelamin = $_POST['jenis_kelamin'];
     $asal_instansi = $_POST['asal_instansi'];
     $alamat = $_POST['alamat'];
-    $keperluan = $_POST['keperluan'];
-    $tanggal = $_POST['tanggal'];
-    $waktu = $_POST['waktu'];
     $nomor_telepon = $_POST['nomor_telepon'];
+    $username = $_POST['username'];
+    $password = $_POST['password'];
 
-    if ($_SESSION['user']['status'] == 'PETUGAS') {
+    $sql = "
+        INSERT INTO tabel_user (
+            nama,
+            username,
+            password,
+            status  
+        ) VALUES (
+            '$nama', 
+            '$username', 
+            '$password', 
+            'TAMU'  
+        )";
+
+    if ($mysqli->query($sql)) {
+        $id = $mysqli->insert_id;
         $sql = "
-        INSERT INTO tabel_kunjungan (
-            id_pegawai,
+        INSERT INTO tabel_tamu (
+            id_user,
             nama,
             jenis_kelamin,
             asal_instansi,
             alamat,
-            keperluan,
-            tanggal,
-            waktu,
-            nomor_telepon,
-            jenis_pertemuan  
+            nomor_telepon 
         ) VALUES (
-            " . (empty($id_pegawai) ? 'NULL' : "'$id_pegawai'") . ",
+            '$id', 
             '$nama', 
             '$jenis_kelamin', 
             '$asal_instansi', 
             '$alamat', 
-            '$keperluan', 
-            '$tanggal', 
-            '$waktu', 
-            '$nomor_telepon', 
-            '$jenis_pertemuan'  
+            '$nomor_telepon' 
         )";
-
-        if ($mysqli->query($sql) === TRUE) echo "<script>alert('Tamu berhasil ditambahkan.')</script>";
-        else echo "Error: " . $sql . "<br>" . $mysqli->error;
-    } else if ($_SESSION['user']['status'] == 'TAMU') {
-        $id_tamu = $_SESSION['user']['id_tamu'];
-        $jenis_pertemuan = $_POST['jenis_pertemuan'];
-
-        $sql = "
-        INSERT INTO tabel_pengajuan (
-            id_tamu,
-            id_pegawai,
-            keperluan,
-            jenis_pertemuan,
-            status,
-            tanggal,
-            waktu 
-        ) VALUES (
-            '$id_tamu', 
-            " . (empty($id_pegawai) ? 'NULL' : "'$id_pegawai'") . ", 
-            '$keperluan', 
-            '$jenis_pertemuan', 
-            'PENGAJUAN', 
-            '$tanggal', 
-            '$waktu' 
-        )";
-
-        if ($mysqli->query($sql) === TRUE) echo "<script>alert('Pengajuan berhasil.')</script>";
-        else echo "Error: " . $sql . "<br>" . $mysqli->error;
-    }
+        if ($mysqli->query($sql)) {
+            echo "<script>alert('User Tamu berhasil ditambahkan.')</script>";
+        } else echo "Error1: " . $sql . "<br>" . $mysqli->error;
+    } else echo "Error2: " . $sql . "<br>" . $mysqli->error;
 }
 
 ?>
 <div class="main-panel">
     <div class="content-wrapper">
         <div class="page-header">
-            <h3 class="page-title"> Buku Tamu </h3>
+            <h3 class="page-title"> User Buku Tamu </h3>
             <!-- <nav aria-label="breadcrumb">
                 <ol class="breadcrumb">
                     <li class="breadcrumb-item"><a href="#">Forms</a></li>
@@ -138,39 +117,14 @@ if (isset($_POST['submit'])) {
                 <div class="col-md-6 grid-margin stretch-card">
                     <div class="card">
                         <div class="card-body">
-                            <h4 class="card-title">Tujuan Kunjungan</h4>
+                            <h4 class="card-title">Akun</h4>
                             <div class="form-group">
-                                <label for="id_pegawai">Pegawai yang Dikunjungi</label>
-                                <?php $data_pegawai = $mysqli->query("SELECT * FROM tabel_pegawai ORDER BY nama"); ?>
-                                <select class="form-control text-white" name="id_pegawai">
-                                    <option value="" selected>Pilih Pegawai</option>
-                                    <?php while ($row = $data_pegawai->fetch_assoc()) : ?>
-                                        <option value="<?= $row['id']; ?>"><?= $row['nama']; ?></option>
-                                    <?php endwhile; ?>
-                                </select>
+                                <label for="username">Username</label>
+                                <input type="text" class="form-control text-white" name="username" autocomplete="off" placeholder="Masukkan username kunjungan...">
                             </div>
                             <div class="form-group">
-                                <label for="keperluan">Keperluan Kunjungan</label>
-                                <input type="text" class="form-control text-white" name="keperluan" autocomplete="off" placeholder="Masukkan keperluan kunjungan...">
-                            </div>
-                            <div class="form-group">
-                                <label for="tanggal">Tanggal</label>
-                                <input type="date" class="form-control <?= $_SESSION['user']['status'] === 'PETUGAS' ? 'bg-dark' : ''; ?> text-white" name="tanggal" value="<?= Date("Y-m-d"); ?>" <?= $_SESSION['user']['status'] === 'PETUGAS' ? 'readonly' : ''; ?>>
-                            </div>
-                            <div class="form-group">
-                                <label for="waktu">Waktu</label>
-                                <input type="text" class="form-control <?= $_SESSION['user']['status'] === 'PETUGAS' ? 'bg-dark' : ''; ?> text-white" name="waktu" value="<?= Date("H:i"); ?>" <?= $_SESSION['user']['status'] === 'PETUGAS' ? 'readonly' : ''; ?>>
-                            </div>
-                            <div class="form-group">
-                                <label for="jenis_pertemuan">Jenis Kunjungan</label>
-                                <?php if ($_SESSION['user']['status'] === 'PETUGAS') : ?>
-                                    <input type="text" class="form-control bg-dark text-white" name="jenis_pertemuan" autocomplete="off" required readonly value="OFFLINE">
-                                <?php elseif ($_SESSION['user']['status'] === 'TAMU') : ?>
-                                    <select class="form-control text-white" name="jenis_pertemuan" required>
-                                        <option value="OFFLINE">Offline</option>
-                                        <option value="ONLINE">Online</option>
-                                    </select>
-                                <?php endif; ?>
+                                <label for="password">Password</label>
+                                <input type="password" class="form-control text-white" name="password" autocomplete="off" placeholder="Masukkan password kunjungan...">
                             </div>
                             <div class="form-group">
                                 <button class="btn btn-dark" type="reset">Cancel</button>
