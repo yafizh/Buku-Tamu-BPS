@@ -4,7 +4,7 @@ require_once "database/koneksi.php";
 if (isset($_GET['id_tamu'])) {
     require_once "database/koneksi.php";
 
-    $sql = "SELECT * FROM view_tamu WHERE id_tamu=" . $_GET['id_tamu'];
+    $sql = "SELECT * FROM tabel_tamu WHERE id=" . $_GET['id_tamu'];
     $result = $mysqli->query($sql);
     $row = $result->fetch_assoc();
 }
