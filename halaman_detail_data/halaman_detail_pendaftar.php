@@ -132,7 +132,7 @@ if (isset($_POST['terima'])) {
                                 <input type="password" class="form-control text-white" name="password" autocomplete="off" placeholder="Masukkan password..." required>
                             </div>
                             <div class="form-group">
-                                <form action="" class="d-inline">
+                                <form action="" method="POST" class="d-inline">
                                     <button class="btn btn-danger" type="submit" name="tolak">Tolak</button>
                                 </form>
                                 <button type="submit" name="terima" class="btn btn-success me-2">Terima</button>

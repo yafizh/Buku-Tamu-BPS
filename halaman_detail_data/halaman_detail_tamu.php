@@ -11,40 +11,7 @@ if (isset($_GET['id'])) {
     $row = $result->fetch_assoc();
 }
 
-if (isset($_POST['submit'])) {
-    $id_pegawai = $_POST['id_pegawai'];
-    $nama = $_POST['nama'];
-    $jenis_kelamin = $_POST['jenis_kelamin'];
-    $asal_instansi = $_POST['asal_instansi'];
-    $alamat = $_POST['alamat'];
-    $keperluan = $_POST['keperluan'];
-    $tanggal = $_POST['tanggal'];
-    $waktu = $_POST['waktu'];
-    $nomor_telepon = $_POST['nomor_telepon'];
-    $jenis_pertemuan = $_POST['jenis_pertemuan'];
 
-    $sql = "UPDATE tabel_kunjungan 
-            SET 
-                id_pegawai='$id_pegawai',
-                nama='$nama',
-                jenis_kelamin='$jenis_kelamin',
-                asal_instansi='$asal_instansi',
-                alamat='$alamat',
-                keperluan='$keperluan',
-                tanggal='$tanggal',
-                waktu='$waktu',
-                nomor_telepon='$nomor_telepon', 
-                jenis_pertemuan='$jenis_pertemuan' 
-            WHERE 
-                id=" . $_GET['id'];
-
-    if ($mysqli->query($sql) === TRUE) {
-        echo "<script>alert('Tamu berhasil diedit.')</script>";
-        echo "<script>" .
-            "window.location.href='index.php?page=data_tamu';" .
-            "</script>";
-    } else echo "Error: " . $sql . "<br>" . $mysqli->error;
-}
 
 ?>
 <div class="main-panel">
@@ -123,8 +90,12 @@ if (isset($_POST['submit'])) {
                             <div class="form-group">
                                 <?php if ($_SESSION['user']['status'] === 'PETUGAS') : ?>
                                     <?php if ($row['status'] === 'PENGAJUAN') : ?>
-                                        <button class="btn btn-danger" type="reset">Tolak</button>
-                                        <button class="btn btn-success me-2">Setujui</button>
+                                        <form action="">
+                                            <button class="btn btn-danger" type="reset">Tolak</button>
+                                        </form>
+                                        <form action="">
+                                            <button class="btn btn-success me-2">Setujui</button>
+                                        </form>
                                     <?php elseif (!is_null($row['id_tamu']) && is_null($row['id_ikm'])) : ?>
                                         <form action="" method="post">
                                             <input type="text" name="nomor_telepon" value="<?= $row['nomor_telepon'] ?>" hidden>
