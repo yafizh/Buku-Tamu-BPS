@@ -1,17 +1,9 @@
 CREATE DATABASE `db_buku_tamu_bps`;
 USE `db_buku_tamu_bps`;
 
-CREATE TABLE `tabel_fasilitas` (
-    id INT NOT NULL AUTO_INCREMENT,
-    fasilitas VARCHAR(255) NOT NULL,
-    keterangan VARCHAR(255) NOT NULL,
-    PRIMARY KEY (id)
-);
-
 CREATE TABLE `tabel_ruangan` (
     id INT NOT NULL AUTO_INCREMENT,
     nama_ruangan VARCHAR(255) NOT NULL,
-    fasilitas VARCHAR(255) NOT NULL,
     keterangan VARCHAR(255) NOT NULL,
     PRIMARY KEY (id)
 );
@@ -21,6 +13,7 @@ CREATE TABLE `tabel_agenda` (
     id_ruangan INT NOT NULL,
     nama_kegiatan VARCHAR(255) NOT NULL,
     detail_kegiatan TEXT NOT NULL,
+    gambar VARCHAR(255) NOT NULL,
     PRIMARY KEY (id),
     FOREIGN KEY (id_ruangan) REFERENCES tabel_ruangan (id)
 );
@@ -31,6 +24,7 @@ CREATE TABLE `tabel_user` (
     username VARCHAR(255) NOT NULL UNIQUE,
     password VARCHAR(255) NOT NULL,
     status ENUM('ADMIN','PETUGAS', 'TAMU') NOT NULL,
+    gambar VARCHAR(255) NULL,
     PRIMARY KEY (id)
 );
 
@@ -38,21 +32,24 @@ INSERT INTO `tabel_user` (
     nama,
     username,
     password,
-    status 
+    status,
+    gambar  
 ) VALUES 
-('admin','admin','admin','ADMIN'),
-('Andry','andry','andry','PETUGAS'),
-('Nursahid Arya Suyudi','arya','arya','TAMU');
+('admin','admin','admin','ADMIN', NULL),
+('Andry','andry','andry','PETUGAS', NULL),
+('Nursahid Arya Suyudi','arya','arya','TAMU', NULL),
+('Rania Nor Aida','rania','rania','TAMU', NULL);
 
 
 CREATE TABLE `tabel_tamu` (
     id INT NOT NULL AUTO_INCREMENT,
-    id_user INT NOT NULL,
+    id_user INT NULL,
     nama VARCHAR(255) NOT NULL,
     nomor_telepon VARCHAR(15) NOT NULL,
-    jenis_kelamin ENUM('L','P') NOT NULL,
+    jenis_kelamin ENUM('L','P') NULL,
     asal_instansi VARCHAR(50) NOT NULL,
-    alamat VARCHAR(255) NOT NULL,
+    alamat VARCHAR(255) NULL,
+    status ENUM('AKTIF', 'MENDAFTAR') NOT NULL,
     PRIMARY KEY (id),
     FOREIGN KEY (id_user) REFERENCES tabel_user (id)
 );
@@ -63,9 +60,11 @@ INSERT INTO `tabel_tamu` (
     nomor_telepon,
     jenis_kelamin,
     asal_instansi,
-    alamat 
+    alamat, 
+    status  
 ) VALUES 
-(3, 'Nursahid Arya Suyudi', '086748665478', 'L', 'Uniska', 'Martapura');
+(3, 'Nursahid Arya Suyudi', '086748665478', 'L', 'Uniska', 'Martapura','AKTIF'),
+(4, 'Rania Nor Aida', '086748665479', 'P', 'Uniska', 'Martapura','AKTIF');
 
 CREATE TABLE `tabel_divisi` (
     id INT NOT NULL AUTO_INCREMENT,
@@ -145,7 +144,7 @@ CREATE TABLE `tabel_pengajuan` (
     keterangan TEXT,
     PRIMARY KEY (id),
     FOREIGN KEY (id_pegawai) REFERENCES tabel_pegawai (id),
-    FOREIGN KEY (id_tamu) REFERENCES tabel_tamu (id) 
+    FOREIGN KEY (id_tamu) REFERENCES tabel_tamu (id) ON DELETE CASCADE
 );
 
 INSERT INTO `tabel_pengajuan` (
@@ -159,8 +158,8 @@ INSERT INTO `tabel_pengajuan` (
     `status`, 
     `keterangan` 
 ) VALUES
-(4, 1, NULL, CURRENT_DATE(), CURRENT_TIME(), 'Pengantaran Berkas', 'Offline', 'Pengajuan', 'Pengajuan Baru'),
-(4, 1, NULL, CURRENT_DATE(), CURRENT_TIME(), 'Pengantaran Berkas', 'Offline', 'SELESAI', 'Berkas Diterima');
+(4, 1, NULL, CURRENT_DATE(), CURRENT_TIME(), 'Pengantaran Berkas', 'Offline', 'PENGAJUAN', 'Pengajuan Baru'),
+(4, 2, NULL, CURRENT_DATE(), CURRENT_TIME(), 'Pengantaran Berkas', 'Offline', 'SELESAI', 'Berkas Diterima');
 
 
 CREATE TABLE `tabel_kunjungan` (
@@ -223,6 +222,7 @@ AS
     SELECT 
         NULL AS id_tamu,
         NULL AS id_pengajuan,
+        NULL AS id_ikm,
         tabel_kunjungan.id,
         tabel_kunjungan.nama,
         tabel_kunjungan.nomor_telepon,
@@ -246,6 +246,7 @@ AS
     SELECT 
         tabel_tamu.id AS id_tamu,
         tabel_pengajuan.id AS id_pengajuan,
+        tabel_pengajuan.id_ikm,
         NULL AS id,
         tabel_tamu.nama,
         tabel_tamu.nomor_telepon,
@@ -288,6 +289,7 @@ AS
         tabel_user.username,
         tabel_user.password,
         tabel_user.status,
+        tabel_user.gambar,
         tabel_tamu.jenis_kelamin,
         tabel_tamu.asal_instansi,
         tabel_tamu.nomor_telepon,
@@ -299,3 +301,44 @@ AS
         tabel_tamu 
     ON 
         tabel_user.id=tabel_tamu.id_user;
+
+CREATE VIEW
+    view_pengajuan 
+AS 
+    SELECT 
+        tp.id,
+        tp.tanggal,
+        tt.nama,
+        tt.asal_instansi,
+        tpg.nama AS nama_pegawai,
+        tp.keperluan  
+    FROM 
+        tabel_pengajuan AS tp
+    INNER JOIN 
+        tabel_tamu AS tt 
+    ON 
+        tt.id=tp.id_tamu 
+    INNER JOIN 
+        tabel_pegawai AS tpg 
+    ON 
+        tpg.id=tp.id_tamu;
+
+CREATE VIEW
+    view_ikm 
+AS 
+    SELECT 
+        ti.id AS id_ikm,
+        ti.nilai,
+        tm.nama,
+        tm.asal_instansi,
+        tp.tanggal   
+    FROM 
+        tabel_ikm AS ti
+    INNER JOIN 
+        tabel_pengajuan AS tp 
+    ON 
+        ti.id=tp.id_ikm 
+    INNER JOIN 
+        tabel_tamu AS tm 
+    ON 
+        tm.id=tp.id_tamu;

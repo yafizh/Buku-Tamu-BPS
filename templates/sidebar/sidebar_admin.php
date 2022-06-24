@@ -76,6 +76,21 @@
                 <span class="menu-title">Data User</span>
             </a>
         </li>
+        <li class="nav-item menu-items 
+        <?php
+        if (isset($_GET['page'])) {
+            if ($_GET['page'] == "data_pendaftar") echo "active";
+            else if ($_GET['page'] == "tambah_pendaftar") echo "active";
+            else if ($_GET['page'] == "edit_pendaftar") echo "active";
+        }
+        ?>">
+            <a class="nav-link" href="?page=data_pendaftar">
+                <span class="menu-icon">
+                    <i class="mdi mdi-account"></i>
+                </span>
+                <span class="menu-title">Data Pendaftar</span>
+            </a>
+        </li>
         <li class="nav-item menu-items <?= isset($_GET['page']) ? (($_GET['page'] == "laporan") ? "active" : "")  : "" ?>">
             <a class="nav-link" href="?page=laporan">
                 <span class="menu-icon">

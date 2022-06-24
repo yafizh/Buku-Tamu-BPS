@@ -27,11 +27,7 @@
 
 <body>
     <?php if (isset($_GET['e-ikm'])) : ?>
-        <?php if ($_GET['e-ikm'] === 'menilai') : ?>
-            <?php include_once "e-ikm/halaman_penilaian.php"; ?>
-        <?php elseif ($_GET['e-ikm'] === 'selesai') : ?>
-            <?php include_once "e-ikm/halaman_selesai.php" ?>
-        <?php endif; ?>
+        <?php include_once "e-ikm/halaman_penilaian.php"; ?>
     <?php else : ?>
         <div class="container-scroller">
             <!-- partial:partials/_sidebar.html -->
@@ -83,6 +79,9 @@
                             case "data_user_tamu":
                                 include_once "halaman_tampil_data/halaman_data_user_tamu.php";
                                 break;
+                            case "data_pendaftar":
+                                include_once "halaman_tampil_data/halaman_data_pendaftar.php";
+                                break;
                             case "edit_tamu":
                                 include_once "halaman_edit_data/halaman_edit_tamu.php";
                                 break;
@@ -91,6 +90,9 @@
                                 break;
                             case "detail_user_tamu":
                                 include_once "halaman_detail_data/halaman_detail_user_tamu.php";
+                                break;
+                            case "detail_pendaftar":
+                                include_once "halaman_detail_data/halaman_detail_pendaftar.php";
                                 break;
                             case "edit_user":
                                 include_once "halaman_edit_data/halaman_edit_user.php";
@@ -121,6 +123,9 @@
                                 break;
                             case "ganti_password":
                                 include_once "halaman_auth/halaman_ganti_password.php";
+                                break;
+                            case "edit_profile":
+                                include_once "halaman_profile/halaman_edit_profile.php";
                                 break;
                             case "logout":
                                 include_once "halaman_auth/halaman_logout.php";

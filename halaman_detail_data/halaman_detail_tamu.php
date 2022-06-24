@@ -2,14 +2,10 @@
 require_once "database/koneksi.php";
 
 if (isset($_GET['id'])) {
-    require_once "database/koneksi.php";
-
     $sql = "SELECT * FROM view_tamu WHERE id=" . $_GET['id'];
     $result = $mysqli->query($sql);
     $row = $result->fetch_assoc();
 } else if (isset($_GET['id_pengajuan'])) {
-    require_once "database/koneksi.php";
-
     $sql = "SELECT * FROM view_tamu WHERE id_pengajuan=" . $_GET['id_pengajuan'];
     $result = $mysqli->query($sql);
     $row = $result->fetch_assoc();
@@ -129,6 +125,12 @@ if (isset($_POST['submit'])) {
                                     <?php if ($row['status'] === 'PENGAJUAN') : ?>
                                         <button class="btn btn-danger" type="reset">Tolak</button>
                                         <button class="btn btn-success me-2">Setujui</button>
+                                    <?php elseif (!is_null($row['id_tamu']) && is_null($row['id_ikm'])) : ?>
+                                        <form action="" method="post">
+                                            <input type="text" name="nomor_telepon" value="<?= $row['nomor_telepon'] ?>" hidden>
+                                            <input type="text" name="id" value="<?= $row['id_pengajuan'] ?>" hidden>
+                                            <button class="btn btn-success me-2" name="ikm" type="submit">Kirim Link IKM</button>
+                                        </form>
                                     <?php endif; ?>
                                 <?php else : ?>
                                 <?php endif; ?>

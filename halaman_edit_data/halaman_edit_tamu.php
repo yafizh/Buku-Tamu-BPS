@@ -2,15 +2,14 @@
 require_once "database/koneksi.php";
 
 if (isset($_GET['id'])) {
-    require_once "database/koneksi.php";
-
     $sql = "SELECT * FROM view_tamu WHERE id=" . $_GET['id'];
     $result = $mysqli->query($sql);
     $row = $result->fetch_assoc();
-} else
-    echo "<script>" .
-        "window.location.href='index.php?page=data_tamu';" .
-        "</script>";
+} else if (isset($_GET['id_pengajuan'])) {
+    $sql = "SELECT * FROM view_tamu WHERE id_pengajuan=" . $_GET['id_pengajuan'];
+    $result = $mysqli->query($sql);
+    $row = $result->fetch_assoc();
+}
 
 if (isset($_POST['submit'])) {
     $id_pegawai = $_POST['id_pegawai'];
@@ -24,20 +23,31 @@ if (isset($_POST['submit'])) {
     $nomor_telepon = $_POST['nomor_telepon'];
     $jenis_pertemuan = $_POST['jenis_pertemuan'];
 
-    $sql = "UPDATE tabel_kunjungan 
-            SET 
-                id_pegawai='$id_pegawai',
-                nama='$nama',
-                jenis_kelamin='$jenis_kelamin',
-                asal_instansi='$asal_instansi',
-                alamat='$alamat',
-                keperluan='$keperluan',
-                tanggal='$tanggal',
-                waktu='$waktu',
-                nomor_telepon='$nomor_telepon', 
-                jenis_pertemuan='$jenis_pertemuan' 
-            WHERE 
-                id=" . $_GET['id'];
+    if (isset($_GET['id'])) {
+        $sql = "UPDATE tabel_kunjungan 
+        SET 
+            id_pegawai='$id_pegawai',
+            nama='$nama',
+            jenis_kelamin='$jenis_kelamin',
+            asal_instansi='$asal_instansi',
+            alamat='$alamat',
+            keperluan='$keperluan',
+            tanggal='$tanggal',
+            waktu='$waktu',
+            nomor_telepon='$nomor_telepon', 
+            jenis_pertemuan='$jenis_pertemuan' 
+        WHERE 
+            id=" . $_GET['id'];
+    } else if (isset($_GET['id_pengajuan'])) {
+        $sql = "UPDATE tabel_pengajuan 
+        SET 
+            id_pegawai='$id_pegawai',
+            tanggal='$tanggal',
+            waktu='$waktu',
+            jenis_pertemuan='$jenis_pertemuan' 
+        WHERE 
+            id=" . $_GET['id_pengajuan'];
+    }
 
     if ($mysqli->query($sql) === TRUE) {
         echo "<script>alert('Tamu berhasil diedit.')</script>";
@@ -69,26 +79,46 @@ if (isset($_POST['submit'])) {
                             <form class="forms-sample">
                                 <div class="form-group">
                                     <label for="nama">Nama</label>
-                                    <input type="text" class="form-control text-white" value="<?= $row['nama']; ?>" name="nama" autocomplete="off" placeholder="Masukkan nama tamu..." required>
+                                    <?php if (isset($_GET['id'])) : ?>
+                                        <input type="text" class="form-control text-white" value="<?= $row['nama']; ?>" name="nama" autocomplete="off" placeholder="Masukkan nama tamu..." required>
+                                    <?php elseif (isset($_GET['id_pengajuan'])) : ?>
+                                        <input type="text" class="form-control text-white bg-dark" readonly value="<?= $row['nama']; ?>" name="nama" autocomplete="off" placeholder="Masukkan nama tamu..." required>
+                                    <?php endif; ?>
                                 </div>
                                 <div class="form-group">
                                     <label for="nomor_telepon">Nomor Telepon</label>
-                                    <input type="number" class="form-control text-white" value="<?= $row['nomor_telepon']; ?>" name="nomor_telepon" autocomplete="off" placeholder="Masukkan nomor telepon..." required>
+                                    <?php if (isset($_GET['id'])) : ?>
+                                        <input type="number" class="form-control text-white" value="<?= $row['nomor_telepon']; ?>" name="nomor_telepon" autocomplete="off" placeholder="Masukkan nomor telepon..." required>
+                                    <?php elseif (isset($_GET['id_pengajuan'])) : ?>
+                                        <input type="number" class="form-control text-white bg-dark" readonly value="<?= $row['nomor_telepon']; ?>" name="nomor_telepon" autocomplete="off" placeholder="Masukkan nomor telepon..." required>
+                                    <?php endif; ?>
                                 </div>
                                 <div class="form-group">
                                     <label for="jenis_kelamin">Jenis Kelamin</label>
-                                    <select class="form-control text-white" name="jenis_kelamin" required>
-                                        <option value="L" <?= ($row['jenis_kelamin'] == 'L' ? "selected" : "") ?>>Laki - Laki</option>
-                                        <option value="P" <?= ($row['jenis_kelamin'] == 'P' ? "selected" : "") ?>>Perempuan</option>
-                                    </select>
+                                    <?php if (isset($_GET['id'])) : ?>
+                                        <select class="form-control text-white" name="jenis_kelamin" required>
+                                            <option value="L" <?= ($row['jenis_kelamin'] == 'L' ? "selected" : "") ?>>Laki - Laki</option>
+                                            <option value="P" <?= ($row['jenis_kelamin'] == 'P' ? "selected" : "") ?>>Perempuan</option>
+                                        </select>
+                                    <?php elseif (isset($_GET['id_pengajuan'])) : ?>
+                                        <input type="text" class="form-control text-white bg-dark" readonly value="<?= ($row['jenis_kelamin'] == 'L' ? "Laki - Laki" : "Perempuan") ?>" name="jenis_kelamin" autocomplete="off" required>
+                                    <?php endif; ?>
                                 </div>
                                 <div class="form-group">
                                     <label for="asal_instansi">Asal Instansi</label>
-                                    <input type="text" class="form-control text-white" value="<?= $row['asal_instansi']; ?>" name="asal_instansi" autocomplete="off" placeholder="Masukkan asal instansi..." required>
+                                    <?php if (isset($_GET['id'])) : ?>
+                                        <input type="text" class="form-control text-white" value="<?= $row['asal_instansi']; ?>" name="asal_instansi" autocomplete="off" placeholder="Masukkan asal instansi..." required>
+                                    <?php elseif (isset($_GET['id_pengajuan'])) : ?>
+                                        <input type="text" class="form-control text-white bg-dark" readonly value="<?= $row['asal_instansi']; ?>" name="asal_instansi" autocomplete="off" placeholder="Masukkan asal instansi..." required>
+                                    <?php endif; ?>
                                 </div>
                                 <div class="form-group">
                                     <label for="alamat">Alamat</label>
-                                    <input type="text" class="form-control text-white" value="<?= $row['alamat']; ?>" name="alamat" autocomplete="off" placeholder="Masukkan alamat..." required>
+                                    <?php if (isset($_GET['id'])) : ?>
+                                        <input type="text" class="form-control text-white" value="<?= $row['alamat']; ?>" name="alamat" autocomplete="off" placeholder="Masukkan alamat..." required>
+                                    <?php elseif (isset($_GET['id_pengajuan'])) : ?>
+                                        <input type="text" class="form-control text-white bg-dark" readonly value="<?= $row['alamat']; ?>" name="alamat" autocomplete="off" placeholder="Masukkan alamat..." required>
+                                    <?php endif; ?>
                                 </div>
                             </form>
                         </div>

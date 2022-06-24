@@ -20,7 +20,7 @@ require_once "database/koneksi.php";
                     <div class="card-body">
                         <h4 class="card-title">Data Kunjungan</h4>
                         <!-- <p class="card-description"> Horizontal form layout </p> -->
-                        <form class="forms-sample" action="halaman_laporan/cetak/laporan_tamu_per_tanggal.php" method="POST" target="_blank">
+                        <form class="forms-sample" action="halaman_laporan/cetak/laporan_tamu.php" method="POST" target="_blank">
                             <div class="form-group row">
                                 <label for="tanggal" class="col-sm-3 col-form-label">Dari Tanggal</label>
                                 <div class="col-sm-9">
@@ -43,7 +43,7 @@ require_once "database/koneksi.php";
                     <div class="card-body">
                         <h4 class="card-title">Data Pengajuan Kunjungan</h4>
                         <!-- <p class="card-description"> Horizontal form layout </p> -->
-                        <form class="forms-sample" action="halaman_laporan/cetak/laporan_tamu_per_tanggal.php" method="POST" target="_blank">
+                        <form class="forms-sample" action="halaman_laporan/cetak/laporan_pengajuan.php" method="POST" target="_blank">
                             <div class="form-group row">
                                 <label for="tanggal" class="col-sm-3 col-form-label">Dari Tanggal</label>
                                 <div class="col-sm-9">
@@ -72,10 +72,10 @@ require_once "database/koneksi.php";
                             <a href="halaman_laporan/cetak/laporan_pegawai.php" target="_blank" class="btn btn-primary me-2">Cetak</a>
                         </form>
                         <br>
-                        <p class="card-description"> Jumlah Pengunjung Tiap Pegawai </p>
+                        <!-- <p class="card-description"> Jumlah Pengunjung Tiap Pegawai </p>
                         <form class="forms-sample">
                             <a href="halaman_laporan/cetak/laporan_jumlah_pengunjung_per_pegawai.php" target="_blank" class="btn btn-primary me-2">Cetak</a>
-                        </form>
+                        </form> -->
                     </div>
                 </div>
             </div>
@@ -85,13 +85,13 @@ require_once "database/koneksi.php";
                         <h4 class="card-title">Data User Tamu</h4>
                         <p class="card-description"> Data User Tamu </p>
                         <form class="forms-sample">
-                            <a href="halaman_laporan/cetak/laporan_pegawai.php" target="_blank" class="btn btn-primary me-2">Cetak</a>
+                            <a href="halaman_laporan/cetak/laporan_user_tamu.php" target="_blank" class="btn btn-primary me-2">Cetak</a>
                         </form>
                         <br>
-                        <p class="card-description"> Jumlah Kunjungan Tiap Tamu </p>
+                        <!-- <p class="card-description"> Jumlah Kunjungan Tiap Tamu </p>
                         <form class="forms-sample">
                             <a href="halaman_laporan/cetak/laporan_jumlah_pengunjung_per_pegawai.php" target="_blank" class="btn btn-primary me-2">Cetak</a>
-                        </form>
+                        </form> -->
                     </div>
                 </div>
             </div>
@@ -100,10 +100,22 @@ require_once "database/koneksi.php";
             <div class="col-md-6 grid-margin stretch-card">
                 <div class="card">
                     <div class="card-body">
-                        <h4 class="card-title">Divisi</h4>
-                        <p class="card-description"> Data Divisi </p>
-                        <form class="forms-sample">
-                            <a href="halaman_laporan/cetak/laporan_divisi.php" target="_blank" class="btn btn-primary me-2">Cetak</a>
+                        <h4 class="card-title">Data Pendaftaran Akun Tamu</h4>
+                        <!-- <p class="card-description"> Data Divisi </p> -->
+                        <form class="forms-sample" action="halaman_laporan/cetak/laporan_pendaftaran_akun.php" method="POST" target="_blank">
+                            <div class="form-group row">
+                                <label for="tanggal" class="col-sm-3 col-form-label">Dari Tanggal</label>
+                                <div class="col-sm-9">
+                                    <input type="date" class="form-control text-white" value="<?= Date("Y-m-d"); ?>" id="tanggal" name="tanggal">
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label for="tanggal" class="col-sm-3 col-form-label">Sampai Tanggal</label>
+                                <div class="col-sm-9">
+                                    <input type="date" class="form-control text-white" value="<?= Date("Y-m-d"); ?>" id="tanggal" name="tanggal">
+                                </div>
+                            </div>
+                            <button type="submit" class="btn btn-primary me-2">Cetak</button>
                         </form>
                     </div>
                 </div>
@@ -112,9 +124,21 @@ require_once "database/koneksi.php";
                 <div class="card">
                     <div class="card-body">
                         <h4 class="card-title">Indeks Kepuasan Masyarakat</h4>
-                        <p class="card-description"> Data IKM </p>
-                        <form class="forms-sample">
-                            <a href="halaman_laporan/cetak/laporan_user.php" target="_blank" class="btn btn-primary me-2">Cetak</a>
+                        <!-- <p class="card-description"> Data IKM </p> -->
+                        <form class="forms-sample" action="halaman_laporan/cetak/laporan_ikm.php" method="POST" target="_blank">
+                            <div class="form-group row">
+                                <label for="tanggal" class="col-sm-3 col-form-label">Dari Tanggal</label>
+                                <div class="col-sm-9">
+                                    <input type="date" class="form-control text-white" value="<?= Date("Y-m-d"); ?>" id="tanggal" name="tanggal">
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label for="tanggal" class="col-sm-3 col-form-label">Sampai Tanggal</label>
+                                <div class="col-sm-9">
+                                    <input type="date" class="form-control text-white" value="<?= Date("Y-m-d"); ?>" id="tanggal" name="tanggal">
+                                </div>
+                            </div>
+                            <button type="submit" class="btn btn-primary me-2">Cetak</button>
                         </form>
                     </div>
                 </div>

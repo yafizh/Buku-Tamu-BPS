@@ -25,6 +25,7 @@
                                         <th>Tanggal</th>
                                         <th>Karyawan yang dikunjungi</th>
                                         <th>Keperluan</th>
+                                        <th class="text-center">Status</th>
                                         <th class="text-center">Aksi</th>
                                     </tr>
                                 </thead>
@@ -46,13 +47,21 @@
                                             <td style="vertical-align: middle;"><?= $row['tanggal']; ?></td>
                                             <td style="vertical-align: middle;"><?= $row['nama_pegawai']; ?></td>
                                             <td style="vertical-align: middle;"><?= $row['keperluan']; ?></td>
-                                            <td class="text-center">
-                                                <?php if (!($_SESSION['user']['status'] === 'TAMU') && !is_null($row['id_pengajuan'])) : ?>
-                                                    <a href="index.php?page=detail_tamu&id_pengajuan=<?= $row['id_pengajuan']; ?>" class="btn-sm btn-info"><i class="mdi mdi-eye"></i></a>
-                                                <?php else : ?>
-                                                    <a href="index.php?page=edit_tamu&id=<?= $row['id']; ?>" class="btn-sm btn-warning"><i class="mdi mdi-border-color"></i></a>
-                                                    <a href="index.php?page=delete_tamu&id=<?= $row['id']; ?>" class="btn-sm btn-danger" onclick="return confirm('Yakin ingin menghapus data ini?')"><i class="mdi mdi-delete"></i></a>
+                                            <td class="text-center" style="vertical-align: middle;">
+                                                <?php if (is_null($row['status']) || $row['status'] === 'SELESAI') : ?>
+                                                    <div class="w-100 badge badge-outline-success">Selesai</div>
+                                                <?php elseif ($row['status'] === 'DITERIMA') : ?>
+                                                    <div class="w-100 badge badge-outline-success">Diterima</div>
+                                                <?php elseif ($row['status'] === 'DITOLAK') : ?>
+                                                    <div class="w-100 badge badge-outline-danger">Ditolak</div>
+                                                <?php elseif ($row['status'] === 'PENGAJUAN') : ?>
+                                                    <div class="w-100 badge badge-outline-warning">Pengajuan</div>
                                                 <?php endif; ?>
+                                            </td>
+                                            <td class="text-center">
+                                                <a href="index.php?page=detail_tamu&<?= (is_null($row['id']) ? ('id_pengajuan=' . $row['id_pengajuan']) : ('id=' . $row['id'])); ?>" class="btn-sm btn-info"><i class="mdi mdi-eye"></i></a>
+                                                <a href="index.php?page=edit_tamu&<?= (is_null($row['id']) ? ('id_pengajuan=' . $row['id_pengajuan']) : ('id=' . $row['id'])); ?>" class="btn-sm btn-warning"><i class="mdi mdi-border-color"></i></a>
+                                                <a href="index.php?page=delete_tamu&<?= (is_null($row['id']) ? ('id_pengajuan=' . $row['id_pengajuan']) : ('id=' . $row['id'])); ?>" class="btn-sm btn-danger" onclick="return confirm('Yakin ingin menghapus data ini?')"><i class="mdi mdi-delete"></i></a>
                                             </td>
                                         </tr>
                                     <?php endwhile; ?>
