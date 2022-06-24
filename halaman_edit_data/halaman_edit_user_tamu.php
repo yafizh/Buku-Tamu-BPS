@@ -24,10 +24,10 @@ if (isset($_POST['submit'])) {
     $username = $_POST['username'];
     $password = $_POST['password'];
 
-    $sql = "SELECT * FROM view_user WHERE username='$username' AND id!=" . $id;
+    $sql = "SELECT * FROM view_user WHERE username='$username' AND id_tamu!=" . $id;
     $result = $mysqli->query($sql);
     if ($result->num_rows) {
-        echo "<script>alert('Username tidak bisa digunakan.')</script>";
+        echo "<script>alert('Username telah digunakan. Gunakan username lain')</script>";
     } else {
         $sql = "
         UPDATE tabel_user SET

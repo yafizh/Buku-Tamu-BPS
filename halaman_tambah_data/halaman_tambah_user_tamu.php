@@ -10,10 +10,10 @@ if (isset($_POST['submit'])) {
     $username = $_POST['username'];
     $password = $_POST['password'];
 
-    $sql = "SELECT * FROM view_user WHERE username='$username'";
+    $sql = "SELECT * FROM tabel_user WHERE username='$username'";
     $result = $mysqli->query($sql);
     if ($result->num_rows) {
-        echo "<script>alert('Username tidak bisa digunakan.')</script>";
+        echo "<script>alert('Username telah digunakan. Gunakan username lain')</script>";
     } else {
         $sql = "
         INSERT INTO tabel_user (

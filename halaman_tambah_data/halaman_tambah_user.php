@@ -6,7 +6,12 @@ if (isset($_POST['submit'])) {
     $password = $_POST['password'];
     $status = $_POST['status'];
 
-    $sql = "
+    $sql = "SELECT * FROM tabel_user WHERE username='$username'";
+    $result = $mysqli->query($sql);
+    if ($result->num_rows) {
+        echo "<script>alert('Username telah digunakan. Gunakan username lain')</script>";
+    } else {
+        $sql = "
         INSERT INTO tabel_user (
             nama,
             username,
@@ -19,8 +24,9 @@ if (isset($_POST['submit'])) {
             '$status'
         )";
 
-    if ($mysqli->query($sql) === TRUE) echo "<script>alert('User berhasil ditambahkan.')</script>";
-    else echo "Error: " . $sql . "<br>" . $mysqli->error;
+        if ($mysqli->query($sql) === TRUE) echo "<script>alert('User berhasil ditambahkan.')</script>";
+        else echo "Error: " . $sql . "<br>" . $mysqli->error;
+    }
 }
 
 ?>

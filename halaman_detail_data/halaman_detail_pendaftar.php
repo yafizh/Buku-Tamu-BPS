@@ -28,11 +28,11 @@ if (isset($_POST['terima'])) {
     $username = $_POST['username'];
     $password = $_POST['password'];
 
-    $sql = "SELECT * FROM view_user WHERE username='$username'";
+    $sql = "SELECT * FROM tabel_user WHERE username='$username'";
     $result = $mysqli->query($sql);
 
     if ($result->num_rows) {
-        echo "<script>alert('Username tidak bisa digunakan.')</script>";
+        echo "<script>alert('Username telah digunakan. Gunakan username lain')</script>";
     } else {
         $sql = "
         INSERT INTO tabel_user (
@@ -57,7 +57,8 @@ if (isset($_POST['terima'])) {
                 asal_instansi='$asal_instansi',
                 alamat='$alamat',
                 nomor_telepon='$nomor_telepon',
-                status='AKTIF'";
+                status='AKTIF'
+            WHERE id=" . $_GET['id'];
             if ($mysqli->query($sql)) {
 
                 // Kode kirim pesan untuk username dan password
