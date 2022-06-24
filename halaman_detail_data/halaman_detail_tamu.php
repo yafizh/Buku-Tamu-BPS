@@ -12,6 +12,26 @@ if (isset($_GET['id'])) {
 }
 
 
+if (isset($_POST['tolak'])) {
+    $sql = "UPDATE tabel_pengajuan SET status='DITOLAK' WHERE id=" . $_GET['id_pengajuan'];
+    if ($mysqli->query($sql)) {
+        echo "<script>alert('Pengajuan ditolak.')</script>";
+        echo "<script>" .
+            "window.location.href='index.php?page=data_tamu';" .
+            "</script>";
+    } else echo "Error: " . $sql . "<br>" . $mysqli->error;
+}
+
+if (isset($_POST['terima'])) {
+    $sql = "UPDATE tabel_pengajuan SET status='DITERIMA' WHERE id=" . $_GET['id_pengajuan'];
+    if ($mysqli->query($sql)) {
+        echo "<script>alert('Pengajuan diterima.')</script>";
+        echo "<script>" .
+            "window.location.href='index.php?page=data_tamu';" .
+            "</script>";
+    } else echo "Error: " . $sql . "<br>" . $mysqli->error;
+}
+
 
 ?>
 <div class="main-panel">
@@ -90,11 +110,11 @@ if (isset($_GET['id'])) {
                             <div class="form-group">
                                 <?php if ($_SESSION['user']['status'] === 'PETUGAS') : ?>
                                     <?php if ($row['status'] === 'PENGAJUAN') : ?>
-                                        <form action="">
-                                            <button class="btn btn-danger" type="reset">Tolak</button>
+                                        <form action="" method="POST" class="d-inline">
+                                            <button class="btn btn-danger" type="submit" name="tolak">Tolak</button>
                                         </form>
-                                        <form action="">
-                                            <button class="btn btn-success me-2">Setujui</button>
+                                        <form action="" method="POST" class="d-inline">
+                                            <button class="btn btn-success me-2" type="submit" name="terima">Setujui</button>
                                         </form>
                                     <?php elseif (!is_null($row['id_tamu']) && is_null($row['id_ikm'])) : ?>
                                         <form action="" method="post">
