@@ -62,12 +62,11 @@ if (isset($_POST['terima'])) {
             if ($mysqli->query($sql)) {
 
                 //init SMS gateway, look at android SMS gateway
-                $idmesin = urlencode("1152");
-                $pin = urlencode("121316");
-                $msg = "Anda telah terdaftar pada website Badan Pusat Statistik Hulu Sungau Utara, Akun anda adalah username: $username dan password: $password";
+                $idmesin = "1151";
+                $pin = "120216";
+                $msg = "Anda%20telah%20terdaftar%20pada%20website%20Badan%20Pusat%20Statistik%20Hulu%20Sungau%20Utara,%20Akun%20anda%20adalah%20username:%20$username%20dan%20password:%20$password";
                 
-                $encoded_message = urlencode($msg);
-                $url = "https://sms.indositus.com/sendsms.php?idmesin=$idmesin&pin=$pin&to=$nomor_telepon&text=$encoded_message";
+                $url = "https://sms.indositus.com/sendsms.php?idmesin=$idmesin&pin=$pin&to=$nomor_telepon&text=$msg";
  
                 // create curl resource
                 $ch = curl_init($url);
@@ -76,7 +75,6 @@ if (isset($_POST['terima'])) {
 
                 // $output contains the output string
                 $output = curl_exec($ch);
-                
                 echo "<script>alert('Pendaftaran Diterima.')</script>";
                 echo "<script>" .
                     "window.location.href='index.php?page=data_pendaftaran';" .

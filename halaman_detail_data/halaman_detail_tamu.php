@@ -34,14 +34,12 @@ if (isset($_POST['terima'])) {
 
 if (isset($_POST['ikm'])) {
     $id = $_POST['id'];
-    $nomor_telepon = urlencode($_POST['nomor_telepon']);
+    $nomor_telepon = $_POST['nomor_telepon'];
     //init SMS gateway, look at android SMS gateway
-    $idmesin = urlencode("1152");
-    $pin = urlencode("121316");
-    $msg = "Terima Kasih telah berkunjung ke Badan Pusat Statistik Hulu Sungau Utara. Kunjungi Link berikut untuk memberikan indeks kepuasan: " . "http://" . $_SERVER['SERVER_NAME'] . explode('?', $_SERVER['REQUEST_URI'])[0] . "?e-ikm=$id";
-
-    $encoded_message = urlencode($msg);
-    $url = "https://sms.indositus.com/sendsms.php?idmesin=$idmesin&pin=$pin&to=$nomor_telepon&text=$encoded_message";
+    $idmesin = "1151";
+    $pin = "120216";
+    $msg = "Terima%20Kasih%20telah%20berkunjung%20ke%20Badan%20Pusat%20Statistik%20Hulu%20Sungau%20Utara.%20Kunjungi%20Link%20berikut%20untuk%20memberikan%20indeks%20kepuasan:%20" . "http://" . $_SERVER['SERVER_NAME'] . explode('?', $_SERVER['REQUEST_URI'])[0] . "?e-ikm=$id";
+    $url = "https://sms.indositus.com/sendsms.php?idmesin=$idmesin&pin=$pin&to=$nomor_telepon&text=$msg";
     // create curl resource
     $ch = curl_init($url);
     //return the transfer as a string

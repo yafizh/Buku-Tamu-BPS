@@ -11,17 +11,15 @@ if (isset($_GET['id'])) {
 if (isset($_POST['submit'])) {
     $username = $_POST['username'];
     $password = $_POST['password'];
-    $nomor_telepon = urlencode($_POST['nomor_telepon']);
+    $nomor_telepon = $_POST['nomor_telepon'];
 
     $sql = "UPDATE tabel_tamu SET status='AKTIF' WHERE id=" . $_GET['id'];
     if ($mysqli->query($sql)) {
         //init SMS gateway, look at android SMS gateway
-        $idmesin = urlencode("1152");
-        $pin = urlencode("121316");
-        $msg = "Pengajuan Lupa Password Anda telah diterima pada website Badan Pusat Statistik Hulu Sungau Utara, Akun anda adalah username: $username dan password: $password";
-
-        $encoded_message = urlencode($msg);
-        $url = "https://sms.indositus.com/sendsms.php?idmesin=$idmesin&pin=$pin&to=$nomor_telepon&text=$encoded_message";
+        $idmesin = "1151";
+        $pin = "120216";
+        $msg = "Pengajuan%20Lupa%20Password%20Anda%20telah%20diterima%20pada%20website%20Badan%20Pusat%20Statistik%20Hulu%20Sungau%20Utara,%20Akun%20anda%20adalah%20username:%20$username%20dan%20password:%20$password";
+        $url = "https://sms.indositus.com/sendsms.php?idmesin=$idmesin&pin=$pin&to=$nomor_telepon&text=$msg";
         // create curl resource
         $ch = curl_init($url);
         //return the transfer as a string
