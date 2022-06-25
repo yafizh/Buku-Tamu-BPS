@@ -43,7 +43,7 @@ if (isset($_POST['submit'])) {
         if ($mysqli->query($sql)) {
             $sql = "
         UPDATE tabel_tamu SET 
-            id_user='$id',
+            id_user=" . $row['id'] . ",
             nama='$nama',
             jenis_kelamin='$jenis_kelamin',
             asal_instansi='$asal_instansi',
