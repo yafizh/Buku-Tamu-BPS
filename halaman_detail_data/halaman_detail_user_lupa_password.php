@@ -16,8 +16,8 @@ if (isset($_POST['submit'])) {
     $sql = "UPDATE tabel_tamu SET status='AKTIF' WHERE id=" . $_GET['id'];
     if ($mysqli->query($sql)) {
         //init SMS gateway, look at android SMS gateway
-        $idmesin = urlencode("1151");
-        $pin = urlencode("120216");
+        $idmesin = urlencode("1152");
+        $pin = urlencode("121316");
         $msg = "Pengajuan Lupa Password Anda telah diterima pada website Badan Pusat Statistik Hulu Sungau Utara, Akun anda adalah username: $username dan password: $password";
 
         $encoded_message = urlencode($msg);
