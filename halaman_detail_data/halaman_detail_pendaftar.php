@@ -65,13 +65,16 @@ if (isset($_POST['terima'])) {
                 $idmesin = "1151";
                 $pin = "120216";
                 $msg = "Anda%20telah%20terdaftar%20pada%20website%20Badan%20Pusat%20Statistik%20Hulu%20Sungau%20Utara,%20Akun%20anda%20adalah%20username:%20$username%20dan%20password:%20$password";
-                
+
                 $url = "https://sms.indositus.com/sendsms.php?idmesin=$idmesin&pin=$pin&to=$nomor_telepon&text=$msg";
- 
+
                 // create curl resource
-                $ch = curl_init($url);
+                $ch = curl_init();
                 //return the transfer as a string
+                curl_setopt($ch, CURLOPT_URL, $url);
+                curl_setopt($ch, CURLOPT_HEADER, 0);
                 curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+                curl_setopt($ch, CURLOPT_CONNECTTIMEOUT, 0);
 
                 // $output contains the output string
                 $output = curl_exec($ch);
