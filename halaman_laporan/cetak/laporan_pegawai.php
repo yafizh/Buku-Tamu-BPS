@@ -74,10 +74,12 @@ const BULAN_DALAM_INDONESIA = [
             <thead>
                 <tr>
                     <th class="text-center">No</th>
+                    <th>NIP</th>
                     <th>Nama Pegawai</th>
                     <th>Divisi Bekerja</th>
                     <th>Jenis Kelamin</th>
                     <th>Nomor Telepon</th>
+                    <th>Tanggal Lahir</th>
                 </tr>
             </thead>
             <tbody>
@@ -89,10 +91,12 @@ const BULAN_DALAM_INDONESIA = [
                     <?php while ($row = $result->fetch_assoc()) : ?>
                         <tr>
                             <td class="text-center"><?= $no++; ?></td>
+                            <td class="text-center"><?= $row['nip']; ?></td>
                             <td class="text-center"><?= $row['nama']; ?></td>
                             <td class="text-center"><?= $row['nama_divisi']; ?></td>
                             <td class="text-center"><?= $row['jenis_kelamin']; ?></td>
                             <td class="text-center"><?= $row['nomor_telepon']; ?></td>
+                            <td class="text-center"><?= $row['tanggal_lahir']; ?></td>
                         </tr>
                     <?php endwhile; ?>
                 <?php endif; ?>

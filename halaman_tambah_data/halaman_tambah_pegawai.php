@@ -6,6 +6,7 @@ if (isset($_POST['submit'])) {
     $nip = $_POST['nip'];
     $jenis_kelamin = $_POST['jenis_kelamin'];
     $nomor_telepon = $_POST['nomor_telepon'];
+    $tanggal_lahir = $_POST['tanggal_lahir'];
 
     $sql = "
         INSERT INTO tabel_pegawai (
@@ -13,12 +14,14 @@ if (isset($_POST['submit'])) {
             nama,
             nip,
             jenis_kelamin,
+            tanggal_lahir,
             nomor_telepon 
         ) VALUES (
             '$id_divisi', 
             '$nama', 
             '$nip', 
             '$jenis_kelamin', 
+            '$tanggal_lahir', 
             '$nomor_telepon' 
         )";
 
@@ -69,6 +72,10 @@ if (isset($_POST['submit'])) {
                                     <option value="L">Laki - Laki</option>
                                     <option value="P">Perempuan</option>
                                 </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="tanggal_lahir">Tanggal Lahir</label>
+                                <input type="date" class="form-control text-white" name="tanggal_lahir" autocomplete="off" placeholder="Masukkan Nomor Telepon..." required>
                             </div>
                             <div class="form-group">
                                 <label for="nomor_telepon">Nomor Telepon</label>

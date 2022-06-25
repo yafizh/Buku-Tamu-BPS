@@ -1,16 +1,15 @@
 <?php session_start();
 if (isset($_POST['submit'])) {
     require_once "../database/koneksi.php";
-    $name = $_POST['name'];
     $username = $_POST['username'];
-    $password = $_POST['password'];
-    $sql = "SELECT * FROM tabel_user WHERE username='$username' AND nama='$name'";
+    $nomor_telepon = $_POST['nomor_telepon'];
+    $sql = "SELECT tabel_tamu.nomor_telepon, tabel_user.username FROM tabel_tamu INNER JOIN tabel_user ON tabel_tamu.id_user=tabel_user.id WHERE tabel_user.username='$username' AND tabel_tamu.nomor_telepon='$nomor_telepon'";
     $result = $mysqli->query($sql);
     if ($result->num_rows > 0) {
-        $sql = "UPDATE tabel_user SET password='$password' WHERE username='$username' AND nama='$name'";
+        $sql = "UPDATE tabel_tamu SET status='LUPA PASSWORD' WHERE nomor_telepon='$nomor_telepon'";
         if($mysqli->query($sql)){
             echo "<script>" .
-            "alert('Ganti Password berhasil. Silakan login!')" .
+            "alert('Akun ditemukan. Petugas akan mengirimkan username dan password baru!')" .
             "</script>";
             echo "<script>" .
                 "window.location.href='halaman_login.php';" .
@@ -18,7 +17,7 @@ if (isset($_POST['submit'])) {
         }
     } else
         echo "<script>" .
-            "alert('Nama atau username tidak ditemukan!')" .
+            "alert('Nomor Telepon atau Username tidak ditemukan!')" .
             "</script>";
 }
 
@@ -148,9 +147,8 @@ if (isset($_POST['submit'])) {
         <div class="logo"> <img src="../logo.png" alt=""> </div>
         <div class="text-center mt-4 name" style="text-align: center; margin-top: 16px;"> Lupa Password </div>
         <form method="POST" class="p-3 mt-3" style="margin-top: 10px;">
-            <div class="form-field d-flex align-items-center"> <span class="far fa-user"></span> <input autocomplete="off" autofocus type="text" name="name" id="name" placeholder="Nama"> </div>
             <div class="form-field d-flex align-items-center"> <span class="far fa-user"></span> <input autocomplete="off" type="text" name="username" id="username" placeholder="Username"> </div>
-            <div class="form-field d-flex align-items-center"> <span class="fas fa-key"></span> <input type="password" name="password" id="password" placeholder="Password Baru"> </div>
+            <div class="form-field d-flex align-items-center"> <span class="fas fa-key"></span> <input type="text" name="nomor_telepon" id="nomor_telepon" placeholder="Nomor Telepon"> </div>
             <button type="submit" name="submit" class="btn mt-3">Ganti Passowrd</button>
         </form>
         <div class="text-center fs-6" style="text-align: center; margin-top: 8px;"> <a href="halaman_login.php">Login</a></div>

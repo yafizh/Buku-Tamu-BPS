@@ -11,7 +11,7 @@ if (isset($_POST['nilai'])) {
     $sql = "INSERT INTO tabel_ikm VALUES(null," . $_POST['nilai'] . ")";
     if ($mysqli->query($sql)) {
         $last_id = $mysqli->insert_id;
-        $sql = "UPDATE tabel_pengajuan SET id_ikm=$last_id WHERE id=".$_GET['e-ikm'];
+        $sql = "UPDATE tabel_pengajuan SET id_ikm=$last_id, status='SELESAI' WHERE id=".$_GET['e-ikm'];
         $mysqli->query($sql);
     }
 }
@@ -24,7 +24,7 @@ $result = $mysqli->query($sql);
         <div class="container">
             <?php if ($result->num_rows > 0) : ?>
                 <?php $data = $result->fetch_assoc(); ?>
-                <?php if (is_null($data['id_ikm']) && $data['status'] === 'SELESAI') : ?>
+                <?php if (is_null($data['id_ikm']) && $data['status'] === 'DITERIMA') : ?>
                     <div class="row mb-5">
                         <h1>Pendapat Anda Mengenai Pelayanan pada Badan Pusat Statistik Hulu Sungai Selatan?</h1>
                     </div>

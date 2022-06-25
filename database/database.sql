@@ -8,16 +8,6 @@ CREATE TABLE `tabel_ruangan` (
     PRIMARY KEY (id)
 );
 
-CREATE TABLE `tabel_agenda` (
-    id INT NOT NULL AUTO_INCREMENT,
-    id_ruangan INT NOT NULL,
-    nama_kegiatan VARCHAR(255) NOT NULL,
-    detail_kegiatan TEXT NOT NULL,
-    gambar VARCHAR(255) NOT NULL,
-    PRIMARY KEY (id),
-    FOREIGN KEY (id_ruangan) REFERENCES tabel_ruangan (id)
-);
-
 CREATE TABLE `tabel_user` (
     id INT NOT NULL AUTO_INCREMENT,
     nama VARCHAR(255) NOT NULL,
@@ -49,7 +39,7 @@ CREATE TABLE `tabel_tamu` (
     jenis_kelamin ENUM('L','P') NULL,
     asal_instansi VARCHAR(50) NOT NULL,
     alamat VARCHAR(255) NULL,
-    status ENUM('AKTIF', 'MENDAFTAR') NOT NULL,
+    status ENUM('AKTIF', 'MENDAFTAR', 'LUPA PASSWORD') NOT NULL,
     PRIMARY KEY (id),
     FOREIGN KEY (id_user) REFERENCES tabel_user (id)
 );
@@ -93,6 +83,7 @@ CREATE TABLE `tabel_pegawai` (
     nip VARCHAR(255) NOT NULL,
     jenis_kelamin ENUM('L','P') NOT NULL,
     nomor_telepon VARCHAR(15) NOT NULL,
+    tanggal_lahir VARCHAR(15) NOT NULL,
     PRIMARY KEY (id),
     FOREIGN KEY (id_divisi) REFERENCES tabel_divisi (id)
 );
@@ -102,28 +93,29 @@ INSERT INTO `tabel_pegawai` (
     nama,
     nip,
     jenis_kelamin,
-    nomor_telepon
+    nomor_telepon,
+    tanggal_lahir 
 ) VALUES 
-(1, 'Sukma Handayani, M.Si', '197503111996122000', 'P', '098732135523'),
-(2, 'Arfiani, S.Si', '198112042011011000', 'L', '098732135524'),
-(2, 'M. Agus Suharyanto, A.Md', '198810052011011000', 'L', '098732135522'),
-(3, 'Noor Hamimah, SE', '198607212011012000', 'P', '098732135521'),
-(3, 'Muhammad Taufik Hidayat, SST', '198803082012111000', 'L', '098732135527'),
-(3, 'Hanif Yontar Rahma, S.Si', '199412192019032000', 'L', '098732135529'),
-(6, 'Muhammad Adi Wijaya Kesuma, SST', '199412212018021000', 'L', '098732135528'),
-(5, 'Masdani, SE', '197110181993121000', 'L', '098732135533'),
-(5, 'Ulya Zahrotun Niswah, SST', '199407242018022000', 'P', '098732135534'),
-( 4, 'Anggita Silmi Nabilah, SST', '199507062018022000', 'P', '098732135531'),
-( 4, 'Muhammad Imam Sholihin, S.Tr.Stat.', '199711142021041000', 'L', '098732135532'),
-( 7, 'Eko Wahyu Lestari, SST', '199403272017012000', 'P', '098732135535'),
-( 7, 'Oktaviani, S.Tr.Stat.', '199610122019012000', 'P', '098732135536'),
-( 8, 'Rusni', '196905102006041000', 'L', '098732135537'),
-( 8, 'Taufik Ilhakim', '196807052007011000', 'L', '098732135538'),
-( 8, 'Abu Hurairah', '198108232002121000', 'P', '098732135539'),
-( 8, 'Azehar, SE.', '196902091993121000', 'L', '098732135599'),
-( 8, 'Agusriadi', '197708062007101000', 'L', '098732135588'),
-( 8, 'Nabhani', '198010172007101000', 'L', '098732135566'),
-( 8, 'Herliani', '197504112009012000', 'P', '098732135511');
+(1, 'Sukma Handayani, M.Si', '197503111996122000', 'P', '098732135523', CURRENT_DATE()),
+(2, 'Arfiani, S.Si', '198112042011011000', 'L', '098732135524', CURRENT_DATE()),
+(2, 'M. Agus Suharyanto, A.Md', '198810052011011000', 'L', '098732135522', CURRENT_DATE()),
+(3, 'Noor Hamimah, SE', '198607212011012000', 'P', '098732135521', CURRENT_DATE()),
+(3, 'Muhammad Taufik Hidayat, SST', '198803082012111000', 'L', '098732135527', CURRENT_DATE()),
+(3, 'Hanif Yontar Rahma, S.Si', '199412192019032000', 'L', '098732135529', CURRENT_DATE()),
+(6, 'Muhammad Adi Wijaya Kesuma, SST', '199412212018021000', 'L', '098732135528', CURRENT_DATE()),
+(5, 'Masdani, SE', '197110181993121000', 'L', '098732135533', CURRENT_DATE()),
+(5, 'Ulya Zahrotun Niswah, SST', '199407242018022000', 'P', '098732135534', CURRENT_DATE()),
+(4, 'Anggita Silmi Nabilah, SST', '199507062018022000', 'P', '098732135531', CURRENT_DATE()),
+(4, 'Muhammad Imam Sholihin, S.Tr.Stat.', '199711142021041000', 'L', '098732135532', CURRENT_DATE()),
+(7, 'Eko Wahyu Lestari, SST', '199403272017012000', 'P', '098732135535', CURRENT_DATE()),
+(7, 'Oktaviani, S.Tr.Stat.', '199610122019012000', 'P', '098732135536', CURRENT_DATE()),
+(8, 'Rusni', '196905102006041000', 'L', '098732135537', CURRENT_DATE()),
+(8, 'Taufik Ilhakim', '196807052007011000', 'L', '098732135538', CURRENT_DATE()),
+(8, 'Abu Hurairah', '198108232002121000', 'P', '098732135539', CURRENT_DATE()),
+(8, 'Azehar, SE.', '196902091993121000', 'L', '098732135599', CURRENT_DATE()),
+(8, 'Agusriadi', '197708062007101000', 'L', '098732135588', CURRENT_DATE()),
+(8, 'Nabhani', '198010172007101000', 'L', '098732135566', CURRENT_DATE()),
+(8, 'Herliani', '197504112009012000', 'P', '098732135511', CURRENT_DATE());
 
 CREATE TABLE `tabel_ikm`(
     id INT NOT NULL AUTO_INCREMENT,
@@ -158,8 +150,8 @@ INSERT INTO `tabel_pengajuan` (
     `status`, 
     `keterangan` 
 ) VALUES
-(4, 1, NULL, CURRENT_DATE(), CURRENT_TIME(), 'Pengantaran Berkas', 'Offline', 'PENGAJUAN', 'Pengajuan Baru'),
-(4, 2, NULL, CURRENT_DATE(), CURRENT_TIME(), 'Pengantaran Berkas', 'Offline', 'SELESAI', 'Berkas Diterima');
+(4, 1, NULL, CURRENT_DATE(), CURRENT_TIME(), 'Pengantaran Berkas', 'Offline', 'PENGAJUAN', ''),
+(4, 2, NULL, CURRENT_DATE(), CURRENT_TIME(), 'Pengantaran Berkas', 'Offline', 'DITERIMA', '');
 
 
 CREATE TABLE `tabel_kunjungan` (
@@ -200,6 +192,7 @@ INSERT INTO `tabel_kunjungan` (
 (2, 'Dewangga Putra', '081213156678', 'L', 'BPS Balangan', 'Balangan', 'Meminta Data', '2022-02-04', '10:53:00', 'OFFLINE', NULL),
 (12, 'Arhan Putra', '082255709877', 'L', 'STIA Amuntai', 'Amuntai', 'PKL', '2022-02-04', '10:58:00', 'OFFLINE', NULL),
 (12, 'Fikri Wahyudi', '082255667798', 'L', 'STIA Amuntai', 'Amuntai', 'PKL', '2022-02-04', '10:59:00', 'OFFLINE', NULL),
+(5, 'Nuril Maulida', '082215667798', 'P', 'UNLAM', 'Amuntai', 'PKL', '2022-02-010', '10:59:00', 'OFFLINE', NULL),
 (12, 'Ananda Safitri', '085657988988', 'L', 'STIA Amuntai', 'Amuntai', 'PKL', '2022-02-04', '11:00:00', 'OFFLINE' , NULL);
 
 
@@ -308,7 +301,9 @@ AS
     SELECT 
         tp.id,
         tp.tanggal,
+        tp.waktu,
         tt.nama,
+        tp.jenis_pertemuan,
         tt.asal_instansi,
         tpg.nama AS nama_pegawai,
         tp.keperluan  
@@ -330,7 +325,9 @@ AS
         ti.id AS id_ikm,
         ti.nilai,
         tm.nama,
+        tu.username,
         tm.asal_instansi,
+        tm.nomor_telepon,
         tp.tanggal   
     FROM 
         tabel_ikm AS ti
@@ -341,7 +338,11 @@ AS
     INNER JOIN 
         tabel_tamu AS tm 
     ON 
-        tm.id=tp.id_tamu;
+        tm.id=tp.id_tamu 
+    INNER JOIN 
+        tabel_user AS tu 
+    ON 
+        tu.id=tm.id_user;
 
 CREATE VIEW 
     `view_jumlah_jenis_kunjungan` 

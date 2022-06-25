@@ -32,6 +32,29 @@ if (isset($_POST['terima'])) {
     } else echo "Error: " . $sql . "<br>" . $mysqli->error;
 }
 
+if (isset($_POST['ikm'])) {
+    $id = $_POST['id'];
+    $nomor_telepon = $_POST['nomor_telepon'];
+    //init SMS gateway, look at android SMS gateway
+    $idmesin = "1150";
+    $pin = "122047";
+    $msg = "Terima Kasih telah berkunjung ke Badan Pusat Statistik Hulu Sungau Utara. Kunjungi Link berikut untuk memberikan indeks kepuasan: " . "http://" . $_SERVER['SERVER_NAME'] . explode('?', $_SERVER['REQUEST_URI'])[0] . "?e-ikm=$id";
+
+    $encoded_message = urlencode($msg);
+    $url = "https://sms.indositus.com/sendsms.php?idmesin=$idmesin&pin=$pin&to=$nomor_telepon&text=$encoded_message";
+    // create curl resource
+    $ch = curl_init($url);
+    //return the transfer as a string
+    curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+
+    // $output contains the output string
+    $output = curl_exec($ch);
+    echo "<script>alert('Link IKM berhasil dikirim.')</script>";
+    echo "<script>" .
+        "window.location.href='index.php?page=data_tamu';" .
+        "</script>";
+}
+
 
 ?>
 <div class="main-panel">

@@ -1,7 +1,7 @@
 <div class="main-panel">
     <div class="content-wrapper">
         <div class="page-header">
-            <h3 class="page-title"> Data Pegawai </h3>
+            <h3 class="page-title"> Data Lupa Password </h3>
             <!-- <nav aria-label="breadcrumb">
                 <ol class="breadcrumb">
                     <li class="breadcrumb-item"><a href="#">Tables</a></li>
@@ -13,8 +13,8 @@
             <div class="col-lg-12 grid-margin stretch-card">
                 <div class="card">
                     <div class="card-body">
-                        <a href="index.php?page=tambah_pegawai" class="btn btn-primary">Tambah Pegawai</a>
-                        <!-- <h4 class="card-title">Data Pegawai</h4> -->
+                        <!-- <a href="index.php?page=tambah_user_tamu" class="btn btn-primary">Tambah User</a> -->
+                        <!-- <h4 class="card-title">Data User</h4> -->
                         <!-- <p class="card-description"> Add class <code>.table-hover</code> -->
                         </p>
                         <div class="table-responsive">
@@ -22,31 +22,22 @@
                                 <thead>
                                     <tr>
                                         <th>Nama</th>
-                                        <th>NIP</th>
-                                        <th>Divisi</th>
-                                        <th>Jenis Kelamin</th>
-                                        <th>Tanggal Lahir</th>
-                                        <th>Nomor Telepon</th>
+                                        <th>Username</th>
                                         <th class="text-center">Aksi</th>
                                     </tr>
                                 </thead>
                                 <?php
                                 require_once "database/koneksi.php";
                                 $keyword = isset($_POST['keyword']) ? $_POST['keyword'] : '';
-                                $data_pegawai = $mysqli->query("SELECT * FROM view_pegawai WHERE nama LIKE '%$keyword%' OR nip LIKE '%$keyword%' OR nama_divisi LIKE '%$keyword%' OR jenis_kelamin LIKE '%$keyword%' OR nomor_telepon LIKE '%$keyword%' ORDER BY id DESC");
+                                $data_user = $mysqli->query("SELECT tabel_tamu.id, tabel_tamu.nama, tabel_user.id AS id_user, tabel_user.username  FROM tabel_tamu INNER JOIN tabel_user ON tabel_tamu.id_user=tabel_user.id WHERE tabel_tamu.nama LIKE '%$keyword%' AND tabel_tamu.status='LUPA PASSWORD' ORDER BY tabel_tamu.id DESC");
                                 ?>
                                 <tbody>
-                                    <?php while ($row = $data_pegawai->fetch_assoc()) : ?>
+                                    <?php while ($row = $data_user->fetch_assoc()) : ?>
                                         <tr>
                                             <td style="vertical-align: middle;"><?= $row['nama']; ?></td>
-                                            <td style="vertical-align: middle;"><?= $row['nip']; ?></td>
-                                            <td style="vertical-align: middle;"><?= $row['nama_divisi']; ?></td>
-                                            <td style="vertical-align: middle;"><?= $row['jenis_kelamin']; ?></td>
-                                            <td style="vertical-align: middle;"><?= $row['tanggal_lahir']; ?></td>
-                                            <td style="vertical-align: middle;"><?= $row['nomor_telepon']; ?></td>
+                                            <td style="vertical-align: middle;"><?= $row['username']; ?></td>
                                             <td class="text-center">
-                                                <a href="index.php?page=edit_pegawai&id=<?= $row['id']; ?>" class="btn-sm btn-warning"><i class="mdi mdi-border-color"></i></a>
-                                                <a href="index.php?page=delete_pegawai&id=<?= $row['id']; ?>" class="btn-sm btn-danger" onclick="return confirm('Yakin ingin menghapus data ini?')"><i class="mdi mdi-delete"></i></a>
+                                                <a href="index.php?page=detail_user_lupa_password&id=<?= $row['id']; ?>" class="btn-sm btn-info"><i class="mdi mdi-eye"></i></a>
                                             </td>
                                         </tr>
                                     <?php endwhile; ?>

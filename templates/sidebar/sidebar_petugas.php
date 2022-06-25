@@ -58,5 +58,19 @@
                 <span class="menu-title">Data User Tamu</span>
             </a>
         </li>
+        <li class="nav-item menu-items 
+        <?php
+        if (isset($_GET['page'])) {
+            if ($_GET['page'] == "data_user_lupa_password") echo "active";
+            else if ($_GET['page'] == "edit_lupa_password") echo "active";
+        }
+        ?>">
+            <a class="nav-link" href="?page=data_user_lupa_password">
+                <span class="menu-icon">
+                    <i class="mdi mdi-contacts"></i>
+                </span>
+                <span class="menu-title">Data Lupa Password</span>
+            </a>
+        </li>
     </ul>
 </nav>

@@ -18,6 +18,7 @@ if (isset($_POST['submit'])) {
     $nip = $_POST['nip'];
     $jenis_kelamin = $_POST['jenis_kelamin'];
     $nomor_telepon = $_POST['nomor_telepon'];
+    $tanggal_lahir = $_POST['tanggal_lahir'];
 
     $sql = "UPDATE tabel_pegawai 
             SET 
@@ -25,6 +26,7 @@ if (isset($_POST['submit'])) {
                 nama='$nama', 
                 nip='$nip', 
                 jenis_kelamin='$jenis_kelamin',
+                tanggal_lahir='$tanggal_lahir',
                 nomor_telepon='$nomor_telepon' 
             WHERE 
                 id=" . $_GET['id'];
@@ -79,6 +81,10 @@ if (isset($_POST['submit'])) {
                                     <option <?= ($row['jenis_kelamin'] == 'L') ? "selected" : ""; ?> value="L">Laki - Laki</option>
                                     <option <?= ($row['jenis_kelamin'] == 'P') ? "selected" : ""; ?> value="P">Perempuan</option>
                                 </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="tanggal_lahir">Tanggal Lahir</label>
+                                <input type="date" class="form-control text-white" value="<?= $row['tanggal_lahir']; ?>" name="tanggal_lahir" autocomplete="off" required>
                             </div>
                             <div class="form-group">
                                 <label for="nomor_telepon">Nomor Telepon</label>

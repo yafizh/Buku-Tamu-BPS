@@ -82,6 +82,9 @@
                             case "data_pendaftar":
                                 include_once "halaman_tampil_data/halaman_data_pendaftar.php";
                                 break;
+                            case "data_user_lupa_password":
+                                include_once "halaman_tampil_data/halaman_data_user_lupa_password.php";
+                                break;
                             case "edit_tamu":
                                 include_once "halaman_edit_data/halaman_edit_tamu.php";
                                 break;
@@ -93,6 +96,9 @@
                                 break;
                             case "detail_pendaftar":
                                 include_once "halaman_detail_data/halaman_detail_pendaftar.php";
+                                break;
+                            case "detail_user_lupa_password":
+                                include_once "halaman_detail_data/halaman_detail_user_lupa_password.php";
                                 break;
                             case "edit_user":
                                 include_once "halaman_edit_data/halaman_edit_user.php";

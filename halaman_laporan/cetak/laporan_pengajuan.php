@@ -86,9 +86,11 @@ $sampai_tahun = explode('-', $sampai_tahun_bulan_tanggal)[0];
                     <th class="text-center">No</th>
                     <th>Nama</th>
                     <th>Tanggal</th>
+                    <th>Waktu</th>
                     <th>Pegawai yang dikunjungi</th>
                     <th>Asal Instansi</th>
                     <th>Keperluan</th>
+                    <th>Jenis Kunjungan</th>
                 </tr>
             </thead>
             <tbody>
@@ -102,9 +104,11 @@ $sampai_tahun = explode('-', $sampai_tahun_bulan_tanggal)[0];
                             <td class="text-center"><?= $no++; ?></td>
                             <td><?= $row['nama']; ?></td>
                             <td class="text-center"><?= $row['tanggal']; ?></td>
-                            <td class="text-center"><?= $row['asal_instansi']; ?></td>
+                            <td class="text-center"><?= $row['waktu']; ?></td>
                             <td class="text-center"><?= $row['nama_pegawai']; ?></td>
+                            <td class="text-center"><?= $row['asal_instansi']; ?></td>
                             <td class="text-center"><?= $row['keperluan']; ?></td>
+                            <td class="text-center"><?= $row['jenis_pertemuan']; ?></td>
                         </tr>
                     <?php endwhile; ?>
                 <?php endif; ?>
