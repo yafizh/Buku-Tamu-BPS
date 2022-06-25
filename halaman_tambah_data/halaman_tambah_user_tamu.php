@@ -74,7 +74,7 @@ if (isset($_POST['submit'])) {
                                 </div>
                                 <div class="form-group">
                                     <label for="nomor_telepon">Nomor Telepon</label>
-                                    <input type="number" class="form-control text-white" name="nomor_telepon" autocomplete="off" placeholder="Masukkan nomor telepon..." required>
+                                    <input type="text" class="form-control text-white" name="nomor_telepon" autocomplete="off" placeholder="Masukkan nomor telepon..." required>
                                 </div>
                                 <div class="form-group">
                                     <label for="jenis_kelamin">Jenis Kelamin</label>
