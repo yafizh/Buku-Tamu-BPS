@@ -78,10 +78,10 @@ if (isset($_POST['terima'])) {
 
                 // $output contains the output string
                 $output = curl_exec($ch);
-                echo "<script>alert('Pendaftaran Diterima.')</script>";
-                echo "<script>" .
-                    "window.location.href='index.php?page=data_pendaftaran';" .
-                    "</script>";
+                // echo "<script>alert('Pendaftaran Diterima.')</script>";
+                // echo "<script>" .
+                //     "window.location.href='index.php?page=data_pendaftaran';" .
+                //     "</script>";
             } else echo "Error1: " . $sql . "<br>" . $mysqli->error;
         } else echo "Error2: " . $sql . "<br>" . $mysqli->error;
     }
