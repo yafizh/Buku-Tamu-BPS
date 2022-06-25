@@ -153,7 +153,7 @@ if (isset($_POST['submit'])) {
             </div>
             <div class="form-field d-flex align-items-center">
                 <span class="far fa-user"></span>
-                <input autocomplete="off" autofocus type="text" name="nomor_telepon" id="nomor_telepon" placeholder="Nomor Telepon">
+                <input autocomplete="off" autofocus type="number" name="nomor_telepon" id="nomor_telepon" placeholder="Nomor Telepon">
             </div>
             <div class="form-field d-flex align-items-center">
                 <span class="far fa-user"></span>

@@ -342,3 +342,34 @@ AS
         tabel_tamu AS tm 
     ON 
         tm.id=tp.id_tamu;
+
+CREATE VIEW 
+    `view_jumlah_jenis_kunjungan` 
+AS 
+    (
+    SELECT 
+        jenis_pertemuan,
+        MONTH(tanggal) AS bulan, 
+        YEAR(tanggal) AS tahun, 
+        COUNT(nama) AS jumlah 
+    FROM 
+        view_tamu 
+    WHERE 
+        jenis_pertemuan='ONLINE' 
+    GROUP BY 
+        YEAR(tanggal), MONTH(tanggal)
+    )
+    UNION ALL
+    (
+    SELECT 
+        jenis_pertemuan,
+        MONTH(tanggal) AS bulan, 
+        YEAR(tanggal) AS tahun, 
+        COUNT(nama) AS jumlah 
+    FROM 
+        view_tamu 
+    WHERE 
+        jenis_pertemuan='OFFLINE' 
+    GROUP BY 
+        YEAR(tanggal), MONTH(tanggal)
+    );

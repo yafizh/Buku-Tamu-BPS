@@ -148,19 +148,13 @@ require_once "database/koneksi.php";
             <div class="col-md-6 grid-margin stretch-card">
                 <div class="card">
                     <div class="card-body">
-                        <h4 class="card-title">Data Agenda</h4>
+                        <h4 class="card-title">Data Jenis Kunjungan</h4>
                         <!-- <p class="card-description"> Horizontal form layout </p> -->
-                        <form class="forms-sample" action="halaman_laporan/cetak/laporan_tamu_per_tanggal.php" method="POST" target="_blank">
+                        <form class="forms-sample" action="halaman_laporan/cetak/laporan_jenis_kunjungan.php" method="POST" target="_blank">
                             <div class="form-group row">
-                                <label for="tanggal" class="col-sm-3 col-form-label">Dari Tanggal</label>
+                                <label for="tahun" class="col-sm-3 col-form-label">Tahun</label>
                                 <div class="col-sm-9">
-                                    <input type="date" class="form-control text-white" value="<?= Date("Y-m-d"); ?>" id="tanggal" name="tanggal">
-                                </div>
-                            </div>
-                            <div class="form-group row">
-                                <label for="tanggal" class="col-sm-3 col-form-label">Sampai Tanggal</label>
-                                <div class="col-sm-9">
-                                    <input type="date" class="form-control text-white" value="<?= Date("Y-m-d"); ?>" id="tanggal" name="tanggal">
+                                    <input type="number" class="form-control text-white" value="<?= Date("Y"); ?>" id="tahun" name="tahun">
                                 </div>
                             </div>
                             <button type="submit" class="btn btn-primary me-2">Cetak</button>
@@ -173,17 +167,11 @@ require_once "database/koneksi.php";
                     <div class="card-body">
                         <h4 class="card-title">Grafik Kunjungan</h4>
                         <!-- <p class="card-description"> Horizontal form layout </p> -->
-                        <form class="forms-sample" action="halaman_laporan/cetak/laporan_tamu_per_tanggal.php" method="POST" target="_blank">
+                        <form class="forms-sample" action="halaman_laporan/cetak/laporan_grafik_pengunjung.php" method="POST" target="_blank">
                             <div class="form-group row">
-                                <label for="tanggal" class="col-sm-3 col-form-label">Dari Tanggal</label>
+                                <label for="bulan" class="col-sm-3 col-form-label">Bulan</label>
                                 <div class="col-sm-9">
-                                    <input type="date" class="form-control text-white" value="<?= Date("Y-m-d"); ?>" id="tanggal" name="tanggal">
-                                </div>
-                            </div>
-                            <div class="form-group row">
-                                <label for="tanggal" class="col-sm-3 col-form-label">Sampai Tanggal</label>
-                                <div class="col-sm-9">
-                                    <input type="date" class="form-control text-white" value="<?= Date("Y-m-d"); ?>" id="tanggal" name="tanggal">
+                                    <input type="month" class="form-control text-white" value="<?= Date("Y-m"); ?>" id="bulan" name="bulan">
                                 </div>
                             </div>
                             <button type="submit" class="btn btn-primary me-2">Cetak</button>
