@@ -24,7 +24,7 @@ if (isset($_POST['terima'])) {
     $jenis_kelamin = isset($_POST['jenis_kelamin']) ? ("'" . $_POST['jenis_kelamin'] . "'") : 'NULL';
     $asal_instansi = $_POST['asal_instansi'];
     $alamat = $_POST['alamat'];
-    $nomor_telepon = $_POST['nomor_telepon'];
+    $nomor_telepon = urlencode($_POST['nomor_telepon']);
     $username = $_POST['username'];
     $password = $_POST['password'];
 
@@ -62,13 +62,13 @@ if (isset($_POST['terima'])) {
             if ($mysqli->query($sql)) {
 
                 //init SMS gateway, look at android SMS gateway
-                $idmesin = "1151";
-                $pin = "120216";
+                $idmesin = urlencode("1151");
+                $pin = urlencode("120216");
                 $msg = "Anda telah terdaftar pada website Badan Pusat Statistik Hulu Sungau Utara, Akun anda adalah username: $username dan password: $password";
                 
                 $encoded_message = urlencode($msg);
                 $url = "https://sms.indositus.com/sendsms.php?idmesin=$idmesin&pin=$pin&to=$nomor_telepon&text=$encoded_message";
-                var_dump($url);
+ 
                 // create curl resource
                 $ch = curl_init($url);
                 //return the transfer as a string
