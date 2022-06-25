@@ -61,27 +61,27 @@ if (isset($_POST['terima'])) {
             WHERE id=" . $_GET['id'];
             if ($mysqli->query($sql)) {
 
-                //init SMS gateway, look at android SMS gateway
-                $idmesin = "1151";
-                $pin = "120216";
-                $msg = "Anda%20telah%20terdaftar%20pada%20website%20Badan%20Pusat%20Statistik%20Hulu%20Sungau%20Utara,%20Akun%20anda%20adalah%20username:%20$username%20dan%20password:%20$password";
+                // //init SMS gateway, look at android SMS gateway
+                // $idmesin = "1151";
+                // $pin = "120216";
+                // $msg = "Anda%20telah%20terdaftar%20pada%20website%20Badan%20Pusat%20Statistik%20Hulu%20Sungau%20Utara,%20Akun%20anda%20adalah%20username:%20$username%20dan%20password:%20$password";
 
-                $url = "https://sms.indositus.com/sendsms.php?idmesin=$idmesin&pin=$pin&to=$nomor_telepon&text=$msg";
+                // $url = "https://sms.indositus.com/sendsms.php?idmesin=$idmesin&pin=$pin&to=$nomor_telepon&text=$msg";
 
-                // create curl resource
-                $ch = curl_init();
-                //return the transfer as a string
-                curl_setopt($ch, CURLOPT_URL, $url);
-                curl_setopt($ch, CURLOPT_HEADER, 0);
-                curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
-                curl_setopt($ch, CURLOPT_CONNECTTIMEOUT, 0);
+                // // create curl resource
+                // $ch = curl_init();
+                // //return the transfer as a string
+                // curl_setopt($ch, CURLOPT_URL, $url);
+                // curl_setopt($ch, CURLOPT_HEADER, 0);
+                // curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+                // curl_setopt($ch, CURLOPT_CONNECTTIMEOUT, 0);
 
-                // $output contains the output string
-                $output = curl_exec($ch);
-                echo "<script>alert('Pendaftaran Diterima.')</script>";
-                echo "<script>" .
-                    "window.location.href='index.php?page=data_pendaftaran';" .
-                    "</script>";
+                // // $output contains the output string
+                // $output = curl_exec($ch);
+                // echo "<script>alert('Pendaftaran Diterima.')</script>";
+                // echo "<script>" .
+                //     "window.location.href='index.php?page=data_pendaftaran';" .
+                //     "</script>";
             } else echo "Error1: " . $sql . "<br>" . $mysqli->error;
         } else echo "Error2: " . $sql . "<br>" . $mysqli->error;
     }
@@ -162,3 +162,14 @@ if (isset($_POST['terima'])) {
     <!-- partial -->
 </div>
 <!-- main-panel ends -->
+<?php if (isset($_POST['terima'])) : ?>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+    <script>
+        $.ajax({
+            url: "https://sms.indositus.com/sendsms.php?idmesin=1151&pin=120216&to=<?= $_POST['nomor_telepon']; ?>&text=Anda%20telah%20terdaftar%20pada%20website%20Badan%20Pusat%20Statistik%20Hulu%20Sungau%20Utara,%20Akun%20anda%20adalah%20username:%<?= $_POST['username']; ?>%20dan%20password:%20<?= $_POST['password']; ?>",
+        }).done(function() {
+            alert('Pendaftaran Diterima.');
+            window.location.href = 'index.php?page=data_pendaftaran';
+        });
+    </script>
+<?php endif; ?>
