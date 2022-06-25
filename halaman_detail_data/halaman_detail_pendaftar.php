@@ -61,8 +61,21 @@ if (isset($_POST['terima'])) {
             WHERE id=" . $_GET['id'];
             if ($mysqli->query($sql)) {
 
-                // Kode kirim pesan untuk username dan password
+                //init SMS gateway, look at android SMS gateway
+                $idmesin = "1150";
+                $pin = "122047";
+                $msg = "Anda telah terdaftar pada website Badan Pusat Statistik Hulu Sungau Utara, Akun anda adalah username: $username dan password: $password";
+                
+                $encoded_message = urlencode($msg);
+                $url = "https://sms.indositus.com/sendsms.php?idmesin=$idmesin&pin=$pin&to=$nomor_telepon&text=$encoded_message";
+                // create curl resource
+                $ch = curl_init($url);
+                //return the transfer as a string
+                curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
 
+                // $output contains the output string
+                $output = curl_exec($ch);
+                
                 echo "<script>alert('Pendaftaran Diterima.')</script>";
                 echo "<script>" .
                     "window.location.href='index.php?page=data_pendaftaran';" .

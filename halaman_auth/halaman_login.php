@@ -139,7 +139,11 @@ if (isset($_POST['submit'])) {
 <body>
     <div class="wrapper">
         <div class="logo"> <img src="../logo.png" alt=""> </div>
-        <div class="text-center mt-4 name" style="text-align: center; margin-top: 16px;"> BPS HSU </div>
+        <div class="text-center mt-4 name" style="text-align: center; margin-top: 16px;">
+            <h3>Selamat Datang</h3>
+            <h5>Badan Pusat Statistik</h5>
+            <h5>Hulu Sungai Utara</h5>
+        </div>
         <form method="POST" class="p-3 mt-3" style="margin-top: 10px;">
             <div class="form-field d-flex align-items-center">
                 <span class="far fa-user"></span>
