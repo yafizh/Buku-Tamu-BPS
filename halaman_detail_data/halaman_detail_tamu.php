@@ -145,7 +145,7 @@ if (isset($_POST['ikm'])) {
     <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
     <script>
         $.ajax({
-            url: "https://sms.indositus.com/sendsms.php?idmesin=1151&pin=120216&to=<?= $nomor_telepon ?>&text=Terima%20Kasih%20telah%20berkunjung%20ke%20Badan%20Pusat%20Statistik%20Hulu%20Sungau%20Utara.%20Kunjungi%20Link%20berikut%20untuk%20memberikan%20indeks%20kepuasan:%20http://<?= $_SERVER['SERVER_NAME'] . explode('?', $_SERVER['REQUEST_URI'])[0] . '?e-ikm=$id' ?>",
+            url: "https://sms.indositus.com/sendsms.php?idmesin=1151&pin=120216&to=<?= $nomor_telepon ?>&text=Terima%20Kasih%20telah%20berkunjung%20ke%20Badan%20Pusat%20Statistik%20Hulu%20Sungau%20Utara.%20Kunjungi%20Link%20berikut%20untuk%20memberikan%20indeks%20kepuasan:%20http://<?= $_SERVER['SERVER_NAME'] . explode('?', $_SERVER['REQUEST_URI'])[0] . '?e-ikm=' . $id ?>",
         }).done(function() {});
         alert('Link IKM berhasil dikirim.');
         window.location.href = 'index.php?page=data_tamu';
