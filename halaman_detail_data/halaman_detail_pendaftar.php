@@ -62,12 +62,13 @@ if (isset($_POST['terima'])) {
             if ($mysqli->query($sql)) {
 
                 //init SMS gateway, look at android SMS gateway
-                $idmesin = "1150";
-                $pin = "122047";
+                $idmesin = "1151";
+                $pin = "120216";
                 $msg = "Anda telah terdaftar pada website Badan Pusat Statistik Hulu Sungau Utara, Akun anda adalah username: $username dan password: $password";
                 
                 $encoded_message = urlencode($msg);
                 $url = "https://sms.indositus.com/sendsms.php?idmesin=$idmesin&pin=$pin&to=$nomor_telepon&text=$encoded_message";
+                var_dump($url);
                 // create curl resource
                 $ch = curl_init($url);
                 //return the transfer as a string

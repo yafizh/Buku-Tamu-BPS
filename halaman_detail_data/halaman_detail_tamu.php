@@ -36,8 +36,8 @@ if (isset($_POST['ikm'])) {
     $id = $_POST['id'];
     $nomor_telepon = $_POST['nomor_telepon'];
     //init SMS gateway, look at android SMS gateway
-    $idmesin = "1150";
-    $pin = "122047";
+    $idmesin = "1151";
+    $pin = "120216";
     $msg = "Terima Kasih telah berkunjung ke Badan Pusat Statistik Hulu Sungau Utara. Kunjungi Link berikut untuk memberikan indeks kepuasan: " . "http://" . $_SERVER['SERVER_NAME'] . explode('?', $_SERVER['REQUEST_URI'])[0] . "?e-ikm=$id";
 
     $encoded_message = urlencode($msg);
