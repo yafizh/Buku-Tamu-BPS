@@ -32,28 +32,6 @@ if (isset($_POST['terima'])) {
     } else echo "Error: " . $sql . "<br>" . $mysqli->error;
 }
 
-if (isset($_POST['ikm'])) {
-    $id = $_POST['id'];
-    $nomor_telepon = $_POST['nomor_telepon'];
-    //init SMS gateway, look at android SMS gateway
-    $idmesin = "1151";
-    $pin = "120216";
-    $msg = "Terima%20Kasih%20telah%20berkunjung%20ke%20Badan%20Pusat%20Statistik%20Hulu%20Sungau%20Utara.%20Kunjungi%20Link%20berikut%20untuk%20memberikan%20indeks%20kepuasan:%20" . "http://" . $_SERVER['SERVER_NAME'] . explode('?', $_SERVER['REQUEST_URI'])[0] . "?e-ikm=$id";
-    $url = "https://sms.indositus.com/sendsms.php?idmesin=$idmesin&pin=$pin&to=$nomor_telepon&text=$msg";
-    // create curl resource
-    $ch = curl_init($url);
-    //return the transfer as a string
-    curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
-
-    // $output contains the output string
-    $output = curl_exec($ch);
-    echo "<script>alert('Link IKM berhasil dikirim.')</script>";
-    echo "<script>" .
-        "window.location.href='index.php?page=data_tamu';" .
-        "</script>";
-}
-
-
 ?>
 <div class="main-panel">
     <div class="content-wrapper">
@@ -157,3 +135,22 @@ if (isset($_POST['ikm'])) {
     <!-- partial -->
 </div>
 <!-- main-panel ends -->
+<?php
+if (isset($_POST['ikm'])) {
+    $id = $_POST['id'];
+    $nomor_telepon = $_POST['nomor_telepon'];
+
+?>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+    <script>
+        $.ajax({
+            url: "https://sms.indositus.com/sendsms.php?idmesin=1151&pin=120216&to=<?= $nomor_telepon ?>&text=Terima%20Kasih%20telah%20berkunjung%20ke%20Badan%20Pusat%20Statistik%20Hulu%20Sungau%20Utara.%20Kunjungi%20Link%20berikut%20untuk%20memberikan%20indeks%20kepuasan:%20http://<?= $_SERVER['SERVER_NAME'] . explode('?', $_SERVER['REQUEST_URI'])[0] . '?e-ikm=$id' ?>",
+        }).done(function() {});
+        alert('Link IKM berhasil dikirim.');
+        window.location.href = 'index.php?page=data_tamu';
+    </script>
+<?php
+}
+
+?>

@@ -8,32 +8,7 @@ if (isset($_GET['id'])) {
     $row = $result->fetch_assoc();
 }
 
-if (isset($_POST['submit'])) {
-    $username = $_POST['username'];
-    $password = $_POST['password'];
-    $nomor_telepon = $_POST['nomor_telepon'];
 
-    $sql = "UPDATE tabel_tamu SET status='AKTIF' WHERE id=" . $_GET['id'];
-    if ($mysqli->query($sql)) {
-        //init SMS gateway, look at android SMS gateway
-        $idmesin = "1151";
-        $pin = "120216";
-        $msg = "Pengajuan%20Lupa%20Password%20Anda%20telah%20diterima%20pada%20website%20Badan%20Pusat%20Statistik%20Hulu%20Sungau%20Utara,%20Akun%20anda%20adalah%20username:%20$username%20dan%20password:%20$password";
-        $url = "https://sms.indositus.com/sendsms.php?idmesin=$idmesin&pin=$pin&to=$nomor_telepon&text=$msg";
-        // create curl resource
-        $ch = curl_init($url);
-        //return the transfer as a string
-        curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
-
-        // $output contains the output string
-        $output = curl_exec($ch);
-
-        echo "<script>alert('Password berhasil dikirim.')</script>";
-        echo "<script>" .
-            "window.location.href='index.php?page=data_user_lupa_password';" .
-            "</script>";
-    }
-}
 ?>
 <div class="main-panel">
     <div class="content-wrapper">
@@ -101,3 +76,22 @@ if (isset($_POST['submit'])) {
     <!-- partial -->
 </div>
 <!-- main-panel ends -->
+<?php
+if (isset($_POST['submit'])) {
+    $username = $_POST['username'];
+    $password = $_POST['password'];
+    $nomor_telepon = $_POST['nomor_telepon'];
+
+    $sql = "UPDATE tabel_tamu SET status='AKTIF' WHERE id=" . $_GET['id'];
+    if ($mysqli->query($sql)) { ?>
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+        <script>
+            $.ajax({
+                url: "https://sms.indositus.com/sendsms.php?idmesin=1151&pin=120216&to=<?= $nomor_telepon ?>&text=Pengajuan%20Lupa%20Password%20Anda%20telah%20diterima%20pada%20website%20Badan%20Pusat%20Statistik%20Hulu%20Sungau%20Utara,%20Akun%20anda%20adalah%20username:%20<?= $username; ?>%20dan%20password:%20<?= $password; ?>",
+            }).done(function() {});
+            alert('Password berhasil dikirim.');
+            window.location.href = 'index.php?page=data_user_lupa_password';
+        </script>
+<?php   }
+}
+?>

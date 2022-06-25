@@ -38,7 +38,7 @@ if (isset($_POST['submit'])) {
 
         $sql .= "password='$password',
             status='TAMU'  
-        WHERE id=" . $id;
+        WHERE id=" . $row['id'];
 
         if ($mysqli->query($sql)) {
             $sql = "
