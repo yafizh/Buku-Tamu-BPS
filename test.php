@@ -1,26 +1,23 @@
-<?php
-$ch = curl_init();
-$headers  = [
-            'Authorization: Bearer EAAH7AmFltuMBAAXt5xYRhTbt1LrxHbACAFNqEl1v0M6JOYzOnRs3XLZCJqryjymSgdncPJrkzbIY3MpTnmUSPKOgE4FJj0sRyXMDstZB9fxPnky3Sululr63v78kILWpEP8o8UufKgjXkIZCZCahQEsheOzsgAt5BRZAVIxNr7qGZCYLLzVXNYuuQzyk89xZCv4AMGCA2JVUQZDZD',
-            'Content-Type: application/json',
-        ];
-$postData = [
-    'messaging_product' => 'whatsapp',
-    'to' => '62895348676674',
-    'type' => 'template',
-    'template' => [
-        'name' => 'hello_world',
-        'language' => [
-            'code' => 'en_US'
-        ],
-    ],
-];
-curl_setopt($ch, CURLOPT_URL,"https://graph.facebook.com/v13.0/62895348676674/messages");
-curl_setopt($ch, CURLOPT_POST, 1);
-curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
-curl_setopt($ch, CURLOPT_POSTFIELDS, json_encode($postData));           
-curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);
-$result     = curl_exec ($ch);
-$statusCode = curl_getinfo($ch, CURLINFO_HTTP_CODE);
-var_dump($result);
-var_dump($statusCode);
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+    <script>
+        $.ajax({
+            url: "https://sms.indositus.com/sendsms.php?idmesin=1151&pin=120216&to=0895348676674&text=Anda%20telah%20terdaftar%20pada%20website%20Badan%20Pusat%20Statistik%20Hulu%20Sungau%20Utara,%20Akun%20anda%20adalah%20username:%20yafiz%20dan%20password:%20yafiz",
+        }).done(function() {
+
+        });
+    </script>
+</body>
+
+</html>
