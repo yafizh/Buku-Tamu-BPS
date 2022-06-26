@@ -17,12 +17,12 @@ const BULAN_DALAM_INDONESIA = [
 ];
 
 
-$dari_tahun_bulan_tanggal = $_POST['tanggal'];
+$dari_tahun_bulan_tanggal = $_POST['dari_tanggal'];
 $dari_tanggal = explode('-', $dari_tahun_bulan_tanggal)[2];
 $dari_bulan = explode('-', $dari_tahun_bulan_tanggal)[1];
 $dari_tahun = explode('-', $dari_tahun_bulan_tanggal)[0];
 
-$sampai_tahun_bulan_tanggal = $_POST['tanggal'];
+$sampai_tahun_bulan_tanggal = $_POST['sampai_tanggal'];
 $sampai_tanggal = explode('-', $sampai_tahun_bulan_tanggal)[2];
 $sampai_bulan = explode('-', $sampai_tahun_bulan_tanggal)[1];
 $sampai_tahun = explode('-', $sampai_tahun_bulan_tanggal)[0];
@@ -79,7 +79,12 @@ $sampai_tahun = explode('-', $sampai_tahun_bulan_tanggal)[0];
             </div>
         </div>
         <div class="my-3" style="border-top: 2px solid black; margin-top:12px;"></div>
-        <h2 class="text-center">Laporan Pengajuan Kunjungan Tanggal <?= $dari_tanggal . ' ' . BULAN_DALAM_INDONESIA[$dari_bulan - 1] . ' ' . $dari_tahun; ?> - <?= $sampai_tanggal . ' ' . BULAN_DALAM_INDONESIA[$sampai_bulan - 1] . ' ' . $sampai_tahun; ?></h2>
+        <h2 class="text-center">Laporan Pengajuan Kunjungan</h2>
+        <?php if ($dari_tahun_bulan_tanggal === $sampai_tahun_bulan_tanggal) : ?>
+            <h2 class="text-center">Tanggal <?= $dari_tanggal . ' ' . BULAN_DALAM_INDONESIA[$dari_bulan - 1] . ' ' . $dari_tahun; ?></h2>
+        <?php else : ?>
+            <h2 class="text-center">Tanggal <?= $dari_tanggal . ' ' . BULAN_DALAM_INDONESIA[$dari_bulan - 1] . ' ' . $dari_tahun; ?> - <?= $sampai_tanggal . ' ' . BULAN_DALAM_INDONESIA[$sampai_bulan - 1] . ' ' . $sampai_tahun; ?></h2>
+        <?php endif; ?>
         <table>
             <thead>
                 <tr>

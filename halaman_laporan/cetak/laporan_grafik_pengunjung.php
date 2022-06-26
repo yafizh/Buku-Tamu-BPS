@@ -73,8 +73,9 @@ $tahun = explode('-', $tahun_bulan)[0];
             </div>
         </div>
         <div class="my-3" style="border-top: 2px solid black; margin-top:12px;"></div>
-        <h2 class="text-center">Laporan Grafik Pengunjung Bulan <?= BULAN_DALAM_INDONESIA[$bulan - 1] . ' ' . $tahun; ?></h2>
-        <canvas id="lineChart" style="height:250px"></canvas>
+        <h2 class="text-center">Laporan Grafik Pengunjung</h2>
+        <h2 class="text-center">Bulan <?= BULAN_DALAM_INDONESIA[$bulan - 1] . ' ' . $tahun; ?></h2>
+        <canvas id="lineChart" style="max-height:570px"></canvas>
         <div style="display: flex; justify-content: end;">
             <div style="text-align: center; margin-top: 20px; padding: 10px; width: 200px;">
                 <span>Amuntai, <?= Date('d') ?> <?= BULAN_DALAM_INDONESIA[Date('m') - 1] ?> <?= Date('Y') ?></span>
@@ -98,7 +99,7 @@ $tahun = explode('-', $tahun_bulan)[0];
     <script src="../../assets/js/settings.js"></script>
     <script src="../../assets/js/todolist.js"></script>
     <?php
-    $result = $mysqli->query("SELECT COUNT(nama) AS jumlah, DAY(tanggal) AS hari FROM view_tamu WHERE MONTH(tanggal) = '$bulan' AND YEAR(tanggal)='$tahun' ORDER BY tanggal");
+    $result = $mysqli->query("SELECT COUNT(nama) AS jumlah, DAY(tanggal) AS hari FROM view_tamu WHERE MONTH(tanggal) = '$bulan' AND YEAR(tanggal)='$tahun' GROUP BY tanggal");
     $db_data = $result->fetch_all(MYSQLI_ASSOC);
 
     $labels = [];
@@ -106,10 +107,10 @@ $tahun = explode('-', $tahun_bulan)[0];
     $temp = $tahun_bulan . '-01';
     do {
         $hari = (explode('-', $temp)[2]);
-        
+
         $check = false;
         foreach ($db_data as $index => $value) {
-            if($hari == $value['hari']){
+            if ($hari == $value['hari']) {
                 $data[] = $value['jumlah'];
                 unset($db_data[$index]);
                 $check = true;
@@ -117,10 +118,10 @@ $tahun = explode('-', $tahun_bulan)[0];
             }
         }
 
-        if(!$check) {
+        if (!$check) {
             $data[] = 0;
         }
-        
+
         $labels[] = $hari;
         $temp = date('Y-m-d', strtotime($temp . ' + 1 days'));
     } while ($temp != date('Y-m-d', strtotime(($tahun_bulan . '-01') . '1 months')));

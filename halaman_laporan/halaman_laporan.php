@@ -22,15 +22,15 @@ require_once "database/koneksi.php";
                         <!-- <p class="card-description"> Horizontal form layout </p> -->
                         <form class="forms-sample" action="halaman_laporan/cetak/laporan_tamu.php" method="POST" target="_blank">
                             <div class="form-group row">
-                                <label for="tanggal" class="col-sm-3 col-form-label">Dari Tanggal</label>
+                                <label for="dari_tanggal" class="col-sm-3 col-form-label">Dari Tanggal</label>
                                 <div class="col-sm-9">
-                                    <input type="date" class="form-control text-white" value="<?= Date("Y-m-d"); ?>" id="tanggal" name="tanggal">
+                                    <input type="date" class="form-control text-white" value="<?= Date("Y-m-d"); ?>" id="dari_tanggal" name="dari_tanggal">
                                 </div>
                             </div>
                             <div class="form-group row">
-                                <label for="tanggal" class="col-sm-3 col-form-label">Sampai Tanggal</label>
+                                <label for="sampai_tanggal" class="col-sm-3 col-form-label">Sampai Tanggal</label>
                                 <div class="col-sm-9">
-                                    <input type="date" class="form-control text-white" value="<?= Date("Y-m-d"); ?>" id="tanggal" name="tanggal">
+                                    <input type="date" class="form-control text-white" value="<?= Date("Y-m-d"); ?>" id="sampai_tanggal" name="sampai_tanggal">
                                 </div>
                             </div>
                             <button type="submit" class="btn btn-primary me-2">Cetak</button>
@@ -45,15 +45,15 @@ require_once "database/koneksi.php";
                         <!-- <p class="card-description"> Horizontal form layout </p> -->
                         <form class="forms-sample" action="halaman_laporan/cetak/laporan_pengajuan.php" method="POST" target="_blank">
                             <div class="form-group row">
-                                <label for="tanggal" class="col-sm-3 col-form-label">Dari Tanggal</label>
+                                <label for="dari_tanggal" class="col-sm-3 col-form-label">Dari Tanggal</label>
                                 <div class="col-sm-9">
-                                    <input type="date" class="form-control text-white" value="<?= Date("Y-m-d"); ?>" id="tanggal" name="tanggal">
+                                    <input type="date" class="form-control text-white" value="<?= Date("Y-m-d"); ?>" id="dari_tanggal" name="dari_tanggal">
                                 </div>
                             </div>
                             <div class="form-group row">
-                                <label for="tanggal" class="col-sm-3 col-form-label">Sampai Tanggal</label>
+                                <label for="sampai_tanggal" class="col-sm-3 col-form-label">Sampai Tanggal</label>
                                 <div class="col-sm-9">
-                                    <input type="date" class="form-control text-white" value="<?= Date("Y-m-d"); ?>" id="tanggal" name="tanggal">
+                                    <input type="date" class="form-control text-white" value="<?= Date("Y-m-d"); ?>" id="sampai_tanggal" name="sampai_tanggal">
                                 </div>
                             </div>
                             <button type="submit" class="btn btn-primary me-2">Cetak</button>
@@ -104,15 +104,15 @@ require_once "database/koneksi.php";
                         <!-- <p class="card-description"> Data Divisi </p> -->
                         <form class="forms-sample" action="halaman_laporan/cetak/laporan_pendaftaran_akun.php" method="POST" target="_blank">
                             <div class="form-group row">
-                                <label for="tanggal" class="col-sm-3 col-form-label">Dari Tanggal</label>
+                                <label for="dari_tanggal" class="col-sm-3 col-form-label">Dari Tanggal</label>
                                 <div class="col-sm-9">
-                                    <input type="date" class="form-control text-white" value="<?= Date("Y-m-d"); ?>" id="tanggal" name="tanggal">
+                                    <input type="date" class="form-control text-white" value="<?= Date("Y-m-d"); ?>" id="dari_tanggal" name="dari_tanggal">
                                 </div>
                             </div>
                             <div class="form-group row">
-                                <label for="tanggal" class="col-sm-3 col-form-label">Sampai Tanggal</label>
+                                <label for="sampai_tanggal" class="col-sm-3 col-form-label">Sampai Tanggal</label>
                                 <div class="col-sm-9">
-                                    <input type="date" class="form-control text-white" value="<?= Date("Y-m-d"); ?>" id="tanggal" name="tanggal">
+                                    <input type="date" class="form-control text-white" value="<?= Date("Y-m-d"); ?>" id="sampai_tanggal" name="sampai_tanggal">
                                 </div>
                             </div>
                             <button type="submit" class="btn btn-primary me-2">Cetak</button>
@@ -127,15 +127,15 @@ require_once "database/koneksi.php";
                         <!-- <p class="card-description"> Data IKM </p> -->
                         <form class="forms-sample" action="halaman_laporan/cetak/laporan_ikm.php" method="POST" target="_blank">
                             <div class="form-group row">
-                                <label for="tanggal" class="col-sm-3 col-form-label">Dari Tanggal</label>
+                                <label for="dari_tanggal" class="col-sm-3 col-form-label">Dari Tanggal</label>
                                 <div class="col-sm-9">
-                                    <input type="date" class="form-control text-white" value="<?= Date("Y-m-d"); ?>" id="tanggal" name="tanggal">
+                                    <input type="date" class="form-control text-white" value="<?= Date("Y-m-d"); ?>" id="dari_tanggal" name="dari_tanggal">
                                 </div>
                             </div>
                             <div class="form-group row">
-                                <label for="tanggal" class="col-sm-3 col-form-label">Sampai Tanggal</label>
+                                <label for="sampai_tanggal" class="col-sm-3 col-form-label">Sampai Tanggal</label>
                                 <div class="col-sm-9">
-                                    <input type="date" class="form-control text-white" value="<?= Date("Y-m-d"); ?>" id="tanggal" name="tanggal">
+                                    <input type="date" class="form-control text-white" value="<?= Date("Y-m-d"); ?>" id="sampai_tanggal" name="sampai_tanggal">
                                 </div>
                             </div>
                             <button type="submit" class="btn btn-primary me-2">Cetak</button>
