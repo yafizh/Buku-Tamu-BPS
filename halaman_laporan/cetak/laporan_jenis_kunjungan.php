@@ -76,8 +76,8 @@ $tahun = $_POST['tahun'];
             <thead>
                 <tr>
                     <th>Bulan</th>
-                    <th>Offline</th>
                     <th>Online</th>
+                    <th>Offline</th>
                 </tr>
             </thead>
             <tbody>
@@ -87,29 +87,29 @@ $tahun = $_POST['tahun'];
                 ?>
                 <?php if ($result->num_rows) : ?>
                     <?php $data = $result->fetch_all(MYSQLI_ASSOC); ?>
-                    <?php for ($i = 0; $i < 12; $i++) : ?>
+                    <?php for ($i = 0; $i < 6; $i++) : ?>
                         <tr>
                             <td class="text-center"><?= BULAN_DALAM_INDONESIA[$i]; ?></td>
-                            <?php $exsist_umum = false; ?>
-                            <?php $exsist_instansi = false; ?>
+                            <?php $exsist_online = false; ?>
+                            <?php $exsist_offline = false; ?>
                             <?php foreach ($data as $datum) : ?>
-                                <?php if ($datum['bulan'] == ($i + 1) && $datum['jenis_pertemuan'] == 'OFFLINE') : ?>
-                                    <td class="text-center"><?= $datum['jumlah']; ?></td>
-                                    <?php $exsist_umum = true; ?>
-                                <?php endif; ?>
                                 <?php if ($datum['bulan'] == ($i + 1) && $datum['jenis_pertemuan'] == 'ONLINE') : ?>
-                                    <?php if (!$exsist_umum) : ?>
+                                    <td class="text-center"><?= $datum['jumlah']; ?></td>
+                                    <?php $exsist_online = true; ?>
+                                <?php endif; ?>
+                                <?php if ($datum['bulan'] == ($i + 1) && $datum['jenis_pertemuan'] == 'OFFLINE') : ?>
+                                    <?php if (!$exsist_online) : ?>
                                         <td class="text-center"><?= 0; ?></td>
-                                        <?php $exsist_umum = true; ?>
+                                        <?php $exsist_online = true; ?>
                                     <?php endif; ?>
                                     <td class="text-center"><?= $datum['jumlah']; ?></td>
-                                    <?php $exsist_instansi = true; ?>
+                                    <?php $exsist_offline = true; ?>
                                 <?php endif; ?>
                             <?php endforeach; ?>
-                            <?php if (!$exsist_umum) : ?>
+                            <?php if (!$exsist_online) : ?>
                                 <td class="text-center"><?= 0; ?></td>
                             <?php endif; ?>
-                            <?php if (!$exsist_instansi) : ?>
+                            <?php if (!$exsist_offline) : ?>
                                 <td class="text-center"><?= 0; ?></td>
                             <?php endif; ?>
                         </tr>

@@ -159,6 +159,29 @@ CREATE TABLE `tabel_ikm`(
     PRIMARY KEY(id)
 );
 
+INSERT INTO `tabel_ikm` (
+    `nilai` 
+) VALUES
+(5),
+(5),
+(5),
+(3),
+(2),
+(4),
+(1),
+(2),
+(5),
+(5),
+(5),
+(2),
+(3),
+(4),
+(3),
+(4),
+(5),
+(4),
+(4);
+
 CREATE TABLE `tabel_pengajuan` (
     id INT NOT NULL AUTO_INCREMENT,
     id_pegawai INT NOT NULL,
@@ -185,25 +208,26 @@ INSERT INTO `tabel_pengajuan` (
     `jenis_pertemuan`, 
     `status` 
 ) VALUES
-(4, 1, NULL, CURRENT_DATE(), CURRENT_TIME(), 'Meeting', 'ONLINE', 'PENGAJUAN'),
-(4, 2, NULL, CURRENT_DATE(), CURRENT_TIME(), 'Meeting', 'ONLINE', 'SELESAI'),
-(4, 3, NULL, CURRENT_DATE(), CURRENT_TIME(), 'Meeting', 'ONLINE', 'SELESAI'),
-(4, 4, NULL, CURRENT_DATE(), CURRENT_TIME(), 'Meeting', 'ONLINE', 'SELESAI'),
-(4, 5, NULL, CURRENT_DATE(), CURRENT_TIME(), 'Meeting', 'ONLINE', 'SELESAI'),
-(4, 6, NULL, CURRENT_DATE(), CURRENT_TIME(), 'Meeting', 'ONLINE', 'SELESAI'),
-(4, 7, NULL, CURRENT_DATE(), CURRENT_TIME(), 'Meeting', 'ONLINE', 'SELESAI'),
-(4, 8, NULL, CURRENT_DATE(), CURRENT_TIME(), 'Meeting', 'ONLINE', 'SELESAI'),
-(4, 9, NULL, CURRENT_DATE(), CURRENT_TIME(), 'Meeting', 'ONLINE', 'SELESAI'),
-(4, 10, NULL, CURRENT_DATE(), CURRENT_TIME(), 'Meeting', 'ONLINE', 'SELESAI'),
-(4, 12, NULL, CURRENT_DATE(), CURRENT_TIME(), 'Meeting', 'ONLINE', 'SELESAI'),
-(4, 13, NULL, CURRENT_DATE(), CURRENT_TIME(), 'Meeting', 'ONLINE', 'SELESAI'),
-(4, 14, NULL, CURRENT_DATE(), CURRENT_TIME(), 'Meeting', 'ONLINE', 'SELESAI'),
-(4, 15, NULL, CURRENT_DATE(), CURRENT_TIME(), 'Meeting', 'ONLINE', 'SELESAI'),
-(4, 16, NULL, CURRENT_DATE(), CURRENT_TIME(), 'Meeting', 'ONLINE', 'SELESAI'),
-(4, 17, NULL, CURRENT_DATE(), CURRENT_TIME(), 'Meeting', 'ONLINE', 'SELESAI'),
-(4, 18, NULL, CURRENT_DATE(), CURRENT_TIME(), 'Meeting', 'ONLINE', 'SELESAI'),
-(4, 19, NULL, CURRENT_DATE(), CURRENT_TIME(), 'Meeting', 'ONLINE', 'SELESAI'),
-(4, 20, NULL, CURRENT_DATE(), CURRENT_TIME(), 'Meeting', 'ONLINE', 'SELESAI');
+(4, 1, 1, '2022-01-04', '08:01:51', 'Meeting', 'ONLINE', 'PENGAJUAN'),
+(4, 2, 2, '2022-01-06', '09:02:52', 'Meeting', 'ONLINE', 'SELESAI'),
+(4, 3, 3, '2022-01-09', '10:03:53', 'Meeting', 'ONLINE', 'SELESAI'),
+(4, 4, 4, '2022-01-12', '13:04:54', 'Meeting', 'ONLINE', 'SELESAI'),
+(4, 5, 5, '2022-01-14', '14:05:50', 'Meeting', 'ONLINE', 'SELESAI'),
+(4, 6, 6, '2022-01-17', '11:06:51', 'Meeting', 'ONLINE', 'SELESAI'),
+(4, 7, 7, '2022-01-19', '09:07:52', 'Meeting', 'ONLINE', 'SELESAI'),
+(4, 8, 8, '2022-02-04', '10:08:56', 'Meeting', 'ONLINE', 'SELESAI'),
+(4, 9, 9, '2022-02-05', '14:09:57', 'Meeting', 'ONLINE', 'SELESAI'),
+(4, 10, 10,'2022-02-07', '11:00:58', 'Meeting', 'ONLINE', 'SELESAI'),
+(4, 11, 11,'2022-02-09', '13:01:59', 'Meeting', 'ONLINE', 'SELESAI'),
+(4, 12, 12,'2022-02-09', '13:01:59', 'Meeting', 'ONLINE', 'SELESAI'),
+(4, 13, 13,'2022-02-05', '10:02:52', 'Meeting', 'ONLINE', 'SELESAI'),
+(4, 14, 14,'2022-03-01' , '13:03:53', 'Meeting', 'ONLINE', 'SELESAI'),
+(4, 15, 15,'2022-03-04' , '14:04:54', 'Meeting', 'ONLINE', 'SELESAI'),
+(4, 16, 16,'2022-04-05' , '09:05:55', 'Meeting', 'ONLINE', 'SELESAI'),
+(4, 17, 17,'2022-04-08' , '08:06:56', 'Meeting', 'ONLINE', 'SELESAI'),
+(4, 18, 18,'2022-05-05' , '10:07:57', 'Meeting', 'ONLINE', 'SELESAI'),
+(4, 19, 19,'2022-05-05' , '11:08:58', 'Meeting', 'ONLINE', 'SELESAI'),
+(4, 20, 20,'2022-06-05' , '14:09:59', 'Meeting', 'ONLINE', 'SELESAI');
 
 
 CREATE TABLE `tabel_kunjungan` (
