@@ -28,7 +28,25 @@ INSERT INTO `tabel_user` (
 ('admin','admin','admin','ADMIN', NULL),
 ('Andry','andry','andry','PETUGAS', NULL),
 ('Nursahid Arya Suyudi','arya','arya','TAMU', NULL),
-('Rania Nor Aida','rania','rania','TAMU', NULL);
+('Rania Nor Aida','rania','rania','TAMU', NULL),
+('Yuval Noah Harari','yuval','yuval','TAMU', NULL),
+('Mark Manson','mark','mark','TAMU', NULL),
+('Rustam Agus','rustam','rustam','TAMU', NULL),
+('Budi Darma','budi','budi','TAMU', NULL),
+('Hidayat Widya','hidayat','hidayat','TAMU', NULL),
+('Faisal Imam','faisal','faisal','TAMU', NULL),
+('Jamaluddin Firdaus','jamaluddin','jamaluddin','TAMU', NULL),
+('Wati Nur','wati','wati','TAMU', NULL),
+('Aminah Jamaluddin','aminah','aminah','TAMU', NULL),
+('Putri Latifah','putri','putri','TAMU', NULL),
+('Aditya Rahma','aditya','aditya','TAMU', NULL),
+('Buana Jamaluddin','buana','buana','TAMU', NULL),
+('Abdullah Burhan','abdullah','abdullah','TAMU', NULL),
+('Krisna Sulaiman','krisna','krisna','TAMU', NULL),
+('Zakaria Jamilah','zakaria','zakaria','TAMU', NULL),
+('Tri Yuda','tri','tri','TAMU', NULL),
+('Nirmala Aditya','nirmala','nirmala','TAMU', NULL),
+('Aisyah Wira','aisyah','aisyah','TAMU', NULL);
 
 
 CREATE TABLE `tabel_tamu` (
@@ -53,8 +71,26 @@ INSERT INTO `tabel_tamu` (
     alamat, 
     status  
 ) VALUES 
-(3, 'Nursahid Arya Suyudi', '086748665478', 'L', 'Uniska', 'Martapura','AKTIF'),
-(4, 'Rania Nor Aida', '086748665479', 'P', 'Uniska', 'Martapura','AKTIF');
+(3, 'Nursahid Arya Suyudi', '0851898890', 'L', 'UNISKA', 'Banjarbaru','AKTIF'),
+(4, 'Rania Nor Aida', '0826603078', 'P', 'UNISKA', 'Banjarbaru','AKTIF'),
+(5, 'Yuval Noah Harari', '08750801323', 'L', 'Snarky Square', 'Amerika','AKTIF'),
+(6, 'Mark Manson', '086125847637', 'L', 'Snarky Square', 'Amerika','AKTIF'),
+(7, 'Rustam Agus', '08914581146', 'L', 'UNLAM', 'Banjarmasin','AKTIF'),
+(8, 'Budi Darma', '08595775305', 'L', 'UNLAM', 'Banjarmasin','AKTIF'),
+(9, 'Hidayat Widya', '0892556772338', 'L', 'STIMIK', 'Banjarmasin','AKTIF'),
+(10, 'Faisal Imam', '0880566688', 'L', 'STIMIK', 'Banjarmasin','AKTIF'),
+(11, 'Jamaluddin Firdaus', '0832800013778', 'L', 'Universitas Indonesia', 'Jakarta','AKTIF'),
+(12, 'Wati Nur', '081811885506', 'P', 'Universitas Indonesia', 'Jakarta','AKTIF'),
+(13, 'Aminah Jamaluddin', '0858091504175', 'P', 'ITB', 'Bandung','AKTIF'),
+(14, 'Putri Latifah', '082998727680', 'P', 'ITB', 'Bandung','AKTIF'),
+(15, 'Aditya Rahma', '08816947480', 'L', 'UGM', 'Yogyakarta','AKTIF'),
+(16, 'Buana Jamaluddin', '089838015337', 'L', 'UGM', 'Yogyakarta','AKTIF'),
+(17, 'Abdullah Burhan', '0886245354614', 'L', 'BPTP', 'Jakarta','AKTIF'),
+(18, 'Krisna Sulaiman', '0871124394760', 'L', 'BPTP', 'Jakarta','AKTIF'),
+(19, 'Zakaria Jamilah', '0897646254228', 'P', 'SMK 1 Martapura', 'Martapura','AKTIF'),
+(20, 'Tri Yuda', '08704173011', 'L', 'SMK 1 Martapura', 'Martapura','AKTIF'),
+(21, 'Nirmala Aditya', '082704111439', 'L', 'SMADA', 'Banjarbaru','AKTIF'),
+(22, 'Aisyah Wira', '0895754660317', 'P', 'SMADA', 'Banjarbaru','AKTIF');
 
 CREATE TABLE `tabel_divisi` (
     id INT NOT NULL AUTO_INCREMENT,
@@ -133,7 +169,7 @@ CREATE TABLE `tabel_pengajuan` (
     keperluan VARCHAR(255) NOT NULL,
     jenis_pertemuan ENUM('OFFLINE', 'ONLINE') NOT NULL,
     status ENUM('PENGAJUAN', 'DITOLAK', 'DITERIMA', 'SELESAI') NOT NULL,
-    keterangan TEXT,
+    keterangan TEXT NULL,
     PRIMARY KEY (id),
     FOREIGN KEY (id_pegawai) REFERENCES tabel_pegawai (id),
     FOREIGN KEY (id_tamu) REFERENCES tabel_tamu (id) ON DELETE CASCADE
@@ -147,11 +183,27 @@ INSERT INTO `tabel_pengajuan` (
     `waktu`, 
     `keperluan`, 
     `jenis_pertemuan`, 
-    `status`, 
-    `keterangan` 
+    `status` 
 ) VALUES
-(4, 1, NULL, CURRENT_DATE(), CURRENT_TIME(), 'Pengantaran Berkas', 'Offline', 'PENGAJUAN', ''),
-(4, 2, NULL, CURRENT_DATE(), CURRENT_TIME(), 'Pengantaran Berkas', 'Offline', 'DITERIMA', '');
+(4, 1, NULL, CURRENT_DATE(), CURRENT_TIME(), 'Meeting', 'ONLINE', 'PENGAJUAN'),
+(4, 2, NULL, CURRENT_DATE(), CURRENT_TIME(), 'Meeting', 'ONLINE', 'SELESAI'),
+(4, 3, NULL, CURRENT_DATE(), CURRENT_TIME(), 'Meeting', 'ONLINE', 'SELESAI'),
+(4, 4, NULL, CURRENT_DATE(), CURRENT_TIME(), 'Meeting', 'ONLINE', 'SELESAI'),
+(4, 5, NULL, CURRENT_DATE(), CURRENT_TIME(), 'Meeting', 'ONLINE', 'SELESAI'),
+(4, 6, NULL, CURRENT_DATE(), CURRENT_TIME(), 'Meeting', 'ONLINE', 'SELESAI'),
+(4, 7, NULL, CURRENT_DATE(), CURRENT_TIME(), 'Meeting', 'ONLINE', 'SELESAI'),
+(4, 8, NULL, CURRENT_DATE(), CURRENT_TIME(), 'Meeting', 'ONLINE', 'SELESAI'),
+(4, 9, NULL, CURRENT_DATE(), CURRENT_TIME(), 'Meeting', 'ONLINE', 'SELESAI'),
+(4, 10, NULL, CURRENT_DATE(), CURRENT_TIME(), 'Meeting', 'ONLINE', 'SELESAI'),
+(4, 12, NULL, CURRENT_DATE(), CURRENT_TIME(), 'Meeting', 'ONLINE', 'SELESAI'),
+(4, 13, NULL, CURRENT_DATE(), CURRENT_TIME(), 'Meeting', 'ONLINE', 'SELESAI'),
+(4, 14, NULL, CURRENT_DATE(), CURRENT_TIME(), 'Meeting', 'ONLINE', 'SELESAI'),
+(4, 15, NULL, CURRENT_DATE(), CURRENT_TIME(), 'Meeting', 'ONLINE', 'SELESAI'),
+(4, 16, NULL, CURRENT_DATE(), CURRENT_TIME(), 'Meeting', 'ONLINE', 'SELESAI'),
+(4, 17, NULL, CURRENT_DATE(), CURRENT_TIME(), 'Meeting', 'ONLINE', 'SELESAI'),
+(4, 18, NULL, CURRENT_DATE(), CURRENT_TIME(), 'Meeting', 'ONLINE', 'SELESAI'),
+(4, 19, NULL, CURRENT_DATE(), CURRENT_TIME(), 'Meeting', 'ONLINE', 'SELESAI'),
+(4, 20, NULL, CURRENT_DATE(), CURRENT_TIME(), 'Meeting', 'ONLINE', 'SELESAI');
 
 
 CREATE TABLE `tabel_kunjungan` (
