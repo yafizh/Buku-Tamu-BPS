@@ -101,7 +101,7 @@ $sampai_tahun = explode('-', $sampai_tahun_bulan_tanggal)[0];
             <tbody>
                 <?php
                 $no = 1;
-                $result = $mysqli->query("SELECT * FROM view_tamu WHERE tanggal BETWEEN '$dari_tahun_bulan_tanggal' AND '$dari_tahun_bulan_tanggal' ORDER BY id DESC");
+                $result = $mysqli->query("SELECT * FROM view_tamu WHERE tanggal BETWEEN '$dari_tahun_bulan_tanggal' AND '$sampai_tahun_bulan_tanggal' ORDER BY id DESC");
                 ?>
                 <?php if ($result->num_rows) : ?>
                     <?php while ($row = $result->fetch_assoc()) : ?>
