@@ -97,7 +97,7 @@ $sampai_tahun = explode('-', $sampai_tahun_bulan_tanggal)[0];
             <tbody>
                 <?php
                 $no = 1;
-                $result = $mysqli->query("SELECT * FROM tabel_tamu WHERE status='MENDAFTAR' ORDER BY id DESC");
+                $result = $mysqli->query("SELECT * FROM tabel_tamu WHERE status='AKTIF' AND mendaftar_sendiri=1 ORDER BY id DESC");
                 ?>
                 <?php if ($result->num_rows) : ?>
                     <?php while ($row = $result->fetch_assoc()) : ?>

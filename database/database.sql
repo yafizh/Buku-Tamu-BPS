@@ -58,6 +58,7 @@ CREATE TABLE `tabel_tamu` (
     asal_instansi VARCHAR(50) NOT NULL,
     alamat VARCHAR(255) NULL,
     status ENUM('AKTIF', 'MENDAFTAR', 'LUPA PASSWORD') NOT NULL,
+    mendaftar_sendiri TINYINT(1) NOT NULL DEFAULT 0,
     PRIMARY KEY (id),
     FOREIGN KEY (id_user) REFERENCES tabel_user (id)
 );

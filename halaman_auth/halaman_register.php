@@ -10,12 +10,14 @@ if (isset($_POST['submit'])) {
             nama,
             asal_instansi,
             nomor_telepon,
-            status  
+            status,
+            mendaftar_sendiri  
         ) VALUES (
             '$nama', 
             '$asal_instansi', 
             '$nomor_telepon',
-            'MENDAFTAR'  
+            'MENDAFTAR',
+            1   
         )";
     if ($mysqli->query($sql)) {
         echo "<script>alert('Pendaftara berhasil. Tunggu pesan balasan pada nomor telepon')</script>";
