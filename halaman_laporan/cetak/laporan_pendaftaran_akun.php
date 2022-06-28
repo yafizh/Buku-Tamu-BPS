@@ -99,7 +99,7 @@ $sampai_tahun = explode('-', $sampai_tahun_bulan_tanggal)[0];
             <tbody>
                 <?php
                 $no = 1;
-                $result = $mysqli->query("SELECT tabel_tamu.*, tabel_user.username, tabel_user.password FROM tabel_tamu INNER JOIN tabel_user ON tabel_tamu.id_user=tabel_user.id WHERE tabel_tamu.status='AKTIF' AND tabel_tamu.mendaftar_sendiri=1 AND DATE(tabel_tamu.tanggal_terdaftar) BETWEEN '$dari_tahun_bulan_tanggal' AND '$sampai_tahun_bulan_tanggal' ORDER BY id DESC");
+                $result = $mysqli->query("SELECT tabel_tamu.*, tabel_user.username, tabel_user.password FROM tabel_tamu INNER JOIN tabel_user ON tabel_tamu.id_user=tabel_user.id WHERE tabel_tamu.status='AKTIF' AND tabel_tamu.mendaftar_sendiri=1 AND (DATE(tabel_tamu.tanggal_terdaftar) >= '$dari_tahun_bulan_tanggal' AND DATE(tabel_tamu.tanggal_terdaftar) <= '$sampai_tahun_bulan_tanggal') ORDER BY id DESC");
                 ?>
                 <?php if ($result->num_rows) : ?>
                     <?php while ($row = $result->fetch_assoc()) : ?>

@@ -83,7 +83,7 @@ $sampai_tahun = explode('-', $sampai_tahun_bulan)[0];
         <?php else : ?>
             <h2 class="text-center">Bulan <?= BULAN_DALAM_INDONESIA[$dari_bulan - 1] . ' ' . $dari_tahun; ?> - <?= BULAN_DALAM_INDONESIA[$sampai_bulan - 1] . ' ' . $sampai_tahun; ?></h2>
         <?php endif; ?>
-        <canvas id="lineChart" style="max-height:570px"></canvas>
+        <canvas id="lineChart" style="max-height:470px"></canvas>
         <div style="display: flex; justify-content: end;">
             <div style="text-align: center; margin-top: 20px; padding: 10px; width: 200px;">
                 <span>Amuntai, <?= Date('d') ?> <?= BULAN_DALAM_INDONESIA[Date('m') - 1] ?> <?= Date('Y') ?></span>
@@ -198,29 +198,6 @@ $sampai_tahun = explode('-', $sampai_tahun_bulan)[0];
         };
 
         var options = {
-            // scales: {
-            //     yAxes: [{
-            //         ticks: {
-            //             beginAtZero: true
-            //         },
-            //         gridLines: {
-            //             color: "rgba(204, 204, 204,0.1)"
-            //         }
-            //     }],
-            //     xAxes: [{
-            //         gridLines: {
-            //             color: "rgba(204, 204, 204,0.1)"
-            //         }
-            //     }]
-            // },
-            // legend: {
-            //     display: false
-            // },
-            // elements: {
-            //     point: {
-            //         radius: 0
-            //     }
-            // }
             responsive: true,
             plugins: {
                 legend: {
