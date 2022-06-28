@@ -17,9 +17,13 @@ const BULAN_DALAM_INDONESIA = [
 ];
 
 
-$tahun_bulan = $_POST['bulan'];
-$bulan = explode('-', $tahun_bulan)[1];
-$tahun = explode('-', $tahun_bulan)[0];
+$dari_tahun_bulan = $_POST['dari_bulan'];
+$dari_bulan = explode('-', $dari_tahun_bulan)[1];
+$dari_tahun = explode('-', $dari_tahun_bulan)[0];
+
+$sampai_tahun_bulan = $_POST['sampai_bulan'];
+$sampai_bulan = explode('-', $sampai_tahun_bulan)[1];
+$sampai_tahun = explode('-', $sampai_tahun_bulan)[0];
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -74,7 +78,11 @@ $tahun = explode('-', $tahun_bulan)[0];
         </div>
         <div class="my-3" style="border-top: 2px solid black; margin-top:12px;"></div>
         <h2 class="text-center">Laporan Grafik Pengunjung</h2>
-        <h2 class="text-center">Bulan <?= BULAN_DALAM_INDONESIA[$bulan - 1] . ' ' . $tahun; ?></h2>
+        <?php if ($dari_tahun_bulan === $sampai_tahun_bulan) : ?>
+            <h2 class="text-center">Bulan <?= BULAN_DALAM_INDONESIA[$dari_bulan - 1] . ' ' . $dari_tahun; ?></h2>
+        <?php else : ?>
+            <h2 class="text-center">Bulan <?= BULAN_DALAM_INDONESIA[$dari_bulan - 1] . ' ' . $dari_tahun; ?> - <?= BULAN_DALAM_INDONESIA[$sampai_bulan - 1] . ' ' . $sampai_tahun; ?></h2>
+        <?php endif; ?>
         <canvas id="lineChart" style="max-height:570px"></canvas>
         <div style="display: flex; justify-content: end;">
             <div style="text-align: center; margin-top: 20px; padding: 10px; width: 200px;">
@@ -99,85 +107,128 @@ $tahun = explode('-', $tahun_bulan)[0];
     <script src="../../assets/js/settings.js"></script>
     <script src="../../assets/js/todolist.js"></script>
     <?php
-    $result = $mysqli->query("SELECT COUNT(nama) AS jumlah, DAY(tanggal) AS hari FROM view_tamu WHERE MONTH(tanggal) = '$bulan' AND YEAR(tanggal)='$tahun' GROUP BY tanggal");
-    $db_data = $result->fetch_all(MYSQLI_ASSOC);
+    $online = $mysqli->query("SELECT COUNT(nama) AS jumlah, MONTH(tanggal) AS bulan, YEAR(tanggal) AS tahun, jenis_pertemuan FROM  `view_tamu` WHERE jenis_pertemuan='ONLINE' AND (tanggal >= '$dari_tahun_bulan-01' AND tanggal <= '$sampai_tahun_bulan-31') GROUP BY MONTH(tanggal) ORDER BY bulan");
+    $db_data_online = $online->fetch_all(MYSQLI_ASSOC);
 
-    $labels = [];
-    $data = [];
-    $temp = $tahun_bulan . '-01';
+    $offline = $mysqli->query("SELECT COUNT(nama) AS jumlah, MONTH(tanggal) AS bulan, YEAR(tanggal) AS tahun, jenis_pertemuan FROM  `view_tamu` WHERE jenis_pertemuan='OFFLINE' AND (tanggal >= '$dari_tahun_bulan-01' AND tanggal <= '$sampai_tahun_bulan-31') GROUP BY MONTH(tanggal) ORDER BY bulan");
+    $db_data_offline = $offline->fetch_all(MYSQLI_ASSOC);
+
+    $labels_online = [];
+    $data_online = [];
+
+    $temp = $dari_tahun_bulan;
     do {
-        $hari = (explode('-', $temp)[2]);
+        $bulan = (explode('-', $temp)[1]);
+        $tahun = (explode('-', $temp)[0]);
 
         $check = false;
-        foreach ($db_data as $index => $value) {
-            if ($hari == $value['hari']) {
-                $data[] = $value['jumlah'];
-                unset($db_data[$index]);
+        foreach ($db_data_online as $index => $value) {
+            if ($bulan == $value['bulan'] && $tahun == $value['tahun']) {
+                $data_online[] = $value['jumlah'];
+                unset($db_data_online[$index]);
                 $check = true;
                 break;
             }
         }
 
         if (!$check) {
-            $data[] = 0;
+            $data_online[] = 0;
         }
 
-        $labels[] = $hari;
-        $temp = date('Y-m-d', strtotime($temp . ' + 1 days'));
-    } while ($temp != date('Y-m-d', strtotime(($tahun_bulan . '-01') . '1 months')));
+        $labels_online[] = BULAN_DALAM_INDONESIA[$bulan - 1];
+        $temp = date('Y-m', strtotime($temp . ' + 1 month'));
+    } while ($temp != date('Y-m', strtotime(($sampai_tahun_bulan) . '+1 months')));
+
+
+    $labels_offline = [];
+    $data_offline = [];
+
+    $temp = $dari_tahun_bulan;
+    do {
+        $bulan = (explode('-', $temp)[1]);
+        $tahun = (explode('-', $temp)[0]);
+
+        $check = false;
+        foreach ($db_data_offline as $index => $value) {
+            if ($bulan == $value['bulan'] && $tahun == $value['tahun']) {
+                $data_offline[] = $value['jumlah'];
+                unset($db_data_offline[$index]);
+                $check = true;
+                break;
+            }
+        }
+
+        if (!$check) {
+            $data_offline[] = 0;
+        }
+
+        $labels_offline[] = BULAN_DALAM_INDONESIA[$bulan - 1];
+        $temp = date('Y-m', strtotime($temp . ' + 1 month'));
+    } while ($temp != date('Y-m', strtotime(($sampai_tahun_bulan) . '+1 months')));
+
     ?>
     <script>
-        let labels = JSON.parse('<?= json_encode($labels); ?>');
-        let db_data = JSON.parse('<?= json_encode($data); ?>');
-        console.log(labels)
         var data = {
-            labels: labels,
+            labels: JSON.parse('<?= json_encode($labels_online); ?>'),
             datasets: [{
-                label: '# of Votes',
-                data: db_data,
-                backgroundColor: [
-                    'rgba(255, 99, 132, 0.2)',
-                    'rgba(54, 162, 235, 0.2)',
-                    'rgba(255, 206, 86, 0.2)',
-                    'rgba(75, 192, 192, 0.2)',
-                    'rgba(153, 102, 255, 0.2)',
-                    'rgba(255, 159, 64, 0.2)'
-                ],
-                borderColor: [
-                    'rgba(255,99,132,1)',
-                    'rgba(54, 162, 235, 1)',
-                    'rgba(255, 206, 86, 1)',
-                    'rgba(75, 192, 192, 1)',
-                    'rgba(153, 102, 255, 1)',
-                    'rgba(255, 159, 64, 1)'
-                ],
-                borderWidth: 1,
-                fill: false
-            }]
+                    label: 'Online',
+                    data: JSON.parse('<?= json_encode($data_online); ?>'),
+                    backgroundColor: [
+                        'rgba(0,0,255,1)',
+                    ],
+                    borderColor: [
+                        'rgba(0,0,255,1)',
+                    ],
+                    borderWidth: 1,
+                    fill: false
+                },
+                {
+                    label: 'Offline',
+                    data: JSON.parse('<?= json_encode($data_offline); ?>'),
+                    backgroundColor: [
+                        'rgba(255,0,0,1)',
+                    ],
+                    borderColor: [
+                        'rgba(255,0,0,1)',
+                    ],
+                    borderWidth: 1,
+                    fill: false
+                }
+            ]
         };
 
         var options = {
-            scales: {
-                yAxes: [{
-                    ticks: {
-                        beginAtZero: true
-                    },
-                    gridLines: {
-                        color: "rgba(204, 204, 204,0.1)"
-                    }
-                }],
-                xAxes: [{
-                    gridLines: {
-                        color: "rgba(204, 204, 204,0.1)"
-                    }
-                }]
-            },
-            legend: {
-                display: false
-            },
-            elements: {
-                point: {
-                    radius: 0
+            // scales: {
+            //     yAxes: [{
+            //         ticks: {
+            //             beginAtZero: true
+            //         },
+            //         gridLines: {
+            //             color: "rgba(204, 204, 204,0.1)"
+            //         }
+            //     }],
+            //     xAxes: [{
+            //         gridLines: {
+            //             color: "rgba(204, 204, 204,0.1)"
+            //         }
+            //     }]
+            // },
+            // legend: {
+            //     display: false
+            // },
+            // elements: {
+            //     point: {
+            //         radius: 0
+            //     }
+            // }
+            responsive: true,
+            plugins: {
+                legend: {
+                    position: 'top',
+                },
+                title: {
+                    display: true,
+                    text: 'Chart.js Line Chart'
                 }
             }
         };

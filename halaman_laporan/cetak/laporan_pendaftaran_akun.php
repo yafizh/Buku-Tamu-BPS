@@ -90,6 +90,8 @@ $sampai_tahun = explode('-', $sampai_tahun_bulan_tanggal)[0];
                 <tr>
                     <th class="text-center">No</th>
                     <th>Nama</th>
+                    <th>Username</th>
+                    <th>Password</th>
                     <th>Nomor Handphone</th>
                     <th>Asal Instansi</th>
                 </tr>
@@ -97,13 +99,15 @@ $sampai_tahun = explode('-', $sampai_tahun_bulan_tanggal)[0];
             <tbody>
                 <?php
                 $no = 1;
-                $result = $mysqli->query("SELECT * FROM tabel_tamu WHERE status='AKTIF' AND mendaftar_sendiri=1 ORDER BY id DESC");
+                $result = $mysqli->query("SELECT tabel_tamu.*, tabel_user.username, tabel_user.password FROM tabel_tamu INNER JOIN tabel_user ON tabel_tamu.id_user=tabel_user.id WHERE tabel_tamu.status='AKTIF' AND tabel_tamu.mendaftar_sendiri=1 AND DATE(tabel_tamu.tanggal_terdaftar) BETWEEN '$dari_tahun_bulan_tanggal' AND '$sampai_tahun_bulan_tanggal' ORDER BY id DESC");
                 ?>
                 <?php if ($result->num_rows) : ?>
                     <?php while ($row = $result->fetch_assoc()) : ?>
                         <tr>
                             <td class="text-center"><?= $no++; ?></td>
                             <td><?= $row['nama']; ?></td>
+                            <td class="text-center"><?= $row['username']; ?></td>
+                            <td class="text-center"><?= $row['password']; ?></td>
                             <td class="text-center"><?= $row['nomor_telepon']; ?></td>
                             <td class="text-center"><?= $row['asal_instansi']; ?></td>
                         </tr>

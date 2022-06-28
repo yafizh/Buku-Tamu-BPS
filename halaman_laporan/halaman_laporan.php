@@ -169,9 +169,15 @@ require_once "database/koneksi.php";
                         <!-- <p class="card-description"> Horizontal form layout </p> -->
                         <form class="forms-sample" action="halaman_laporan/cetak/laporan_grafik_pengunjung.php" method="POST" target="_blank">
                             <div class="form-group row">
-                                <label for="bulan" class="col-sm-3 col-form-label">Bulan</label>
+                                <label for="dari_bulan" class="col-sm-3 col-form-label">Dari Bulan</label>
                                 <div class="col-sm-9">
-                                    <input type="month" class="form-control text-white" value="<?= Date("Y-m"); ?>" id="bulan" name="bulan">
+                                    <input type="month" class="form-control text-white" value="<?= Date("Y-m"); ?>" id="dari_bulan" name="dari_bulan">
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label for="sampai_bulan" class="col-sm-3 col-form-label">Sampai Bulan</label>
+                                <div class="col-sm-9">
+                                    <input type="month" class="form-control text-white" value="<?= Date("Y-m"); ?>" id="sampai_bulan" name="sampai_bulan">
                                 </div>
                             </div>
                             <button type="submit" class="btn btn-primary me-2">Cetak</button>
