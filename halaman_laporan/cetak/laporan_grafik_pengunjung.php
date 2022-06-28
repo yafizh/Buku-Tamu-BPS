@@ -217,7 +217,9 @@ $sampai_tahun = explode('-', $sampai_tahun_bulan)[0];
             options: options
         });
 
-        window.print();
+        setTimeout(function(){
+            window.print();
+        },1000)
     </script>
 </body>
 
