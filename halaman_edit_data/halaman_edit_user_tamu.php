@@ -51,7 +51,7 @@ if (isset($_POST['submit'])) {
             nomor_telepon='$nomor_telepon' 
         WHERE id=$id";
             if ($mysqli->query($sql) === TRUE) {
-                echo "<script>alert('User Tamu berhasil diedit.')</script>";
+                echo "<script>alert('User Tamu berhasil disimpan.')</script>";
                 echo "<script>" .
                     "window.location.href='index.php?page=data_user_tamu';" .
                     "</script>";
@@ -121,7 +121,7 @@ if (isset($_POST['submit'])) {
                             </div>
                             <div class="form-group">
                                 <button class="btn btn-dark" type="reset">Cancel</button>
-                                <button type="submit" name="submit" class="btn btn-primary me-2">Submit</button>
+                                <button type="submit" name="submit" class="btn btn-primary me-2">Simpan</button>
                             </div>
                         </div>
                     </div>

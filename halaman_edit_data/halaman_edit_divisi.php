@@ -24,7 +24,7 @@ if (isset($_POST['submit'])) {
                 id=" . $_GET['id'];
 
     if ($mysqli->query($sql) === TRUE) {
-        echo "<script>alert('Divisi berhasil diedit.')</script>";
+        echo "<script>alert('Divisi berhasil disimpan.')</script>";
         echo "<script>" .
             "window.location.href='index.php?page=data_divisi';" .
             "</script>";
@@ -60,7 +60,7 @@ if (isset($_POST['submit'])) {
                             </div>
                             <div class="form-group">
                                 <button class="btn btn-dark" type="reset">Reset</button>
-                                <button type="submit" name="submit" class="btn btn-primary me-2">Edit</button>
+                                <button type="submit" name="submit" class="btn btn-primary me-2">Simpan</button>
                             </div>
                         </form>
                     </div>

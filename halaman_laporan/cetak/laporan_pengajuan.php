@@ -8,7 +8,7 @@ const BULAN_DALAM_INDONESIA = [
     "April",
     "Mei",
     "Juni",
-    "July",
+    "Juli",
     "Agustus",
     "September",
     "Oktober",
@@ -90,11 +90,12 @@ $sampai_tahun = explode('-', $sampai_tahun_bulan_tanggal)[0];
                 <tr>
                     <th class="text-center">No</th>
                     <th>Nama</th>
+                    <th>Nomor Telepon</th>
+                    <th>Asal Instansi</th>
+                    <th>Pegawai yang dikunjungi</th>
+                    <th>Keperluan</th>
                     <th>Tanggal</th>
                     <th>Waktu</th>
-                    <th>Pegawai yang dikunjungi</th>
-                    <th>Asal Instansi</th>
-                    <th>Keperluan</th>
                     <th>Jenis Kunjungan</th>
                 </tr>
             </thead>
@@ -108,11 +109,20 @@ $sampai_tahun = explode('-', $sampai_tahun_bulan_tanggal)[0];
                         <tr>
                             <td class="text-center"><?= $no++; ?></td>
                             <td><?= $row['nama']; ?></td>
-                            <td class="text-center"><?= $row['tanggal']; ?></td>
-                            <td class="text-center"><?= $row['waktu']; ?></td>
-                            <td class="text-center"><?= $row['nama_pegawai']; ?></td>
+                            <td><?= $row['nomor_telepon']; ?></td>
                             <td class="text-center"><?= $row['asal_instansi']; ?></td>
+                            <td class="text-center"><?= $row['nama_pegawai']; ?></td>
                             <td class="text-center"><?= $row['keperluan']; ?></td>
+                            <td class="text-center">
+                                <?php
+                                $tahun_bulan_tanggal = $row['tanggal'];
+                                $tahun = explode("-", $tahun_bulan_tanggal)[0];
+                                $bulan = explode("-", $tahun_bulan_tanggal)[1];
+                                $tanggal = explode("-", $tahun_bulan_tanggal)[2];
+                                ?>
+                                <?= $tanggal . " " . BULAN_DALAM_INDONESIA[$bulan - 1] . " " . $tahun ?>
+                            </td>
+                            <td class="text-center"><?= $row['waktu']; ?></td>
                             <td class="text-center"><?= $row['jenis_pertemuan']; ?></td>
                         </tr>
                     <?php endwhile; ?>

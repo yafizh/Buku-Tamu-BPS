@@ -8,7 +8,7 @@ const BULAN_DALAM_INDONESIA = [
     "April",
     "Mei",
     "Juni",
-    "July",
+    "Juli",
     "Agustus",
     "September",
     "Oktober",
@@ -75,7 +75,8 @@ const BULAN_DALAM_INDONESIA = [
                 <tr>
                     <th class="text-center">No</th>
                     <th>Nama</th>
-                    <th>Nomor Telepom</th>
+                    <th>Username</th>
+                    <th>Nomor Telepon</th>
                     <th>Asal Instansi</th>
                     <th>Jenis Kelamin</th>
                 </tr>
@@ -83,13 +84,14 @@ const BULAN_DALAM_INDONESIA = [
             <tbody>
                 <?php
                 $no = 1;
-                $result = $mysqli->query("SELECT * FROM tabel_tamu ORDER BY id");
+                $result = $mysqli->query("SELECT tabel_tamu.*, tabel_user.username FROM tabel_tamu INNER JOIN tabel_usesr ON tabel_tamu.id_user=tabel_user.id ORDER BY tabel_tamu.id");
                 ?>
                 <?php if ($result->num_rows) : ?>
                     <?php while ($row = $result->fetch_assoc()) : ?>
                         <tr>
                             <td class="text-center"><?= $no++; ?></td>
                             <td><?= $row['nama']; ?></td>
+                            <td><?= $row['username']; ?></td>
                             <td><?= $row['nomor_telepon']; ?></td>
                             <td><?= $row['asal_instansi']; ?></td>
                             <td><?= $row['jenis_kelamin']; ?></td>

@@ -186,6 +186,25 @@ require_once "database/koneksi.php";
                 </div>
             </div>
         </div>
+        <div class="row">
+            <div class="col-md-6 grid-margin stretch-card">
+                <div class="card">
+                    <div class="card-body">
+                        <h4 class="card-title">Data Grafik IKM</h4>
+                        <!-- <p class="card-description"> Horizontal form layout </p> -->
+                        <form class="forms-sample" action="halaman_laporan/cetak/laporan_grafik_ikm.php" method="POST" target="_blank">
+                            <div class="form-group row">
+                                <label for="tahun" class="col-sm-3 col-form-label">Tahun</label>
+                                <div class="col-sm-9">
+                                    <input type="number" class="form-control text-white" value="<?= Date("Y"); ?>" id="tahun" name="tahun">
+                                </div>
+                            </div>
+                            <button type="submit" class="btn btn-primary me-2">Cetak</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
     <!-- content-wrapper ends -->
     <!-- partial:../../partials/_footer.html -->

@@ -8,7 +8,7 @@ const BULAN_DALAM_INDONESIA = [
     "April",
     "Mei",
     "Juni",
-    "July",
+    "Juli",
     "Agustus",
     "September",
     "Oktober",
@@ -17,9 +17,7 @@ const BULAN_DALAM_INDONESIA = [
 ];
 
 
-$tahun_bulan = $_POST['bulan'];
-$bulan = explode('-', $tahun_bulan)[1];
-$tahun = explode('-', $tahun_bulan)[0];
+$tahun = $_POST['tahun'];
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -28,7 +26,7 @@ $tahun = explode('-', $tahun_bulan)[0];
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Laporan Grafik Pengunjung</title>
+    <title>Laporan Grafik IKM</title>
     <link rel="shortcut icon" href="../../assets/images/favicon.png" />
     <style>
         table,
@@ -73,9 +71,9 @@ $tahun = explode('-', $tahun_bulan)[0];
             </div>
         </div>
         <div class="my-3" style="border-top: 2px solid black; margin-top:12px;"></div>
-        <h2 class="text-center">Laporan Grafik Pengunjung</h2>
-        <h2 class="text-center">Bulan <?= BULAN_DALAM_INDONESIA[$bulan - 1] . ' ' . $tahun; ?></h2>
-        <canvas id="lineChart" style="max-height:570px"></canvas>
+        <h2 class="text-center">Laporan Grafik IKM</h2>
+        <h2 class="text-center">Tahun <?= $tahun; ?></h2>
+        <canvas id="barChart" style="max-height:470px;"></canvas>
         <div style="display: flex; justify-content: end;">
             <div style="text-align: center; margin-top: 20px; padding: 10px; width: 200px;">
                 <span>Amuntai, <?= Date('d') ?> <?= BULAN_DALAM_INDONESIA[Date('m') - 1] ?> <?= Date('Y') ?></span>
@@ -99,57 +97,27 @@ $tahun = explode('-', $tahun_bulan)[0];
     <script src="../../assets/js/settings.js"></script>
     <script src="../../assets/js/todolist.js"></script>
     <?php
-    $result = $mysqli->query("SELECT COUNT(nama) AS jumlah, DAY(tanggal) AS hari FROM view_tamu WHERE MONTH(tanggal) = '$bulan' AND YEAR(tanggal)='$tahun' GROUP BY tanggal");
-    $db_data = $result->fetch_all(MYSQLI_ASSOC);
 
-    $labels = [];
-    $data = [];
-    $temp = $tahun_bulan . '-01';
-    do {
-        $hari = (explode('-', $temp)[2]);
-
-        $check = false;
-        foreach ($db_data as $index => $value) {
-            if ($hari == $value['hari']) {
-                $data[] = $value['jumlah'];
-                unset($db_data[$index]);
-                $check = true;
-                break;
-            }
-        }
-
-        if (!$check) {
-            $data[] = 0;
-        }
-
-        $labels[] = $hari;
-        $temp = date('Y-m-d', strtotime($temp . ' + 1 days'));
-    } while ($temp != date('Y-m-d', strtotime(($tahun_bulan . '-01') . '1 months')));
     ?>
     <script>
-        let labels = JSON.parse('<?= json_encode($labels); ?>');
-        let db_data = JSON.parse('<?= json_encode($data); ?>');
-        console.log(labels)
         var data = {
-            labels: labels,
+            labels: ["Sangat Buruk", "Buruk", "Cukup", "Baik", "Sangat Baik"],
             datasets: [{
-                label: '# of Votes',
-                data: db_data,
+                label: 'Sangat Buruk',
+                data: [10, 5, 20, 50, 100],
                 backgroundColor: [
-                    'rgba(255, 99, 132, 0.2)',
-                    'rgba(54, 162, 235, 0.2)',
-                    'rgba(255, 206, 86, 0.2)',
-                    'rgba(75, 192, 192, 0.2)',
-                    'rgba(153, 102, 255, 0.2)',
-                    'rgba(255, 159, 64, 0.2)'
+                    'rgba(255, 99, 132, .5)',
+                    'rgba(255, 159, 64, .5)',
+                    'rgba(255, 205, 86, .5)',
+                    'rgba(75, 192, 192, .5)',
+                    'rgba(54, 162, 235, .5)',
                 ],
                 borderColor: [
-                    'rgba(255,99,132,1)',
-                    'rgba(54, 162, 235, 1)',
-                    'rgba(255, 206, 86, 1)',
-                    'rgba(75, 192, 192, 1)',
-                    'rgba(153, 102, 255, 1)',
-                    'rgba(255, 159, 64, 1)'
+                    'rgba(255, 99, 132, .5)',
+                    'rgba(255, 159, 64, .5)',
+                    'rgba(255, 205, 86, .5)',
+                    'rgba(75, 192, 192, .5)',
+                    'rgba(54, 162, 235, .5)',
                 ],
                 borderWidth: 1,
                 fill: false
@@ -182,14 +150,16 @@ $tahun = explode('-', $tahun_bulan)[0];
             }
         };
 
-        var lineChartCanvas = $("#lineChart").get(0).getContext("2d");
-        var lineChart = new Chart(lineChartCanvas, {
-            type: 'line',
+        var barChartCanvas = $("#barChart").get(0).getContext("2d");
+        var barChart = new Chart(barChartCanvas, {
+            type: 'bar',
             data: data,
             options: options
         });
 
-        window.print();
+        // setTimeout(function() {
+        //     window.print();
+        // }, 1000);
     </script>
 </body>
 

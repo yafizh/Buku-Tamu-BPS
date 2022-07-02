@@ -8,7 +8,7 @@ const BULAN_DALAM_INDONESIA = [
     "April",
     "Mei",
     "Juni",
-    "July",
+    "Juli",
     "Agustus",
     "September",
     "Oktober",
@@ -110,7 +110,15 @@ $sampai_tahun = explode('-', $sampai_tahun_bulan_tanggal)[0];
                             <td><?= $row['username']; ?></td>
                             <td><?= $row['nomor_telepon']; ?></td>
                             <td class="text-center"><?= $row['asal_instansi']; ?></td>
-                            <td class="text-center"><?= $row['tanggal']; ?></td>
+                            <td class="text-center">
+                                <?php
+                                $tahun_bulan_tanggal = $row['tanggal'];
+                                $tahun = explode("-", $tahun_bulan_tanggal)[0];
+                                $bulan = explode("-", $tahun_bulan_tanggal)[1];
+                                $tanggal = explode("-", $tahun_bulan_tanggal)[2];
+                                ?>
+                                <?= $tanggal . " " . BULAN_DALAM_INDONESIA[$bulan - 1] . " " . $tahun ?>
+                            </td>
                             <td class="text-center">
                                 <?php if ($row['nilai'] == 1) : ?>
                                     Sangat Buruk
