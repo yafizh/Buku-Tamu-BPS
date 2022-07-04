@@ -84,17 +84,17 @@ const BULAN_DALAM_INDONESIA = [
             <tbody>
                 <?php
                 $no = 1;
-                $result = $mysqli->query("SELECT tabel_tamu.*, tabel_user.username FROM tabel_tamu INNER JOIN tabel_usesr ON tabel_tamu.id_user=tabel_user.id ORDER BY tabel_tamu.id");
+                $result = $mysqli->query("SELECT tabel_tamu.*, tabel_user.username FROM tabel_tamu INNER JOIN tabel_user ON tabel_tamu.id_user=tabel_user.id ORDER BY tabel_tamu.id");
                 ?>
                 <?php if ($result->num_rows) : ?>
                     <?php while ($row = $result->fetch_assoc()) : ?>
                         <tr>
                             <td class="text-center"><?= $no++; ?></td>
                             <td><?= $row['nama']; ?></td>
-                            <td><?= $row['username']; ?></td>
-                            <td><?= $row['nomor_telepon']; ?></td>
-                            <td><?= $row['asal_instansi']; ?></td>
-                            <td><?= $row['jenis_kelamin']; ?></td>
+                            <td class="text-center"><?= $row['username']; ?></td>
+                            <td class="text-center"><?= $row['nomor_telepon']; ?></td>
+                            <td class="text-center"><?= $row['asal_instansi']; ?></td>
+                            <td class="text-center"><?= $row['jenis_kelamin']; ?></td>
                         </tr>
                     <?php endwhile; ?>
                 <?php endif; ?>

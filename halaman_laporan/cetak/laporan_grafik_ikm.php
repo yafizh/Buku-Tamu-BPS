@@ -97,14 +97,20 @@ $tahun = $_POST['tahun'];
     <script src="../../assets/js/settings.js"></script>
     <script src="../../assets/js/todolist.js"></script>
     <?php
-
+    $sql = "SELECT COUNT(nilai) AS jml, tabel_ikm.nilai FROM tabel_pengajuan INNER JOIN tabel_ikm ON tabel_ikm.id=tabel_pengajuan.id_ikm WHERE YEAR(tanggal)='2022' GROUP BY tabel_ikm.nilai ORDER BY tabel_ikm.nilai ASC";
+    $result = $mysqli->query($sql);
+    $data = $result->fetch_all(MYSQLI_ASSOC);
+    $data_grafik = [];
+    for ($i=0; $i < 5; $i++) { 
+        $data_grafik[] = $data[$i]['jml'];
+    }
     ?>
     <script>
         var data = {
             labels: ["Sangat Buruk", "Buruk", "Cukup", "Baik", "Sangat Baik"],
             datasets: [{
                 label: 'Sangat Buruk',
-                data: [10, 5, 20, 50, 100],
+                data: JSON.parse('<?= json_encode($data_grafik); ?>'),
                 backgroundColor: [
                     'rgba(255, 99, 132, .5)',
                     'rgba(255, 159, 64, .5)',
