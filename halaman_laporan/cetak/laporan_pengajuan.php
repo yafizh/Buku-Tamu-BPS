@@ -137,7 +137,7 @@ $sampai_tahun = explode('-', $sampai_tahun_bulan_tanggal)[0];
                 <span>Mengetahui</span>
                 <br><br><br><br><br>
                 <span>Sukma Handayani, M.Si</span>
-                <span>(197503111996122000)</span>
+                <span>NIP. 197503111996122000</span>
             </div>
         </div>
     </div>
