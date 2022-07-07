@@ -125,6 +125,7 @@ $tahun = $_POST['tahun'];
                 <span>Mengetahui</span>
                 <br><br><br>
                 <span>Sukma Handayani, M.Si</span>
+                <br>
                 <span>NIP. 197503111996122000</span>
             </div>
         </div>

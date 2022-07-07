@@ -108,6 +108,7 @@ const BULAN_DALAM_INDONESIA = [
                 <span>Mengetahui</span>
                 <br><br><br><br><br>
                 <span>Sukma Handayani, M.Si</span>
+                <br>
                 <span>NIP. 197503111996122000</span>
             </div>
         </div>
