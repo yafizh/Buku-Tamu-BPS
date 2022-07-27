@@ -36,75 +36,69 @@ if (isset($_POST['terima'])) {
 <div class="main-panel">
     <div class="content-wrapper">
         <div class="page-header">
-            <h3 class="page-title"> Detail Tamu </h3>
-            <!-- <nav aria-label="breadcrumb">
-                <ol class="breadcrumb">
-                    <li class="breadcrumb-item"><a href="#">Forms</a></li>
-                    <li class="breadcrumb-item active" aria-current="page">Form elements</li>
-                </ol>
-            </nav> -->
+            <h3 class="page-title text-dark"> Detail Tamu </h3>
         </div>
         <form class="forms-sample" action="" method="POST">
             <div class="row">
                 <div class="col-md-6 grid-margin stretch-card">
-                    <div class="card">
+                    <div class="card bg-light">
                         <div class="card-body">
-                            <h4 class="card-title">Indentitas Tamu</h4>
+                            <h4 class="card-title text-dark">Indentitas Tamu</h4>
                             <!-- <p class="card-description"> Basic form layout </p> -->
                             <form class="forms-sample">
                                 <div class="form-group">
-                                    <label for="nama">Nama</label>
-                                    <input type="text" class="form-control text-white bg-dark" readonly value="<?= $row['nama']; ?>" name="nama" autocomplete="off" placeholder="Masukkan nama tamu..." required>
+                                    <label class="text-dark" for="nama">Nama</label>
+                                    <input type="text" class="form-control text-dark bg-light" readonly value="<?= $row['nama']; ?>" name="nama" autocomplete="off" placeholder="Masukkan nama tamu..." required>
                                 </div>
                                 <div class="form-group">
-                                    <label for="nomor_telepon">Nomor Telepon</label>
-                                    <input type="number" class="form-control text-white bg-dark" readonly value="<?= $row['nomor_telepon']; ?>" name="nomor_telepon" autocomplete="off" placeholder="Masukkan nomor telepon..." required>
+                                    <label class="text-dark" for="nomor_telepon">Nomor Telepon</label>
+                                    <input type="number" class="form-control text-dark bg-light" readonly value="<?= $row['nomor_telepon']; ?>" name="nomor_telepon" autocomplete="off" placeholder="Masukkan nomor telepon..." required>
                                 </div>
                                 <div class="form-group">
-                                    <label for="jenis_kelamin">Jenis Kelamin</label>
-                                    <input type="text" class="form-control text-white bg-dark" readonly value="<?= ($row['jenis_kelamin'] == 'L' ? "Laki - Laki" : "Perempuan"); ?>" name="jenis_kelamin" autocomplete="off" required>
+                                    <label class="text-dark" for="jenis_kelamin">Jenis Kelamin</label>
+                                    <input type="text" class="form-control text-dark bg-light" readonly value="<?= ($row['jenis_kelamin'] == 'L' ? "Laki - Laki" : "Perempuan"); ?>" name="jenis_kelamin" autocomplete="off" required>
                                 </div>
                                 <div class="form-group">
-                                    <label for="asal_instansi">Asal Instansi</label>
-                                    <input type="text" class="form-control text-white bg-dark" readonly value="<?= $row['asal_instansi']; ?>" name="asal_instansi" autocomplete="off" placeholder="Masukkan asal instansi..." required>
+                                    <label class="text-dark" for="asal_instansi">Asal Instansi</label>
+                                    <input type="text" class="form-control text-dark bg-light" readonly value="<?= $row['asal_instansi']; ?>" name="asal_instansi" autocomplete="off" placeholder="Masukkan asal instansi..." required>
                                 </div>
                                 <div class="form-group">
-                                    <label for="alamat">Alamat</label>
-                                    <input type="text" class="form-control text-white bg-dark" readonly value="<?= $row['alamat']; ?>" name="alamat" autocomplete="off" placeholder="Masukkan alamat..." required>
+                                    <label class="text-dark" for="alamat">Alamat</label>
+                                    <input type="text" class="form-control text-dark bg-light" readonly value="<?= $row['alamat']; ?>" name="alamat" autocomplete="off" placeholder="Masukkan alamat..." required>
                                 </div>
                             </form>
                         </div>
                     </div>
                 </div>
                 <div class="col-md-6 grid-margin stretch-card">
-                    <div class="card">
+                    <div class="card bg-light">
                         <div class="card-body">
-                            <h4 class="card-title">Tujuan Kunjungan</h4>
+                            <h4 class="card-title text-dark">Tujuan Kunjungan</h4>
                             <!-- <p class="card-description"> Basic form layout </p> -->
                             <div class="form-group">
-                                <label for="id_pegawai">Pegawai yang Dikunjungi</label>
+                                <label class="text-dark" for="id_pegawai">Pegawai yang Dikunjungi</label>
                                 <?php $data_pegawai = $mysqli->query("SELECT * FROM tabel_pegawai ORDER BY nama"); ?>
-                                <select class="form-control text-white bg-dark" name="id_pegawai" required disabled>
+                                <select class="form-control text-dark bg-light" name="id_pegawai" required disabled>
                                     <?php while ($row_pegawai = $data_pegawai->fetch_assoc()) : ?>
                                         <option <?= $row['id_pegawai'] == $row_pegawai['id'] ? "selected" : ""; ?> value="<?= $row_pegawai['id']; ?>"><?= $row_pegawai['nama']; ?></option>
                                     <?php endwhile; ?>
                                 </select>
                             </div>
                             <div class="form-group">
-                                <label for="keperluan">Keperluan Kunjungan</label>
-                                <input type="text" class="form-control text-white bg-dark" readonly value="<?= $row['keperluan']; ?>" name="keperluan" autocomplete="off" placeholder="Masukkan keperluan kunjungan...">
+                                <label class="text-dark" for="keperluan">Keperluan Kunjungan</label>
+                                <input type="text" class="form-control text-dark bg-light" readonly value="<?= $row['keperluan']; ?>" name="keperluan" autocomplete="off" placeholder="Masukkan keperluan kunjungan...">
                             </div>
                             <div class="form-group">
-                                <label for="tanggal">Tanggal</label>
-                                <input type="date" class="form-control text-white bg-dark" name="tanggal" value="<?= $row['tanggal']; ?>" readonly>
+                                <label class="text-dark" for="tanggal">Tanggal</label>
+                                <input type="date" class="form-control text-dark bg-light" name="tanggal" value="<?= $row['tanggal']; ?>" readonly>
                             </div>
                             <div class="form-group">
-                                <label for="waktu">Waktu</label>
-                                <input type="text" class="form-control text-white bg-dark" name="waktu" value="<?= $row['waktu']; ?>" readonly>
+                                <label class="text-dark" for="waktu">Waktu</label>
+                                <input type="text" class="form-control text-dark bg-light" name="waktu" value="<?= $row['waktu']; ?>" readonly>
                             </div>
                             <div class="form-group">
-                                <label for="jenis_pertemuan">Jenis Kunjungan</label>
-                                <input type="text" class="form-control bg-dark text-white" name="jenis_pertemuan" autocomplete="off" required readonly value="<?= $row['jenis_pertemuan']; ?>">
+                                <label class="text-dark" for="jenis_pertemuan">Jenis Kunjungan</label>
+                                <input type="text" class="form-control bg-light text-dark" name="jenis_pertemuan" autocomplete="off" required readonly value="<?= $row['jenis_pertemuan']; ?>">
                             </div>
                             <div class="form-group">
                                 <?php if ($_SESSION['user']['status'] === 'PETUGAS') : ?>

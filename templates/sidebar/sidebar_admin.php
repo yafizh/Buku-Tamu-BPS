@@ -13,6 +13,10 @@
         .menu-icon {
             background-color: white!important;
         }
+
+        .nav-item:hover .nav-link{
+            background-color: #0075ad!important;
+        }
     </style>
     <ul class="nav">
         <li class="nav-item nav-category">

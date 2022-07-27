@@ -11,13 +11,13 @@
                 <ul class="navbar-nav w-100">
                     <li class="nav-item w-100">
                         <form method="POST" class="nav-link mt-2 mt-md-0 d-none d-lg-flex search">
-                            <input type="text" name="keyword" value="<?= isset($_POST['keyword']) ? $_POST['keyword'] : '' ?>" class="form-control text-white" placeholder="Cari Data...">
+                            <input type="text" name="keyword" value="<?= isset($_POST['keyword']) ? $_POST['keyword'] : '' ?>" class="form-control text-white bg-light" placeholder="Cari Data...">
                         </form>
                     </li>
                 </ul>
             <?php endif; ?>
         <?php endif; ?>
-        <ul class="navbar-nav navbar-nav-right">
+        <ul class="navbar-nav navbar-nav-right text-dark">
             <li class="nav-item dropdown">
                 <a class="nav-link" id="profileDropdown" href="#" data-bs-toggle="dropdown">
                     <div class="navbar-profile">
@@ -26,10 +26,10 @@
                         <i class="mdi mdi-menu-down d-none d-sm-block"></i>
                     </div>
                 </a>
-                <div class="dropdown-menu dropdown-menu-right navbar-dropdown preview-list" aria-labelledby="profileDropdown">
+                <div class="dropdown-menu bg-light dropdown-menu-right navbar-dropdown preview-list" aria-labelledby="profileDropdown">
                     <a href="index.php?page=edit_profile" class="dropdown-item preview-item">
                         <div class="preview-thumbnail">
-                            <div class="preview-icon bg-dark rounded-circle">
+                            <div class="preview-icon bg-light rounded-circle">
                                 <i class="mdi mdi-account text-success"></i>
                             </div>
                         </div>

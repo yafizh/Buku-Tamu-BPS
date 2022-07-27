@@ -1,24 +1,16 @@
 <div class="main-panel">
     <div class="content-wrapper">
         <div class="page-header">
-            <h3 class="page-title"> Data Divisi </h3>
-            <!-- <nav aria-label="breadcrumb">
-                <ol class="breadcrumb">
-                    <li class="breadcrumb-item"><a href="#">Tables</a></li>
-                    <li class="breadcrumb-item active" aria-current="page">Basic tables</li>
-                </ol>
-            </nav> -->
+            <h3 class="page-title text-dark"> Data Divisi </h3>
         </div>
         <div class="row">
             <div class="col-lg-12 grid-margin stretch-card">
-                <div class="card">
+                <div class="card bg-light">
                     <div class="card-body">
                         <a href="index.php?page=tambah_divisi" class="btn btn-primary">Tambah Divisi</a>
-                        <!-- <h4 class="card-title">Data Divisi</h4> -->
-                        <!-- <p class="card-description"> Add class <code>.table-hover</code> -->
                         </p>
                         <div class="table-responsive">
-                            <table class="table table-hover">
+                            <table class="table">
                                 <thead>
                                     <tr>
                                         <th>Nama Divisi</th>

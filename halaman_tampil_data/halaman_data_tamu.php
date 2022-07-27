@@ -1,7 +1,7 @@
 <div class="main-panel">
     <div class="content-wrapper">
         <div class="page-header">
-            <h3 class="page-title"> Data Tamu </h3>
+            <h3 class="page-title text-dark"> Data Tamu </h3>
             <!-- <nav aria-label="breadcrumb">
                 <ol class="breadcrumb">
                     <li class="breadcrumb-item"><a href="#">Tables</a></li>
@@ -11,14 +11,14 @@
         </div>
         <div class="row">
             <div class="col-lg-12 grid-margin stretch-card">
-                <div class="card">
+                <div class="card bg-light">
                     <div class="card-body">
                         <!-- <a href="index.php?page=tambah_user" class="btn btn-primary">Tambah User</a> -->
                         <!-- <h4 class="card-title">Data User</h4> -->
                         <!-- <p class="card-description"> Add class <code>.table-hover</code> -->
                         </p>
                         <div class="table-responsive">
-                            <table class="table table-hover">
+                            <table class="table">
                                 <thead>
                                     <tr>
                                         <th>Nama</th>
