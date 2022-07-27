@@ -4,8 +4,8 @@ require_once "database/koneksi.php";
 <div class="main-panel">
     <div class="content-wrapper">
         <div class="row">
-            <div class="col-xl-3 col-sm-6 grid-margin stretch-card">
-                <div class="card">
+            <div class="col-xl-3 col-sm-6 grid-margin stretch-card text-white">
+                <div class="card shadow" style="background-color: #EC8A14;">
                     <div class="card-body">
                         <div class="row">
                             <div class="col-9">
@@ -13,7 +13,7 @@ require_once "database/koneksi.php";
                                 <?php $hari_ini = $hari_ini->fetch_assoc(); ?>
                                 <div class="d-flex align-items-center align-self-start">
                                     <h3 class="mb-0"><?= !empty($hari_ini) ? $hari_ini['hari_ini'] : 0 ?></h3>
-                                    <p class="text-white ms-2 mb-0 font-weight-medium">Orang</p>
+                                    <p class="ms-2 mb-0 font-weight-medium">Orang</p>
                                 </div>
                             </div>
                             <!-- <div class="col-3">
@@ -22,12 +22,12 @@ require_once "database/koneksi.php";
                                 </div>
                             </div> -->
                         </div>
-                        <h6 class="text-muted font-weight-normal">Hari ini</h6>
+                        <h6 class="text-white font-weight-normal">Hari ini</h6>
                     </div>
                 </div>
             </div>
             <div class="col-xl-3 col-sm-6 grid-margin stretch-card">
-                <div class="card">
+                <div class="card shadow text-white" style="background-color: #0093D9;">
                     <div class="card-body">
                         <div class="row">
                             <div class="col-9">
@@ -35,7 +35,7 @@ require_once "database/koneksi.php";
                                 <?php $minggu_ini = $minggu_ini->fetch_assoc(); ?>
                                 <div class="d-flex align-items-center align-self-start">
                                     <h3 class="mb-0"><?= !empty($minggu_ini) ? $minggu_ini['minggu_ini'] : 0 ?></h3>
-                                    <p class="text-white ms-2 mb-0 font-weight-medium">Orang</p>
+                                    <p class="ms-2 mb-0 font-weight-medium">Orang</p>
                                 </div>
                             </div>
                             <!-- <div class="col-3">
@@ -44,12 +44,12 @@ require_once "database/koneksi.php";
                                 </div>
                             </div> -->
                         </div>
-                        <h6 class="text-muted font-weight-normal">Minggu ini</h6>
+                        <h6 class="text-white font-weight-normal">Minggu ini</h6>
                     </div>
                 </div>
             </div>
             <div class="col-xl-3 col-sm-6 grid-margin stretch-card">
-                <div class="card">
+                <div class="card shadow" style="background-color: #68BA2A;">
                     <div class="card-body">
                         <div class="row">
                             <div class="col-9">
@@ -57,7 +57,7 @@ require_once "database/koneksi.php";
                                 <?php $bulan_ini = $bulan_ini->fetch_assoc(); ?>
                                 <div class="d-flex align-items-center align-self-start">
                                     <h3 class="mb-0"><?= !empty($bulan_ini) ? $bulan_ini['bulan_ini'] : 0 ?></h3>
-                                    <p class="text-white ms-2 mb-0 font-weight-medium">Orang</p>
+                                    <p class="ms-2 mb-0 font-weight-medium">Orang</p>
                                 </div>
                             </div>
                             <!-- <div class="col-3">
@@ -66,12 +66,12 @@ require_once "database/koneksi.php";
                                 </div>
                             </div> -->
                         </div>
-                        <h6 class="text-muted font-weight-normal">Bulan ini</h6>
+                        <h6 class="text-white font-weight-normal">Bulan ini</h6>
                     </div>
                 </div>
             </div>
             <div class="col-xl-3 col-sm-6 grid-margin stretch-card">
-                <div class="card">
+                <div class="card shadow bg-white text-black">
                     <div class="card-body">
                         <div class="row">
                             <div class="col-9">
@@ -79,7 +79,7 @@ require_once "database/koneksi.php";
                                 <?php $tahun_ini = $tahun_ini->fetch_assoc(); ?>
                                 <div class="d-flex align-items-center align-self-start">
                                     <h3 class="mb-0"><?= !empty($tahun_ini) ? $tahun_ini['tahun_ini'] : 0 ?></h3>
-                                    <p class="text-white ms-2 mb-0 font-weight-medium">Orang</p>
+                                    <p class="ms-2 mb-0 font-weight-medium">Orang</p>
                                 </div>
                             </div>
                             <!-- <div class="col-3">
@@ -95,10 +95,10 @@ require_once "database/koneksi.php";
         </div>
         <div class="row">
             <div class="col-md-12 grid-margin stretch-card">
-                <div class="card">
+                <div class="card shadow bg-light text-black">
                     <div class="card-body">
                         <div class="d-flex flex-row justify-content-between">
-                            <h4 class="card-title mb-1">Kunjungan Terbaru</h4>
+                            <h4 class="card-title mb-1 text-black">Kunjungan Terbaru</h4>
                             <!-- <p class="text-muted mb-1">Your data status</p> -->
                         </div>
                         <div class="row">
