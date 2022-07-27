@@ -33,36 +33,28 @@ if (isset($_POST['submit'])) {
 <div class="main-panel">
     <div class="content-wrapper">
         <div class="page-header">
-            <h3 class="page-title"> Tambah User </h3>
-            <!-- <nav aria-label="breadcrumb">
-                <ol class="breadcrumb">
-                    <li class="breadcrumb-item"><a href="#">Forms</a></li>
-                    <li class="breadcrumb-item active" aria-current="page">Form elements</li>
-                </ol>
-            </nav> -->
+            <h3 class="page-title text-dark"> Tambah User </h3>
         </div>
         <div class="row">
             <div class="col-md-12 grid-margin stretch-card">
-                <div class="card">
+                <div class="card bg-light">
                     <div class="card-body">
-                        <!-- <h4 class="card-title">Indentitas Tamu</h4> -->
-                        <!-- <p class="card-description"> Basic form layout </p> -->
                         <form class="forms-sample" action="" method="POST">
                             <div class="form-group">
-                                <label for="nama">Nama</label>
-                                <input type="text" class="form-control text-white" name="nama" autocomplete="off" placeholder="Masukkan Nama User..." required>
+                                <label class="text-dark" for="nama">Nama</label>
+                                <input type="text" class="form-control text-dark bg-light" name="nama" autocomplete="off" placeholder="Masukkan Nama User..." required>
                             </div>
                             <div class="form-group">
-                                <label for="username">Username</label>
-                                <input type="text" class="form-control text-white" name="username" autocomplete="off" placeholder="Masukkan Username..." required>
+                                <label class="text-dark" for="username">Username</label>
+                                <input type="text" class="form-control text-dark bg-light" name="username" autocomplete="off" placeholder="Masukkan Username..." required>
                             </div>
                             <div class="form-group">
-                                <label for="password">Password</label>
-                                <input type="password" class="form-control text-white" name="password" autocomplete="off" placeholder="Masukkan Password..." required>
+                                <label class="text-dark" for="password">Password</label>
+                                <input type="password" class="form-control text-dark bg-light" name="password" autocomplete="off" placeholder="Masukkan Password..." required>
                             </div>
                             <div class="form-group">
-                                <label for="status">Status</label>
-                                <select class="form-control text-white" name="status" required>
+                                <label class="text-dark" for="status">Status</label>
+                                <select style="border: 1px solid black;" class="form-control text-dark bg-light" name="status" required>
                                     <option value="ADMIN">Admin</option>
                                     <option value="PETUGAS">Petugas</option>
                                 </select>

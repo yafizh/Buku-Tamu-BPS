@@ -33,33 +33,25 @@ if (isset($_POST['submit'])) {
 <div class="main-panel">
     <div class="content-wrapper">
         <div class="page-header">
-            <h3 class="page-title"> Tambah Pegawai </h3>
-            <!-- <nav aria-label="breadcrumb">
-                <ol class="breadcrumb">
-                    <li class="breadcrumb-item"><a href="#">Forms</a></li>
-                    <li class="breadcrumb-item active" aria-current="page">Form elements</li>
-                </ol>
-            </nav> -->
+            <h3 class="page-title text-dark"> Tambah Pegawai </h3>
         </div>
         <div class="row">
             <div class="col-md-12 grid-margin stretch-card">
-                <div class="card">
+                <div class="card bg-light">
                     <div class="card-body">
-                        <!-- <h4 class="card-title">Indentitas Tamu</h4> -->
-                        <!-- <p class="card-description"> Basic form layout </p> -->
                         <form class="forms-sample" action="" method="POST">
                             <div class="form-group">
-                                <label for="nama">Nama</label>
-                                <input type="text" class="form-control text-white" name="nama" autocomplete="off" placeholder="Masukkan Nama..." required>
+                                <label class="text-dark" for="nama">Nama</label>
+                                <input type="text" class="form-control text-dark bg-light" name="nama" autocomplete="off" placeholder="Masukkan Nama..." required>
                             </div>
                             <div class="form-group">
-                                <label for="nip">NIP</label>
-                                <input type="text" class="form-control text-white" name="nip" autocomplete="off" placeholder="Masukkan NIP..." required>
+                                <label class="text-dark" for="nip">NIP</label>
+                                <input type="text" class="form-control text-dark bg-light" name="nip" autocomplete="off" placeholder="Masukkan NIP..." required>
                             </div>
                             <div class="form-group">
-                                <label for="nama_divisi">Divisi</label>
+                                <label class="text-dark" for="nama_divisi">Divisi</label>
                                 <?php $data_divisi = $mysqli->query("SELECT * FROM tabel_divisi ORDER BY nama_divisi"); ?>
-                                <select class="form-control text-white" name="id_divisi" required>
+                                <select style="border: 1px solid black;" class="form-control text-dark bg-light" name="id_divisi" required>
                                     <option value="" disabled selected>Pilih Divisi</option>
                                     <?php while ($row = $data_divisi->fetch_assoc()) : ?>
                                         <option value="<?= $row['id']; ?>"><?= $row['nama_divisi']; ?></option>
@@ -67,19 +59,19 @@ if (isset($_POST['submit'])) {
                                 </select>
                             </div>
                             <div class="form-group">
-                                <label for="jenis_kelamin">Jenis Kelamin</label>
-                                <select class="form-control text-white" name="jenis_kelamin" required>
+                                <label class="text-dark" for="jenis_kelamin">Jenis Kelamin</label>
+                                <select style="border: 1px solid black;" class="form-control text-dark bg-light" name="jenis_kelamin" required>
                                     <option value="L">Laki - Laki</option>
                                     <option value="P">Perempuan</option>
                                 </select>
                             </div>
                             <div class="form-group">
-                                <label for="tanggal_lahir">Tanggal Lahir</label>
-                                <input type="date" class="form-control text-white" name="tanggal_lahir" autocomplete="off" placeholder="Masukkan Nomor Telepon..." required>
+                                <label class="text-dark" for="tanggal_lahir">Tanggal Lahir</label>
+                                <input type="date" class="form-control text-dark bg-light" name="tanggal_lahir" autocomplete="off" placeholder="Masukkan Nomor Telepon..." required>
                             </div>
                             <div class="form-group">
-                                <label for="nomor_telepon">Nomor Telepon</label>
-                                <input type="number" class="form-control text-white" name="nomor_telepon" autocomplete="off" placeholder="Masukkan Nomor Telepon..." required>
+                                <label class="text-dark" for="nomor_telepon">Nomor Telepon</label>
+                                <input type="number" class="form-control text-dark bg-light" name="nomor_telepon" autocomplete="off" placeholder="Masukkan Nomor Telepon..." required>
                             </div>
                             <div class="form-group">
                                 <button class="btn btn-dark" type="reset">Reset</button>
