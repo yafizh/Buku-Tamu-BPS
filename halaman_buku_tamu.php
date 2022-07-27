@@ -72,63 +72,56 @@ if (isset($_POST['submit'])) {
 <div class="main-panel">
     <div class="content-wrapper">
         <div class="page-header">
-            <h3 class="page-title"> Buku Tamu </h3>
-            <!-- <nav aria-label="breadcrumb">
-                <ol class="breadcrumb">
-                    <li class="breadcrumb-item"><a href="#">Forms</a></li>
-                    <li class="breadcrumb-item active" aria-current="page">Form elements</li>
-                </ol>
-            </nav> -->
+            <h3 class="page-title text-dark"> Buku Tamu </h3>
         </div>
         <form class="forms-sample" action="" method="POST">
             <div class="row">
                 <div class="col-md-6 grid-margin stretch-card">
-                    <div class="card">
+                    <div class="card bg-light">
                         <div class="card-body">
-                            <h4 class="card-title">Indentitas Tamu</h4>
-                            <!-- <p class="card-description"> Basic form layout </p> -->
+                            <h4 class="card-title text-dark">Indentitas Tamu</h4>
                             <form class="forms-sample">
                                 <div class="form-group">
-                                    <label for="nama">Nama</label>
+                                    <label class="text-dark" for="nama">Nama</label>
                                     <?php if ($_SESSION['user']['status'] === 'PETUGAS') : ?>
-                                        <input type="text" class="form-control text-white" name="nama" autocomplete="off" placeholder="Masukkan nama tamu..." required>
+                                        <input type="text" class="form-control bg-light text-dark" name="nama" autocomplete="off" placeholder="Masukkan nama tamu..." required>
                                     <?php elseif ($_SESSION['user']['status'] === 'TAMU') : ?>
-                                        <input type="text" class="form-control bg-dark text-white" name="nama" autocomplete="off" placeholder="Masukkan nama tamu..." required readonly value="<?= $_SESSION['user']['nama']; ?>">
+                                        <input type="text" class="form-control bg-light text-dark" name="nama" autocomplete="off" placeholder="Masukkan nama tamu..." required readonly value="<?= $_SESSION['user']['nama']; ?>">
                                     <?php endif; ?>
                                 </div>
                                 <div class="form-group">
-                                    <label for="nomor_telepon">Nomor Telepon</label>
+                                    <label class="text-dark" for="nomor_telepon">Nomor Telepon</label>
                                     <?php if ($_SESSION['user']['status'] === 'PETUGAS') : ?>
-                                        <input type="number" class="form-control text-white" name="nomor_telepon" autocomplete="off" placeholder="Masukkan nomor telepon..." required>
+                                        <input type="number" class="form-control bg-light text-dark" name="nomor_telepon" autocomplete="off" placeholder="Masukkan nomor telepon..." required>
                                     <?php elseif ($_SESSION['user']['status'] === 'TAMU') : ?>
-                                        <input type="number" class="form-control bg-dark text-white" name="nomor_telepon" autocomplete="off" placeholder="Masukkan nomor telepon..." required readonly value="<?= $_SESSION['user']['nomor_telepon']; ?>">
+                                        <input type="number" class="form-control bg-light text-dark" name="nomor_telepon" autocomplete="off" placeholder="Masukkan nomor telepon..." required readonly value="<?= $_SESSION['user']['nomor_telepon']; ?>">
                                     <?php endif; ?>
                                 </div>
                                 <div class="form-group">
-                                    <label for="jenis_kelamin">Jenis Kelamin</label>
+                                    <label class="text-dark" for="jenis_kelamin">Jenis Kelamin</label>
                                     <?php if ($_SESSION['user']['status'] === 'PETUGAS') : ?>
-                                        <select class="form-control text-white" name="jenis_kelamin" required>
+                                        <select style="border: 1px solid black;" class="form-control bg-light text-dark" name="jenis_kelamin" required>
                                             <option value="L">Laki - Laki</option>
                                             <option value="P">Perempuan</option>
                                         </select>
                                     <?php elseif ($_SESSION['user']['status'] === 'TAMU') : ?>
-                                        <input type="text" class="form-control bg-dark text-white" name="jenis_kelamin" autocomplete="off" required readonly value="<?= $_SESSION['user']['jenis_kelamin'] === 'L' ? 'Laki - Laki' : 'Perempuan'; ?>">
+                                        <input type="text" class="form-control bg-light text-dark" name="jenis_kelamin" autocomplete="off" required readonly value="<?= $_SESSION['user']['jenis_kelamin'] === 'L' ? 'Laki - Laki' : 'Perempuan'; ?>">
                                     <?php endif; ?>
                                 </div>
                                 <div class="form-group">
-                                    <label for="asal_instansi">Asal Instansi</label>
+                                    <label class="text-dark" for="asal_instansi">Asal Instansi</label>
                                     <?php if ($_SESSION['user']['status'] === 'PETUGAS') : ?>
-                                        <input type="text" class="form-control text-white" name="asal_instansi" autocomplete="off" placeholder="Masukkan asal instansi..." required>
+                                        <input type="text" class="form-control bg-light text-dark" name="asal_instansi" autocomplete="off" placeholder="Masukkan asal instansi..." required>
                                     <?php elseif ($_SESSION['user']['status'] === 'TAMU') : ?>
-                                        <input type="text" class="form-control bg-dark text-white" name="asal_instansi" autocomplete="off" placeholder="Masukkan asal instansi..." required readonly value="<?= $_SESSION['user']['asal_instansi']; ?>">
+                                        <input type="text" class="form-control bg-light text-dark" name="asal_instansi" autocomplete="off" placeholder="Masukkan asal instansi..." required readonly value="<?= $_SESSION['user']['asal_instansi']; ?>">
                                     <?php endif; ?>
                                 </div>
                                 <div class="form-group">
-                                    <label for="alamat">Alamat</label>
+                                    <label class="text-dark" for="alamat">Alamat</label>
                                     <?php if ($_SESSION['user']['status'] === 'PETUGAS') : ?>
-                                        <input type="text" class="form-control text-white" name="alamat" autocomplete="off" placeholder="Masukkan alamat..." required>
+                                        <input type="text" class="form-control bg-light text-dark" name="alamat" autocomplete="off" placeholder="Masukkan alamat..." required>
                                     <?php elseif ($_SESSION['user']['status'] === 'TAMU') : ?>
-                                        <input type="text" class="form-control bg-dark text-white" name="alamat" autocomplete="off" placeholder="Masukkan alamat..." required readonly value="<?= $_SESSION['user']['alamat']; ?>">
+                                        <input type="text" class="form-control bg-light text-dark" name="alamat" autocomplete="off" placeholder="Masukkan alamat..." required readonly value="<?= $_SESSION['user']['alamat']; ?>">
                                     <?php endif; ?>
                                 </div>
                             </form>
@@ -136,13 +129,13 @@ if (isset($_POST['submit'])) {
                     </div>
                 </div>
                 <div class="col-md-6 grid-margin stretch-card">
-                    <div class="card">
+                    <div class="card bg-light">
                         <div class="card-body">
-                            <h4 class="card-title">Tujuan Kunjungan</h4>
+                            <h4 class="card-title text-dark">Tujuan Kunjungan</h4>
                             <div class="form-group">
-                                <label for="id_pegawai">Pegawai yang Dikunjungi</label>
+                                <label class="text-dark" for="id_pegawai">Pegawai yang Dikunjungi</label>
                                 <?php $data_pegawai = $mysqli->query("SELECT * FROM tabel_pegawai ORDER BY nama"); ?>
-                                <select class="form-control text-white" name="id_pegawai">
+                                <select style="border: 1px solid black;" class="form-control bg-light text-dark" name="id_pegawai">
                                     <option value="" selected>Pilih Pegawai</option>
                                     <?php while ($row = $data_pegawai->fetch_assoc()) : ?>
                                         <option value="<?= $row['id']; ?>"><?= $row['nama']; ?></option>
@@ -150,23 +143,23 @@ if (isset($_POST['submit'])) {
                                 </select>
                             </div>
                             <div class="form-group">
-                                <label for="keperluan">Keperluan Kunjungan</label>
-                                <input type="text" class="form-control text-white" name="keperluan" autocomplete="off" placeholder="Masukkan keperluan kunjungan...">
+                                <label class="text-dark" for="keperluan">Keperluan Kunjungan</label>
+                                <input type="text" class="form-control bg-light text-dark" name="keperluan" autocomplete="off" placeholder="Masukkan keperluan kunjungan...">
                             </div>
                             <div class="form-group">
-                                <label for="tanggal">Tanggal</label>
-                                <input type="date" class="form-control <?= $_SESSION['user']['status'] === 'PETUGAS' ? 'bg-dark' : ''; ?> text-white" name="tanggal" value="<?= Date("Y-m-d"); ?>" <?= $_SESSION['user']['status'] === 'PETUGAS' ? 'readonly' : ''; ?>>
+                                <label class="text-dark" for="tanggal">Tanggal</label>
+                                <input type="date" class="form-control bg-light <?= $_SESSION['user']['status'] === 'PETUGAS' ? 'bg-light' : ''; ?> text-dark" name="tanggal" value="<?= Date("Y-m-d"); ?>" <?= $_SESSION['user']['status'] === 'PETUGAS' ? 'readonly' : ''; ?>>
                             </div>
                             <div class="form-group">
-                                <label for="waktu">Waktu</label>
-                                <input type="text" class="form-control <?= $_SESSION['user']['status'] === 'PETUGAS' ? 'bg-dark' : ''; ?> text-white" name="waktu" value="<?= Date("H:i"); ?>" <?= $_SESSION['user']['status'] === 'PETUGAS' ? 'readonly' : ''; ?>>
+                                <label class="text-dark" for="waktu">Waktu</label>
+                                <input type="text" class="form-control bg-light <?= $_SESSION['user']['status'] === 'PETUGAS' ? 'bg-light' : ''; ?> text-dark" name="waktu" value="<?= Date("H:i"); ?>" <?= $_SESSION['user']['status'] === 'PETUGAS' ? 'readonly' : ''; ?>>
                             </div>
                             <div class="form-group">
-                                <label for="jenis_pertemuan">Jenis Kunjungan</label>
+                                <label class="text-dark" for="jenis_pertemuan">Jenis Kunjungan</label>
                                 <?php if ($_SESSION['user']['status'] === 'PETUGAS') : ?>
-                                    <input type="text" class="form-control bg-dark text-white" name="jenis_pertemuan" autocomplete="off" required readonly value="OFFLINE">
+                                    <input type="text" class="form-control bg-light text-dark" name="jenis_pertemuan" autocomplete="off" required readonly value="OFFLINE">
                                 <?php elseif ($_SESSION['user']['status'] === 'TAMU') : ?>
-                                    <select class="form-control text-white" name="jenis_pertemuan" required>
+                                    <select style="border: 1px solid black;" class="form-control bg-light text-dark" name="jenis_pertemuan" required>
                                         <option value="OFFLINE">Offline</option>
                                         <option value="ONLINE">Online</option>
                                     </select>

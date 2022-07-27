@@ -148,7 +148,7 @@ if (isset($_POST['submit'])) {
                                 <?php if ($_SESSION['user']['status'] === 'PETUGAS') : ?>
                                     <input type="text" class="form-control bg-light text-dark" name="jenis_pertemuan" autocomplete="off" required readonly value="OFFLINE">
                                 <?php elseif ($_SESSION['user']['status'] === 'TAMU') : ?>
-                                    <select class="form-control text-dark" name="jenis_pertemuan" required>
+                                    <select style="border: 1px solid black;" class="form-control text-dark bg-light" name="jenis_pertemuan" required>
                                         <option value="OFFLINE">Offline</option>
                                         <option value="ONLINE">Online</option>
                                     </select>

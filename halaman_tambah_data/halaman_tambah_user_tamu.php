@@ -59,53 +59,53 @@ if (isset($_POST['submit'])) {
 <div class="main-panel">
     <div class="content-wrapper">
         <div class="page-header">
-            <h3 class="page-title"> User Buku Tamu </h3>
+            <h3 class="page-title text-dark"> User Buku Tamu </h3>
         </div>
         <form class="forms-sample" action="" method="POST">
             <div class="row">
                 <div class="col-md-6 grid-margin stretch-card">
-                    <div class="card">
+                    <div class="card bg-light">
                         <div class="card-body">
-                            <h4 class="card-title">Indentitas Tamu</h4>
+                            <h4 class="card-title text-dark">Indentitas Tamu</h4>
                             <form class="forms-sample">
                                 <div class="form-group">
-                                    <label for="nama">Nama</label>
-                                    <input type="text" class="form-control text-white" name="nama" autocomplete="off" placeholder="Masukkan nama tamu..." required>
+                                    <label class="text-dark" for="nama">Nama</label>
+                                    <input type="text" class="form-control bg-light text-dark" name="nama" autocomplete="off" placeholder="Masukkan nama tamu..." required>
                                 </div>
                                 <div class="form-group">
-                                    <label for="nomor_telepon">Nomor Telepon</label>
-                                    <input type="text" class="form-control text-white" name="nomor_telepon" autocomplete="off" placeholder="Masukkan nomor telepon..." required>
+                                    <label class="text-dark" for="nomor_telepon">Nomor Telepon</label>
+                                    <input type="text" class="form-control bg-light text-dark" name="nomor_telepon" autocomplete="off" placeholder="Masukkan nomor telepon..." required>
                                 </div>
                                 <div class="form-group">
-                                    <label for="jenis_kelamin">Jenis Kelamin</label>
-                                    <select class="form-control text-white" name="jenis_kelamin" required>
+                                    <label class="text-dark" for="jenis_kelamin">Jenis Kelamin</label>
+                                    <select style="border: 1px solid black;" class="form-control bg-light text-dark" name="jenis_kelamin" required>
                                         <option value="L">Laki - Laki</option>
                                         <option value="P">Perempuan</option>
                                     </select>
                                 </div>
                                 <div class="form-group">
-                                    <label for="asal_instansi">Asal Instansi</label>
-                                    <input type="text" class="form-control text-white" name="asal_instansi" autocomplete="off" placeholder="Masukkan asal instansi..." required>
+                                    <label class="text-dark" for="asal_instansi">Asal Instansi</label>
+                                    <input type="text" class="form-control bg-light text-dark" name="asal_instansi" autocomplete="off" placeholder="Masukkan asal instansi..." required>
                                 </div>
                                 <div class="form-group">
-                                    <label for="alamat">Alamat</label>
-                                    <input type="text" class="form-control text-white" name="alamat" autocomplete="off" placeholder="Masukkan alamat..." required>
+                                    <label class="text-dark" for="alamat">Alamat</label>
+                                    <input type="text" class="form-control bg-light text-dark" name="alamat" autocomplete="off" placeholder="Masukkan alamat..." required>
                                 </div>
                             </form>
                         </div>
                     </div>
                 </div>
                 <div class="col-md-6 grid-margin stretch-card">
-                    <div class="card">
+                    <div class="card bg-light">
                         <div class="card-body">
-                            <h4 class="card-title">Akun</h4>
+                            <h4 class="card-title text-dark">Akun</h4>
                             <div class="form-group">
-                                <label for="username">Username</label>
-                                <input type="text" class="form-control text-white" name="username" autocomplete="off" placeholder="Masukkan username kunjungan...">
+                                <label class="text-dark" for="username">Username</label>
+                                <input type="text" class="form-control bg-light text-dark" name="username" autocomplete="off" placeholder="Masukkan username kunjungan...">
                             </div>
                             <div class="form-group">
-                                <label for="password">Password</label>
-                                <input type="password" class="form-control text-white" name="password" autocomplete="off" placeholder="Masukkan password kunjungan...">
+                                <label class="text-dark" for="password">Password</label>
+                                <input type="password" class="form-control bg-light text-dark" name="password" autocomplete="off" placeholder="Masukkan password kunjungan...">
                             </div>
                             <div class="form-group">
                                 <button class="btn btn-dark" type="reset">Cancel</button>

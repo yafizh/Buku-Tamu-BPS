@@ -14,7 +14,7 @@
             background-color: white!important;
         }
 
-        .nav .nav-item:hover .nav-link{
+        .nav .menu-items:hover .nav-link {
             background-color: #0075ad!important;
         }
     </style>
