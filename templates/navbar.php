@@ -17,6 +17,11 @@
                 </ul>
             <?php endif; ?>
         <?php endif; ?>
+        <style>
+            ul.navbar-nav .preview-item:hover {
+                background-color: white;
+            }
+        </style>
         <ul class="navbar-nav navbar-nav-right text-dark">
             <li class="nav-item dropdown">
                 <a class="nav-link" id="profileDropdown" href="#" data-bs-toggle="dropdown">
@@ -34,29 +39,29 @@
                             </div>
                         </div>
                         <div class="preview-item-content">
-                            <p class="preview-subject mb-1">Profile</p>
+                            <p class="preview-subject text-dark mb-1">Profile</p>
                         </div>
                     </a>
                     <div class="dropdown-divider"></div>
                     <a href="index.php?page=ganti_password" class="dropdown-item preview-item">
                         <div class="preview-thumbnail">
-                            <div class="preview-icon bg-dark rounded-circle">
+                            <div class="preview-icon bg-light rounded-circle">
                                 <i class="mdi mdi-onepassword  text-info"></i>
                             </div>
                         </div>
                         <div class="preview-item-content">
-                            <p class="preview-subject mb-1">Ganti Password</p>
+                            <p class="preview-subject text-dark mb-1">Ganti Password</p>
                         </div>
                     </a>
                     <div class="dropdown-divider"></div>
                     <a href="index.php?page=logout" class="dropdown-item preview-item">
                         <div class="preview-thumbnail">
-                            <div class="preview-icon bg-dark rounded-circle">
+                            <div class="preview-icon bg-light rounded-circle">
                                 <i class="mdi mdi-logout text-danger"></i>
                             </div>
                         </div>
                         <div class="preview-item-content">
-                            <p class="preview-subject mb-1">Keluar</p>
+                            <p class="preview-subject text-dark mb-1">Keluar</p>
                         </div>
                     </a>
                 </div>
