@@ -61,45 +61,45 @@ if (isset($_POST['submit'])) {
 <div class="main-panel">
     <div class="content-wrapper">
         <div class="page-header">
-            <h3 class="page-title"> Profile </h3>
+            <h3 class="page-title text-dark"> Profile </h3>
         </div>
         <form class="forms-sample" action="" method="POST" enctype="multipart/form-data">
             <div class="row">
                 <div class="col-md-6 grid-margin stretch-card">
-                    <div class="card">
+                    <div class="card bg-light">
                         <div class="card-body">
-                            <h4 class="card-title">Akun</h4>
+                            <h4 class="card-title text-dark">Akun</h4>
                             <div class="form-group">
-                                <label for="nama">Nama</label>
-                                <input type="text" class="form-control text-white" name="nama" autocomplete="off" placeholder="Masukkan nama tamu..." required value="<?= $row['nama']; ?>">
+                                <label class="text-dark" for="nama">Nama</label>
+                                <input type="text" class="form-control text-dark bg-light" name="nama" autocomplete="off" placeholder="Masukkan nama tamu..." required value="<?= $row['nama']; ?>">
                             </div>
                             <?php if (in_array($_SESSION['user']['status'], ['TAMU'])) : ?>
                                 <div class="form-group">
-                                    <label for="nomor_telepon">Nomor Telepon</label>
-                                    <input type="number" class="form-control text-white" name="nomor_telepon" autocomplete="off" placeholder="Masukkan nomor telepon..." required value="<?= $row['nomor_telepon']; ?>">
+                                    <label class="text-dark" for="nomor_telepon">Nomor Telepon</label>
+                                    <input type="number" class="form-control text-dark bg-light" name="nomor_telepon" autocomplete="off" placeholder="Masukkan nomor telepon..." required value="<?= $row['nomor_telepon']; ?>">
                                 </div>
                                 <div class="form-group">
-                                    <label for="jenis_kelamin">Jenis Kelamin</label>
-                                    <select class="form-control text-white" name="jenis_kelamin" required>
+                                    <label class="text-dark" for="jenis_kelamin">Jenis Kelamin</label>
+                                    <select style="border: 1px solid black;" class="form-control text-dark bg-light" name="jenis_kelamin" required>
                                         <option <?= $row['jenis_kelamin'] === 'L' ? 'selected' : ''; ?> value="L">Laki - Laki</option>
                                         <option <?= $row['jenis_kelamin'] === 'P' ? 'selected' : ''; ?> value="P">Perempuan</option>
                                     </select>
                                 </div>
                                 <div class="form-group">
-                                    <label for="asal_instansi">Asal Instansi</label>
-                                    <input type="text" class="form-control text-white" name="asal_instansi" autocomplete="off" placeholder="Masukkan asal instansi..." required value="<?= $row['asal_instansi']; ?>">
+                                    <label class="text-dark" for="asal_instansi">Asal Instansi</label>
+                                    <input type="text" class="form-control text-dark bg-light" name="asal_instansi" autocomplete="off" placeholder="Masukkan asal instansi..." required value="<?= $row['asal_instansi']; ?>">
                                 </div>
                                 <div class="form-group">
-                                    <label for="alamat">Alamat</label>
-                                    <input type="text" class="form-control text-white" name="alamat" autocomplete="off" placeholder="Masukkan alamat..." required value="<?= $row['alamat']; ?>">
+                                    <label class="text-dark" for="alamat">Alamat</label>
+                                    <input type="text" class="form-control text-dark bg-light" name="alamat" autocomplete="off" placeholder="Masukkan alamat..." required value="<?= $row['alamat']; ?>">
                                 </div>
                             <?php endif; ?>
                             <div class="form-group">
-                                <label for="username">Username</label>
-                                <input type="text" class="form-control text-white" name="username" autocomplete="off" placeholder="Masukkan username kunjungan..." value="<?= $row['username']; ?>">
+                                <label class="text-dark" for="username">Username</label>
+                                <input type="text" class="form-control text-dark bg-light" name="username" autocomplete="off" placeholder="Masukkan username kunjungan..." value="<?= $row['username']; ?>">
                             </div>
                             <div class="form-group">
-                                <label for="gambar" class="d-block mb-2">Gambar</label>
+                                <label class="text-dark" for="gambar" class="d-block mb-2">Gambar</label>
                                 <input type="file" name="gambar">
                             </div>
                             <div class="form-group">

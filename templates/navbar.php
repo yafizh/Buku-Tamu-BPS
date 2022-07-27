@@ -11,7 +11,7 @@
                 <ul class="navbar-nav w-100">
                     <li class="nav-item w-100">
                         <form method="POST" class="nav-link mt-2 mt-md-0 d-none d-lg-flex search">
-                            <input type="text" name="keyword" value="<?= isset($_POST['keyword']) ? $_POST['keyword'] : '' ?>" class="form-control text-white bg-light" placeholder="Cari Data...">
+                            <input type="text" name="keyword" value="<?= isset($_POST['keyword']) ? $_POST['keyword'] : '' ?>" class="form-control bg-light" placeholder="Cari Data...">
                         </form>
                     </li>
                 </ul>

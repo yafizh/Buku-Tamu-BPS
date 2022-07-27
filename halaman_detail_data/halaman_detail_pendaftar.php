@@ -22,61 +22,54 @@ if (isset($_POST['tolak'])) {
 <div class="main-panel">
     <div class="content-wrapper">
         <div class="page-header">
-            <h3 class="page-title"> Detail Pendaftar </h3>
-            <!-- <nav aria-label="breadcrumb">
-                <ol class="breadcrumb">
-                    <li class="breadcrumb-item"><a href="#">Forms</a></li>
-                    <li class="breadcrumb-item active" aria-current="page">Form elements</li>
-                </ol>
-            </nav> -->
+            <h3 class="page-title text-dark"> Detail Pendaftar </h3>
         </div>
         <form class="forms-sample" action="" method="POST">
             <div class="row">
                 <div class="col-md-6 grid-margin stretch-card">
-                    <div class="card">
+                    <div class="card bg-light">
                         <div class="card-body">
-                            <h4 class="card-title">Indentitas Pendaftar</h4>
-                            <!-- <p class="card-description"> Basic form layout </p> -->
+                            <h4 class="card-title text-dark">Indentitas Pendaftar</h4>
                             <form class="forms-sample">
                                 <div class="form-group">
-                                    <label for="nama">Nama</label>
-                                    <input type="text" class="form-control text-white" value="<?= $row['nama']; ?>" name="nama" autocomplete="off" placeholder="Masukkan nama tamu..." required>
+                                    <label class="text-dark" for="nama">Nama</label>
+                                    <input type="text" class="form-control text-dark bg-light" value="<?= $row['nama']; ?>" name="nama" autocomplete="off" placeholder="Masukkan nama tamu..." required>
                                 </div>
                                 <div class="form-group">
-                                    <label for="nomor_telepon">Nomor Telepon</label>
-                                    <input type="number" class="form-control text-white" value="<?= $row['nomor_telepon']; ?>" name="nomor_telepon" autocomplete="off" placeholder="Masukkan nomor telepon..." required>
+                                    <label class="text-dark" for="nomor_telepon">Nomor Telepon</label>
+                                    <input type="number" class="form-control text-dark bg-light" value="<?= $row['nomor_telepon']; ?>" name="nomor_telepon" autocomplete="off" placeholder="Masukkan nomor telepon..." required>
                                 </div>
                                 <div class="form-group">
-                                    <label for="jenis_kelamin">Jenis Kelamin</label>
-                                    <select class="form-control text-white" name="jenis_kelamin">
+                                    <label class="text-dark" for="jenis_kelamin">Jenis Kelamin</label>
+                                    <select style="border: 1px solid black;" class="form-control text-dark bg-light" name="jenis_kelamin">
                                         <option value="" selected disabled>Pilih Jenis Kelamin</option>
                                         <option value="L">Laki - Laki</option>
                                         <option value="P">Perempuan</option>
                                     </select>
                                 </div>
                                 <div class="form-group">
-                                    <label for="asal_instansi">Asal Instansi</label>
-                                    <input type="text" class="form-control text-white" value="<?= $row['asal_instansi']; ?>" name="asal_instansi" autocomplete="off" placeholder="Masukkan asal instansi..." required>
+                                    <label class="text-dark" for="asal_instansi">Asal Instansi</label>
+                                    <input type="text" class="form-control text-dark bg-light" value="<?= $row['asal_instansi']; ?>" name="asal_instansi" autocomplete="off" placeholder="Masukkan asal instansi..." required>
                                 </div>
                                 <div class="form-group">
-                                    <label for="alamat">Alamat</label>
-                                    <input type="text" class="form-control text-white" name="alamat" autocomplete="off" placeholder="Masukkan alamat...">
+                                    <label class="text-dark" for="alamat">Alamat</label>
+                                    <input type="text" class="form-control text-dark bg-light" name="alamat" autocomplete="off" placeholder="Masukkan alamat...">
                                 </div>
                             </form>
                         </div>
                     </div>
                 </div>
                 <div class="col-md-6 grid-margin stretch-card">
-                    <div class="card">
+                    <div class="card bg-light">
                         <div class="card-body">
-                            <h4 class="card-title">Akun</h4>
+                            <h4 class="card-title text-dark">Akun</h4>
                             <div class="form-group">
-                                <label for="username">Username</label>
-                                <input type="text" class="form-control text-white" name="username" autocomplete="off" placeholder="Masukkan username..." required>
+                                <label class="text-dark" for="username">Username</label>
+                                <input type="text" class="form-control text-dark bg-light" name="username" autocomplete="off" placeholder="Masukkan username..." required>
                             </div>
                             <div class="form-group">
-                                <label for="password">Password</label>
-                                <input type="password" class="form-control text-white" name="password" autocomplete="off" placeholder="Masukkan password..." required>
+                                <label class="text-dark" for="password">Password</label>
+                                <input type="password" class="form-control text-dark bg-light" name="password" autocomplete="off" placeholder="Masukkan password..." required>
                             </div>
                             <div class="form-group">
                                 <form action="" method="POST" class="d-inline">

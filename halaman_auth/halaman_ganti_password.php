@@ -24,32 +24,24 @@ if (isset($_POST['submit'])) {
 <div class="main-panel">
     <div class="content-wrapper">
         <div class="page-header">
-            <h3 class="page-title"> Tambah User </h3>
-            <!-- <nav aria-label="breadcrumb">
-                <ol class="breadcrumb">
-                    <li class="breadcrumb-item"><a href="#">Forms</a></li>
-                    <li class="breadcrumb-item active" aria-current="page">Form elements</li>
-                </ol>
-            </nav> -->
+            <h3 class="page-title text-dark"> Tambah User </h3>
         </div>
         <div class="row">
             <div class="col-md-12 grid-margin stretch-card">
-                <div class="card">
+                <div class="card bg-light">
                     <div class="card-body">
-                        <!-- <h4 class="card-title">Indentitas Tamu</h4> -->
-                        <!-- <p class="card-description"> Basic form layout </p> -->
                         <form class="forms-sample" action="" method="POST">
                             <div class="form-group">
-                                <label for="password_lama">Password Lama</label>
-                                <input type="password" class="form-control text-white" name="password_lama" autocomplete="off" placeholder="Masukkan Password Lama..." required>
+                                <label class="text-dark" for="password_lama">Password Lama</label>
+                                <input type="password" class="form-control text-dark bg-light" name="password_lama" autocomplete="off" placeholder="Masukkan Password Lama..." required>
                             </div>
                             <div class="form-group">
-                                <label for="password_baru">Password Baru</label>
-                                <input type="password" class="form-control text-white" name="password_baru" autocomplete="off" placeholder="Masukkan Password Baru..." required>
+                                <label class="text-dark" for="password_baru">Password Baru</label>
+                                <input type="password" class="form-control text-dark bg-light" name="password_baru" autocomplete="off" placeholder="Masukkan Password Baru..." required>
                             </div>
                             <div class="form-group">
-                                <label for="konfirmasi_password_baru">Konfirmasi Password Baru</label>
-                                <input type="password" class="form-control text-white" name="konfirmasi_password_baru" autocomplete="off" placeholder="Masukkan Ulang Password Baru..." required>
+                                <label class="text-dark" for="konfirmasi_password_baru">Konfirmasi Password Baru</label>
+                                <input type="password" class="form-control text-dark bg-light" name="konfirmasi_password_baru" autocomplete="off" placeholder="Masukkan Ulang Password Baru..." required>
                             </div>
                             <div class="form-group">
                                 <button class="btn btn-dark" type="reset">Reset</button>
