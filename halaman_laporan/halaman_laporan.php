@@ -10,7 +10,7 @@ require_once "database/koneksi.php";
         </div>
         <div class="row">
             <div class="col-md-6 grid-margin stretch-card">
-                <div class="card bg-light">
+                <div class="card bg-light shadow">
                     <div class="card-body">
                         <h4 class="card-title text-dark">Data Kunjungan</h4>
                         <form class="forms-sample" action="halaman_laporan/cetak/laporan_tamu.php" method="POST" target="_blank">
@@ -32,7 +32,7 @@ require_once "database/koneksi.php";
                 </div>
             </div>
             <div class="col-md-6 grid-margin stretch-card">
-                <div class="card bg-light">
+                <div class="card bg-light shadow">
                     <div class="card-body">
                         <h4 class="card-title text-dark">Data Pengajuan Kunjungan</h4>
                         <!-- <p class="card-description"> Horizontal form layout </p> -->
@@ -57,7 +57,7 @@ require_once "database/koneksi.php";
         </div>
         <div class="row">
             <div class="col-md-6 grid-margin stretch-card">
-                <div class="card bg-light">
+                <div class="card bg-light shadow">
                     <div class="card-body">
                         <h4 class="card-title text-dark">Data Pegawai</h4>
                         <p class="card-description"> Data Pegawai </p>
@@ -73,7 +73,7 @@ require_once "database/koneksi.php";
                 </div>
             </div>
             <div class="col-md-6 grid-margin stretch-card">
-                <div class="card bg-light">
+                <div class="card bg-light shadow">
                     <div class="card-body">
                         <h4 class="card-title text-dark">Data User Tamu</h4>
                         <p class="card-description"> Data User Tamu </p>
@@ -91,7 +91,7 @@ require_once "database/koneksi.php";
         </div>
         <div class="row">
             <div class="col-md-6 grid-margin stretch-card">
-                <div class="card bg-light">
+                <div class="card bg-light shadow">
                     <div class="card-body">
                         <h4 class="card-title text-dark">Data Pendaftaran Akun Tamu</h4>
                         <!-- <p class="card-description"> Data Divisi </p> -->
@@ -114,7 +114,7 @@ require_once "database/koneksi.php";
                 </div>
             </div>
             <div class="col-md-6 grid-margin stretch-card">
-                <div class="card bg-light">
+                <div class="card bg-light shadow">
                     <div class="card-body">
                         <h4 class="card-title text-dark">Indeks Kepuasan Masyarakat</h4>
                         <!-- <p class="card-description"> Data IKM </p> -->
@@ -139,7 +139,7 @@ require_once "database/koneksi.php";
         </div>
         <div class="row">
             <div class="col-md-6 grid-margin stretch-card">
-                <div class="card bg-light">
+                <div class="card bg-light shadow">
                     <div class="card-body">
                         <h4 class="card-title text-dark">Data Jenis Kunjungan</h4>
                         <!-- <p class="card-description"> Horizontal form layout </p> -->
@@ -156,7 +156,7 @@ require_once "database/koneksi.php";
                 </div>
             </div>
             <div class="col-md-6 grid-margin stretch-card">
-                <div class="card bg-light">
+                <div class="card bg-light shadow">
                     <div class="card-body">
                         <h4 class="card-title text-dark">Grafik Kunjungan</h4>
                         <!-- <p class="card-description"> Horizontal form layout </p> -->
@@ -181,7 +181,7 @@ require_once "database/koneksi.php";
         </div>
         <div class="row">
             <div class="col-md-6 grid-margin stretch-card">
-                <div class="card bg-light">
+                <div class="card bg-light shadow">
                     <div class="card-body">
                         <h4 class="card-title text-dark">Data Grafik IKM</h4>
                         <!-- <p class="card-description"> Horizontal form layout </p> -->
