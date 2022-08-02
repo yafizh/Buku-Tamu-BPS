@@ -35,7 +35,7 @@ if (isset($_POST['submit'])) {
             '$tanggal', 
             '$waktu', 
             '$nomor_telepon', 
-            '$jenis_pertemuan'  
+            'OFFLINE'  
         )";
 
         if ($mysqli->query($sql) === TRUE) echo "<script>alert('Tamu berhasil ditambahkan.')</script>";
