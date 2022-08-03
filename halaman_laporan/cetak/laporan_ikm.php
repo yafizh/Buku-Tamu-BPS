@@ -143,7 +143,7 @@ $sampai_tahun = explode('-', $sampai_tahun_bulan_tanggal)[0];
                 <span>Amuntai, <?= Date('d') ?> <?= BULAN_DALAM_INDONESIA[Date('m') - 1] ?> <?= Date('Y') ?></span>
                 <br>
                 <span>Mengetahui</span>
-                <br><br><br>
+                <br><br><br><br><br>
                 <span>Sukma Handayani, M.Si</span>
                 <br>
                 <span>NIP. 197503111996122000</span>

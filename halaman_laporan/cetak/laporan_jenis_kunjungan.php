@@ -87,7 +87,7 @@ $tahun = $_POST['tahun'];
                 ?>
                 <?php if ($result->num_rows) : ?>
                     <?php $data = $result->fetch_all(MYSQLI_ASSOC); ?>
-                    <?php for ($i = 0; $i < 6; $i++) : ?>
+                    <?php for ($i = 0; $i < 12; $i++) : ?>
                         <tr>
                             <td class="text-center"><?= BULAN_DALAM_INDONESIA[$i]; ?></td>
                             <?php $exsist_online = false; ?>
@@ -123,7 +123,7 @@ $tahun = $_POST['tahun'];
                 <span>Amuntai, <?= Date('d') ?> <?= BULAN_DALAM_INDONESIA[Date('m') - 1] ?> <?= Date('Y') ?></span>
                 <br>
                 <span>Mengetahui</span>
-                <br><br><br>
+                <br><br><br><br><br>
                 <span>Sukma Handayani, M.Si</span>
                 <br>
                 <span>NIP. 197503111996122000</span>

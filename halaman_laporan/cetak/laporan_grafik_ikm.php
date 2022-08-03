@@ -164,9 +164,9 @@ $tahun = $_POST['tahun'];
             options: options
         });
 
-        // setTimeout(function() {
-        //     window.print();
-        // }, 1000);
+        setTimeout(function() {
+            window.print();
+        }, 1000);
     </script>
 </body>
 

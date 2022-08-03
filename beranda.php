@@ -75,7 +75,7 @@ require_once "database/koneksi.php";
                     <div class="card-body">
                         <div class="row">
                             <div class="col-9">
-                                <?php $tahun_ini = $mysqli->query("SELECT COUNT(id) AS tahun_ini FROM tabel_kunjungan WHERE YEAR(tanggal)=YEAR(CURRENT_DATE())"); ?>
+                                <?php $tahun_ini = $mysqli->query("SELECT COUNT(*) AS tahun_ini FROM view_tamu WHERE YEAR(tanggal)=YEAR(CURRENT_DATE())"); ?>
                                 <?php $tahun_ini = $tahun_ini->fetch_assoc(); ?>
                                 <div class="d-flex align-items-center align-self-start">
                                     <h3 class="mb-0"><?= !empty($tahun_ini) ? $tahun_ini['tahun_ini'] : 0 ?></h3>
